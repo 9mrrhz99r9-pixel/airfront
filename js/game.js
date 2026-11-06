@@ -180,21 +180,41 @@ function spawnGuardGroup() {
 // =========================
 // 入力
 // =========================
-function pointerX(e) {
-  const rect = canvas.getBoundingClientRect();
-  return e.clientX - rect.left;
-}
+let lastPointerX = 0;
+let moveDirection = 0;
+
 canvas.addEventListener('pointerdown', e => {
   if (state !== 'playing') return;
-  if (e.clientY > H - 100) return; // 発砲ボタン周辺では移動操作を取らない
+  if (e.clientY > H - 100) return;
+
   pointerActive = true;
-  targetX = pointerX(e);
+  lastPointerX = e.clientX;
+  moveDirection = 0;
+
   canvas.setPointerCapture(e.pointerId);
 });
+
 canvas.addEventListener('pointermove', e => {
-  if (pointerActive && state === 'playing') targetX = pointerX(e);
+  if (!pointerActive || state !== 'playing') return;
+
+  const diffX = e.clientX - lastPointerX;
+
+  if (diffX > 0) {
+    moveDirection = 1;
+  } else if (diffX < 0) {
+    moveDirection = -1;
+  } else {
+    moveDirection = 0;
+  }
+
+  lastPointerX = e.clientX;
 });
-function stopPointer() { pointerActive = false; }
+
+function stopPointer() {
+  pointerActive = false;
+  moveDirection = 0;
+}
+
 canvas.addEventListener('pointerup', stopPointer);
 canvas.addEventListener('pointercancel', stopPointer);
 
