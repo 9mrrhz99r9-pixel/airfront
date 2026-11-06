@@ -188,7 +188,7 @@ canvas.addEventListener('pointerdown', e => {
 
   pointerActive = true;
   lastPointerX = e.clientX;
-  moveDirection = 0;
+  moveDeltaX = 0;
 
   canvas.setPointerCapture(e.pointerId);
 });
