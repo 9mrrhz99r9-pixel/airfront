@@ -247,8 +247,16 @@ function update(dt) {
   for (const e of enemies) {
     e.age += dt;
     if (e.type === 'shooter') {
-      e.y += CONFIG.enemySpeed.shooter * dt;
-      e.fireTimer -= dt;
+  const stopY = H * 0.3;
+
+  if (e.y < stopY) {
+    e.y = Math.min(
+      e.y + CONFIG.enemySpeed.shooter * dt,
+      stopY
+    );
+  }
+
+  e.fireTimer -= dt;
       if (e.fireTimer <= 0) {
         enemyBullets.push({ x: e.x, y: e.y + 15, r: 5 });
         e.fireTimer = CONFIG.shooterFireInterval;
