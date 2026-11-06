@@ -77,7 +77,7 @@ let state = 'title';
 let player, playerBullets, enemyBullets, enemies, guardGroups;
 let score = 0, elapsed = 0, spawnTimer = 0, fireTimer = 0;
 let invincibleTimer = 0, lastTime = 0;
-let pointerActive = false, targetX = null, firing = false;
+let pointerActive = false, firing = false;
 let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
 
 function resetGame() {
@@ -91,7 +91,6 @@ function resetGame() {
   spawnTimer = 0;
   fireTimer = 0;
   invincibleTimer = 0;
-  targetX = player.x;
   firing = false;
 }
 
