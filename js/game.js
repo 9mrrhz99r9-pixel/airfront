@@ -234,12 +234,12 @@ function update(dt) {
   if (invincibleTimer > 0) invincibleTimer -= dt;
 
   // プレイヤー左右移動
-  if (targetX !== null) {
-    const dx = targetX - player.x;
-    const step = CONFIG.playerSpeed * dt;
-    player.x += Math.sign(dx) * Math.min(Math.abs(dx), step);
-  }
-  player.x = Math.max(player.w / 2, Math.min(W - player.w / 2, player.x));
+player.x += moveDirection * CONFIG.playerSpeed * dt;
+
+player.x = Math.max(
+  player.w / 2,
+  Math.min(W - player.w / 2, player.x)
+);
 
   // 発砲
   fireTimer -= dt;
