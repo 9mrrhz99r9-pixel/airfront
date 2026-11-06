@@ -1,1 +1,11 @@
-//CSS
+* { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #07111f; color: #fff; font-family: system-ui, sans-serif; touch-action: none; }
+  #game { display: block; width: 100%; height: 100%; }
+  .screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; background: rgba(3,10,20,.92); text-align: center; padding: 24px; }
+  .hidden { display: none !important; }
+  h1 { margin: 0; font-size: clamp(34px, 9vw, 64px); letter-spacing: .08em; }
+  button { border: 1px solid #8bdcff; background: #123b59; color: white; border-radius: 12px; padding: 14px 30px; font-size: 18px; font-weight: 700; }
+  button:active { background: #1d638d; }
+  #result { line-height: 1.9; font-size: 18px; }
+  #fireButton { position: fixed; left: 50%; bottom: max(22px, env(safe-area-inset-bottom)); transform: translateX(-50%); width: 112px; height: 58px; border-radius: 16px; background: rgba(20,110,160,.88); border: 2px solid #b9eaff; font-size: 17px; touch-action: none; }
+  #hint { position: fixed; bottom: 92px; left: 0; right: 0; text-align: center; color: #b9cbd8; font-size: 12px; pointer-events: none; }
