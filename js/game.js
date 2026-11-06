@@ -81,7 +81,7 @@ let pointerActive = false, targetX = null, firing = false;
 let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
 
 function resetGame() {
-  player = { x: W / 2, y: H - 100, w: 34, h: 42, hp: CONFIG.playerMaxHp };
+  player = { x: W / 2, y: H - 140, w: 34, h: 42, hp: CONFIG.playerMaxHp };
   playerBullets = [];
   enemyBullets = [];
   enemies = [];
