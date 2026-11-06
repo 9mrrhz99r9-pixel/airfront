@@ -228,7 +228,8 @@ function update(dt) {
   if (invincibleTimer > 0) invincibleTimer -= dt;
 
   // プレイヤー左右移動
-player.x += moveDirection * CONFIG.playerSpeed * dt;
+player.x += moveDeltaX;
+moveDeltaX = 0;
 
 player.x = Math.max(
   player.w / 2,
