@@ -180,7 +180,7 @@ function spawnGuardGroup() {
 // 入力
 // =========================
 let lastPointerX = 0;
-let moveDirection = 0;
+let moveDeltaX = 0;
 
 canvas.addEventListener('pointerdown', e => {
   if (state !== 'playing') return;
