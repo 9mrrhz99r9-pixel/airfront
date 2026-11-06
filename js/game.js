@@ -197,21 +197,16 @@ canvas.addEventListener('pointermove', e => {
   if (!pointerActive || state !== 'playing') return;
 
   const diffX = e.clientX - lastPointerX;
+  const rect = canvas.getBoundingClientRect();
 
-  if (diffX > 0) {
-    moveDirection = 1;
-  } else if (diffX < 0) {
-    moveDirection = -1;
-  } else {
-    moveDirection = 0;
-  }
+  moveDeltaX += diffX * (W / rect.width);
 
   lastPointerX = e.clientX;
 });
 
 function stopPointer() {
   pointerActive = false;
-  moveDirection = 0;
+  moveDeltaX = 0;
 }
 
 canvas.addEventListener('pointerup', stopPointer);
