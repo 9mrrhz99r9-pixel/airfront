@@ -150,6 +150,7 @@ function spawnEnemy() {
 }
 function makeEnemy(type, x) {
   const size = type === 'guard' ? 25 : 30;
+
   return {
     type, x, y: -35, w: size, h: size,
     hp: CONFIG.enemyHp[type],
@@ -158,6 +159,10 @@ function makeEnemy(type, x) {
     rushing: false,
     vx: 0,
     direction: Math.random() < 0.5 ? -1 : 1,
+
+    // 射撃型の停止位置（画面高さの25〜40%）
+    stopY: H * (0.25 + Math.random() * 0.15),
+
     alive: true
   };
 }
