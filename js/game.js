@@ -179,7 +179,7 @@ function spawnGuardGroup() {
       w: 24, h: 24, hp: CONFIG.enemyHp.guard, alive: true
     });
   }
-  guardGroups.push({ members, direction: 1, stopped: false, stopY: H * 0.28 });
+  guardGroups.push({ members, direction: 1, stopped: false, stopY: H * 0.5 });
 }
 
 // =========================
