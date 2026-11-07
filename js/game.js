@@ -265,12 +265,29 @@ player.x = Math.max(
     if (e.type === 'shooter') {
   const stopY = H * 0.3;
 
-  if (e.y < stopY) {
-    e.y = Math.min(
-      e.y + CONFIG.enemySpeed.shooter * dt,
-      stopY
-    );
+// 停止位置まで降下
+if (e.y < stopY) {
+  e.y = Math.min(
+    e.y + CONFIG.enemySpeed.shooter * dt,
+    stopY
+  );
+} else {
+  // 停止後は左右に往復移動
+  const moveSpeed = 90;
+
+  e.x += e.direction * moveSpeed * dt;
+
+  // 左右の端で反転
+  if (e.x <= 25) {
+    e.x = 25;
+    e.direction = 1;
   }
+
+  if (e.x >= W - 25) {
+    e.x = W - 25;
+    e.direction = -1;
+  }
+}
 
   e.fireTimer -= dt;
       if (e.fireTimer <= 0) {
