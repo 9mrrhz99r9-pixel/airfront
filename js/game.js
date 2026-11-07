@@ -263,7 +263,7 @@ player.x = Math.max(
   for (const e of enemies) {
     e.age += dt;
     if (e.type === 'shooter') {
-  const stopY = H * 0.3;
+  const stopY = e.stopY;
 
 // 停止位置まで降下
 if (e.y < stopY) {
