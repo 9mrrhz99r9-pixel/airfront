@@ -157,6 +157,7 @@ function makeEnemy(type, x) {
     age: 0,
     rushing: false,
     vx: 0,
+    direction: Math.random() < 0.5 ? -1 : 1,
     alive: true
   };
 }
