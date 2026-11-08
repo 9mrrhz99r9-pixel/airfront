@@ -464,10 +464,28 @@ function drawBackground() {
 function drawPlayer() {
   if (invincibleTimer > 0 && Math.floor(invincibleTimer * 12) % 2 === 0) return;
 
-  if (!playerImage.complete || playerImage.naturalWidth === 0) return;
-
   const width = 42;
   const height = 52;
+
+  if (selectedSkin === 'stealth') {
+    if (!stealthImage.complete || stealthImage.naturalWidth === 0) return;
+
+    ctx.save();
+    ctx.translate(player.x, player.y);
+    ctx.rotate(Math.PI);
+
+    ctx.drawImage(
+      stealthImage,
+      48, 26, 238, 290,
+      -width / 2, -height / 2,
+      width, height
+    );
+
+    ctx.restore();
+    return;
+  }
+
+  if (!playerImage.complete || playerImage.naturalWidth === 0) return;
 
   ctx.drawImage(
     playerImage,
@@ -477,6 +495,7 @@ function drawPlayer() {
     height
   );
 }
+
 function drawEnemy(e) {
   ctx.save();
   ctx.translate(e.x, e.y);
