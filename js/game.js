@@ -25,8 +25,8 @@ const CONFIG = {
     guard: 48
   },
   enemyHp: {
-    shooter: 1,
-    charger: 1,
+    shooter: 2,
+    charger: 3,
     guard: 1
   },
   enemyScore: {
