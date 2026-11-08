@@ -23,3 +23,59 @@ body {
   user-select: none;
   -webkit-touch-callout: none;
 }
+/* 機体選択画面 */
+#skinScreen {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* 上半分：選択中の機体 */
+#skinPreview {
+  height: 50%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* 選択中の機体画像 */
+#skinPreviewImage {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#skinPreviewImage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* 機体名・入手ヒント */
+#skinPreviewName,
+#skinPreviewHint {
+  margin: 0;
+  text-align: center;
+}
+
+/* 下半分：機体一覧 */
+#skinListArea {
+  height: 50%;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+#skinList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
