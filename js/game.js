@@ -573,17 +573,26 @@ previewImage.appendChild(img);
     button.type = 'button';
 
     const img = document.createElement('img');
-    img.src = skin.image;
-    img.alt = skin.name;
-    img.width = 84;
+img.src = skin.image;
+img.alt = skin.unlocked ? skin.name : '未入手機体';
+img.width = 84;
 
-    const name = document.createElement('div');
-    name.textContent = skin.name;
+if (!skin.unlocked) {
+  img.style.filter = 'brightness(0)';
+}
 
-    const status = document.createElement('div');
-    status.textContent = id === selectedSkin ? '選択中' : '選択する';
+const name = document.createElement('div');
+name.textContent = skin.unlocked ? skin.name : '？？？';
 
-    button.append(img, name, status);
+const status = document.createElement('div');
+
+if (!skin.unlocked) {
+  status.textContent = '未入手';
+} else {
+  status.textContent = id === selectedSkin ? '使用中' : '選択する';
+}
+
+button.append(img, name, status);
 
     button.addEventListener('click', () => {
       changePlayerSkin(id);
