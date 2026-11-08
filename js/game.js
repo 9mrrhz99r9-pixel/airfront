@@ -577,22 +577,47 @@ const skin = PLAYER_SKINS[previewSkinId];
 
 previewImage.innerHTML = '';
 
-const img = document.createElement('img');
+if (previewSkinId === 'stealth') {
+  const canvas = document.createElement('canvas');
+  canvas.width = 238;
+  canvas.height = 290;
 
-if (skin.unlocked) {
+  const ctxPreview = canvas.getContext('2d');
+
+  if (stealthImage.complete && stealthImage.naturalWidth > 0) {
+    ctxPreview.drawImage(
+      stealthImage,
+      48, 26, 238, 290,
+      0, 0, 238, 290
+    );
+  }
+
+  if (!skin.unlocked) {
+    canvas.style.filter = 'brightness(0)';
+    previewName.textContent = '？？？';
+    previewHint.textContent = skin.hint || '入手条件不明';
+  } else {
+    previewName.textContent = skin.name;
+    previewHint.textContent = '';
+  }
+
+  canvas.style.width = 'auto';
+  canvas.style.height = '100%';
+  canvas.style.maxWidth = '100%';
+  canvas.style.objectFit = 'contain';
+
+  previewImage.appendChild(canvas);
+
+} else {
+  const img = document.createElement('img');
   img.src = skin.image;
   img.alt = skin.name;
+
   previewName.textContent = skin.name;
   previewHint.textContent = '';
-} else {
-  img.src = skin.image;
-  img.alt = '未入手機体';
-  img.style.filter = 'brightness(0)';
-  previewName.textContent = '？？？';
-  previewHint.textContent = skin.hint || '入手条件不明';
-}
 
-previewImage.appendChild(img);
+  previewImage.appendChild(img);
+}
 
   // 機体一覧を生成
   for (const [id, skin] of Object.entries(PLAYER_SKINS)) {
