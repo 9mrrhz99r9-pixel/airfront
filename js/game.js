@@ -30,8 +30,8 @@ const CONFIG = {
     guard: 1
   },
   enemyScore: {
-    shooter: 100,
-    charger: 150,
+    shooter: 120,
+    charger: 200,
     guard: 40
   },
   shooterFireInterval: 5,
