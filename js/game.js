@@ -81,7 +81,8 @@ let selectedSkin = 'default';
 let previewSkinId = selectedSkin;
 const playerImage = new Image();
 playerImage.src = PLAYER_SKINS[selectedSkin].image;
-
+const stealthImage = new Image();
+stealthImage.src = './assets/player/stealth_sheet.PNG';
 function changePlayerSkin(skinId) {
   if (!PLAYER_SKINS[skinId]) return;
 
