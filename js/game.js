@@ -56,9 +56,25 @@ const titleButton = document.getElementById('titleButton');
 const fireButton = document.getElementById('fireButton');
 const hint = document.getElementById('hint');
 
-// プレイヤー機体画像
+// プレイヤースキン管理
+const PLAYER_SKINS = {
+  default: {
+    name: '初期量産機',
+    image: './assets/player/player_default.png'
+  }
+};
+
+let selectedSkin = 'default';
+
 const playerImage = new Image();
-playerImage.src = './assets/player/player_default.png';
+playerImage.src = PLAYER_SKINS[selectedSkin].image;
+
+function changePlayerSkin(skinId) {
+  if (!PLAYER_SKINS[skinId]) return;
+
+  selectedSkin = skinId;
+  playerImage.src = PLAYER_SKINS[skinId].image;
+}
 
 let W = 0, H = 0, dpr = 1;
 function resize() {
