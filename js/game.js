@@ -545,18 +545,27 @@ function renderSkinList() {
   const previewName = document.getElementById('skinPreviewName');
   const previewHint = document.getElementById('skinPreviewHint');
 
-  // 選択中の機体を上部に表示
-  const skin = PLAYER_SKINS[selectedSkin];
+  // プレビュー中の機体を上部に表示
+const skin = PLAYER_SKINS[previewSkinId];
 
-  previewImage.innerHTML = '';
+previewImage.innerHTML = '';
 
-  const img = document.createElement('img');
+const img = document.createElement('img');
+
+if (skin.unlocked) {
   img.src = skin.image;
   img.alt = skin.name;
-
-  previewImage.appendChild(img);
   previewName.textContent = skin.name;
   previewHint.textContent = '';
+} else {
+  img.src = skin.image;
+  img.alt = '未入手機体';
+  img.style.filter = 'brightness(0)';
+  previewName.textContent = '？？？';
+  previewHint.textContent = skin.hint || '入手条件不明';
+}
+
+previewImage.appendChild(img);
 
   // 機体一覧を生成
   for (const [id, skin] of Object.entries(PLAYER_SKINS)) {
