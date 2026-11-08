@@ -572,9 +572,10 @@ skinButton.addEventListener('click', () => {
   skinScreen.classList.remove('hidden');
 });
 
-skinBackButton.addEventListener('click', () => {
-  skinScreen.classList.add('hidden');
-  titleScreen.classList.remove('hidden');
+skinButton.addEventListener('click', () => {
+  renderSkinList();
+  titleScreen.classList.add('hidden');
+  skinScreen.classList.remove('hidden');
 });
 
 titleButton.addEventListener('click', () => {
