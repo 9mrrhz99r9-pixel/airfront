@@ -11,3 +11,10 @@
 -webkit-user-select: none;
 -webkit-touch-callout: none;}
   #hint { position: fixed; bottom: 92px; left: 0; right: 0; text-align: center; color: #b9cbd8; font-size: 12px; pointer-events: none; }
+#skinList img {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
