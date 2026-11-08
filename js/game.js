@@ -573,6 +573,11 @@ skinButton.addEventListener('click', () => {
   skinScreen.classList.remove('hidden');
 });
 
+skinBackButton.addEventListener('click', () => {
+  skinScreen.classList.add('hidden');
+  titleScreen.classList.remove('hidden');
+});
+
 titleButton.addEventListener('click', () => {
   state = 'title';
   gameOverScreen.classList.add('hidden');
