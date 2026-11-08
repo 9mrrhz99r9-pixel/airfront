@@ -185,6 +185,9 @@ function spawnGuardGroup() {
 // =========================
 // 入力
 // =========================
+let movePointerId = null;
+let firePointerId = null;
+
 let lastPointerX = 0;
 let moveDeltaX = 0;
 
@@ -192,7 +195,10 @@ canvas.addEventListener('pointerdown', e => {
   if (state !== 'playing') return;
   if (e.clientY > H - 100) return;
 
-  pointerActive = true;
+  // 移動担当の指がすでにある場合は無視
+  if (movePointerId !== null) return;
+
+  movePointerId = e.pointerId;
   lastPointerX = e.clientX;
   moveDeltaX = 0;
 
@@ -200,7 +206,7 @@ canvas.addEventListener('pointerdown', e => {
 });
 
 canvas.addEventListener('pointermove', e => {
-  if (!pointerActive || state !== 'playing') return;
+  if (e.pointerId !== movePointerId || state !== 'playing') return;
 
   const diffX = e.clientX - lastPointerX;
   const rect = canvas.getBoundingClientRect();
@@ -210,8 +216,10 @@ canvas.addEventListener('pointermove', e => {
   lastPointerX = e.clientX;
 });
 
-function stopPointer() {
-  pointerActive = false;
+function stopPointer(e) {
+  if (e.pointerId !== movePointerId) return;
+
+  movePointerId = null;
   moveDeltaX = 0;
 }
 
