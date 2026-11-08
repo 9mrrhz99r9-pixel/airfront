@@ -64,7 +64,9 @@ const hint = document.getElementById('hint');
 const PLAYER_SKINS = {
   default: {
     name: '汎用迎撃機',
-    image: './assets/player/player_default.png'
+    image: './assets/player/player_default.png',
+    unlocked: true,
+    hint: ''
   }
 };
 
@@ -72,7 +74,6 @@ let selectedSkin = 'default';
 
 const playerImage = new Image();
 playerImage.src = PLAYER_SKINS[selectedSkin].image;
-
 function changePlayerSkin(skinId) {
   if (!PLAYER_SKINS[skinId]) return;
 
