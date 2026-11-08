@@ -643,11 +643,39 @@ ctxPreview.restore();
  const visual = document.createElement('div');
 
 if (skin.unlocked) {
-  const img = document.createElement('img');
-  img.src = skin.image;
-  img.alt = skin.name;
-  img.width = 84;
-  visual.appendChild(img);
+  if (id === 'stealth') {
+    const canvas = document.createElement('canvas');
+    canvas.width = 238;
+    canvas.height = 290;
+
+    const ctxIcon = canvas.getContext('2d');
+
+    if (stealthImage.complete && stealthImage.naturalWidth > 0) {
+      ctxIcon.save();
+      ctxIcon.translate(238, 290);
+      ctxIcon.rotate(Math.PI);
+
+      ctxIcon.drawImage(
+        stealthImage,
+        48, 26, 238, 290,
+        0, 0, 238, 290
+      );
+
+      ctxIcon.restore();
+    }
+
+    canvas.style.width = '84px';
+    canvas.style.height = '84px';
+    canvas.style.objectFit = 'contain';
+
+    visual.appendChild(canvas);
+  } else {
+    const img = document.createElement('img');
+    img.src = skin.image;
+    img.alt = skin.name;
+    img.width = 84;
+    visual.appendChild(img);
+  }
 } else {
   visual.textContent = '？';
   visual.style.width = '84px';
