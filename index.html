@@ -17,7 +17,19 @@
 
 <div id="skinScreen" class="screen hidden">
   <h1>機体選択</h1>
-  <div id="skinList"></div>
+
+  <!-- 上半分：選択中の機体 -->
+  <div id="skinPreview">
+    <div id="skinPreviewImage"></div>
+    <h2 id="skinPreviewName">標準迎撃機</h2>
+    <p id="skinPreviewHint"></p>
+  </div>
+
+  <!-- 下半分：機体一覧 -->
+  <div id="skinListArea">
+    <div id="skinList"></div>
+  </div>
+
   <button id="skinBackButton">戻る</button>
 </div>
 
