@@ -599,13 +599,23 @@ previewImage.appendChild(img);
     const button = document.createElement('button');
     button.type = 'button';
 
-    const img = document.createElement('img');
-img.src = skin.image;
-img.alt = skin.unlocked ? skin.name : '未入手機体';
-img.width = 84;
+ const visual = document.createElement('div');
 
-if (!skin.unlocked) {
-  img.style.filter = 'brightness(0)';
+if (skin.unlocked) {
+  const img = document.createElement('img');
+  img.src = skin.image;
+  img.alt = skin.name;
+  img.width = 84;
+  visual.appendChild(img);
+} else {
+  visual.textContent = '？';
+  visual.style.width = '84px';
+  visual.style.height = '84px';
+  visual.style.display = 'flex';
+  visual.style.alignItems = 'center';
+  visual.style.justifyContent = 'center';
+  visual.style.fontSize = '36px';
+  visual.style.fontWeight = 'bold';
 }
 
 const name = document.createElement('div');
