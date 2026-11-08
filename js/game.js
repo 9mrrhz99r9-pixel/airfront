@@ -63,7 +63,7 @@ const hint = document.getElementById('hint');
 // プレイヤースキン管理
 const PLAYER_SKINS = {
   default: {
-    name: '初期量産機',
+    name: '汎用迎撃機',
     image: './assets/player/player_default.png'
   }
 };
