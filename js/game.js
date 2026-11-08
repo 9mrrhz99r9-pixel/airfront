@@ -629,7 +629,7 @@ if (!skin.unlocked) {
   status.textContent = id === selectedSkin ? '使用中' : '選択する';
 }
 
-button.append(img, name, status);
+button.append(visual, name, status);
 
     button.addEventListener('click', () => {
   previewSkinId = id;
