@@ -539,6 +539,24 @@ async function saveBestScore(newScore) {
 function renderSkinList() {
   skinList.innerHTML = '';
 
+  const previewImage = document.getElementById('skinPreviewImage');
+  const previewName = document.getElementById('skinPreviewName');
+  const previewHint = document.getElementById('skinPreviewHint');
+
+  // 選択中の機体を上部に表示
+  const skin = PLAYER_SKINS[selectedSkin];
+
+  previewImage.innerHTML = '';
+
+  const img = document.createElement('img');
+  img.src = skin.image;
+  img.alt = skin.name;
+
+  previewImage.appendChild(img);
+  previewName.textContent = skin.name;
+  previewHint.textContent = '';
+
+  // 機体一覧を生成
   for (const [id, skin] of Object.entries(PLAYER_SKINS)) {
     const button = document.createElement('button');
     button.type = 'button';
