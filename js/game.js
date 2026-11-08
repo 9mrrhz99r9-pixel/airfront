@@ -595,9 +595,14 @@ if (!skin.unlocked) {
 button.append(img, name, status);
 
     button.addEventListener('click', () => {
-      changePlayerSkin(id);
-      renderSkinList();
-    });
+  previewSkinId = id;
+
+  if (skin.unlocked) {
+    changePlayerSkin(id);
+  }
+
+  renderSkinList();
+});
 
     skinList.appendChild(button);
   }
