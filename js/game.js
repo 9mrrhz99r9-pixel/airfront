@@ -143,6 +143,16 @@ function startGame() {
 function endGame() {
   if (state !== 'playing') return;
   state = 'gameover';
+  
+  // 低被探知型迎撃機の解放判定
+if (
+  score >= 10000 &&
+  PLAYER_SKINS.stealth &&
+  !PLAYER_SKINS.stealth.unlocked
+) {
+  PLAYER_SKINS.stealth.unlocked = true;
+  localStorage.setItem('sky_defender_stealth_unlocked', 'true');
+}
   firing = false;
   fireButton.classList.add('hidden');
   hint.classList.add('hidden');
