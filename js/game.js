@@ -568,11 +568,6 @@ startButton.addEventListener('click', startGame);
 retryButton.addEventListener('click', startGame);
 
 skinButton.addEventListener('click', () => {
-  titleScreen.classList.add('hidden');
-  skinScreen.classList.remove('hidden');
-});
-
-skinButton.addEventListener('click', () => {
   renderSkinList();
   titleScreen.classList.add('hidden');
   skinScreen.classList.remove('hidden');
