@@ -79,3 +79,6 @@ body {
   gap: 10px;
   padding: 10px;
 }
+#skinScreen.hidden {
+  display: none;
+}
