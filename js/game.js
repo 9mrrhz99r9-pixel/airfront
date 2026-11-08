@@ -585,11 +585,17 @@ if (previewSkinId === 'stealth') {
   const ctxPreview = canvas.getContext('2d');
 
   if (stealthImage.complete && stealthImage.naturalWidth > 0) {
-    ctxPreview.drawImage(
-      stealthImage,
-      48, 26, 238, 290,
-      0, 0, 238, 290
-    );
+    ctxPreview.save();
+ctxPreview.translate(238, 290);
+ctxPreview.rotate(Math.PI);
+
+ctxPreview.drawImage(
+  stealthImage,
+  48, 26, 238, 290,
+  0, 0, 238, 290
+);
+
+ctxPreview.restore();
   }
 
   if (!skin.unlocked) {
