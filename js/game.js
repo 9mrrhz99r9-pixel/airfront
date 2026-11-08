@@ -538,6 +538,17 @@ async function saveBestScore(newScore) {
 
 startButton.addEventListener('click', startGame);
 retryButton.addEventListener('click', startGame);
+
+skinButton.addEventListener('click', () => {
+  titleScreen.classList.add('hidden');
+  skinScreen.classList.remove('hidden');
+});
+
+skinBackButton.addEventListener('click', () => {
+  skinScreen.classList.add('hidden');
+  titleScreen.classList.remove('hidden');
+});
+
 titleButton.addEventListener('click', () => {
   state = 'title';
   gameOverScreen.classList.add('hidden');
