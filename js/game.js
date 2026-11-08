@@ -536,6 +536,34 @@ async function saveBestScore(newScore) {
   // DB接続に失敗してもゲーム本体には影響させない。
 }
 
+function renderSkinList() {
+  skinList.innerHTML = '';
+
+  for (const [id, skin] of Object.entries(PLAYER_SKINS)) {
+    const button = document.createElement('button');
+    button.type = 'button';
+
+    const img = document.createElement('img');
+    img.src = skin.image;
+    img.alt = skin.name;
+    img.width = 84;
+
+    const name = document.createElement('div');
+    name.textContent = skin.name;
+
+    const status = document.createElement('div');
+    status.textContent = id === selectedSkin ? '選択中' : '選択する';
+
+    button.append(img, name, status);
+
+    button.addEventListener('click', () => {
+      changePlayerSkin(id);
+      renderSkinList();
+    });
+
+    skinList.appendChild(button);
+  }
+}
 startButton.addEventListener('click', startGame);
 retryButton.addEventListener('click', startGame);
 
