@@ -72,7 +72,7 @@ const PLAYER_SKINS = {
   stealth: {
   name: '低被探知型迎撃機',
   image: './assets/player/stealth_sheet.PNG',
-  unlocked: false,
+  unlocked: localStorage.getItem('sky_defender_stealth_unlocked') === 'true',
   hint: 'SCORE ATTACKで10,000点以上を獲得する'
 }
 };
