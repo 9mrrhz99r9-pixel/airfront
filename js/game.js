@@ -433,15 +433,19 @@ function drawBackground() {
 }
 function drawPlayer() {
   if (invincibleTimer > 0 && Math.floor(invincibleTimer * 12) % 2 === 0) return;
-  ctx.save();
-  ctx.translate(player.x, player.y);
-  ctx.fillStyle = '#b9eaff';
-  ctx.beginPath();
-  ctx.moveTo(0, -24); ctx.lineTo(17, 18); ctx.lineTo(0, 10); ctx.lineTo(-17, 18);
-  ctx.closePath(); ctx.fill();
-  ctx.fillStyle = '#258bc2';
-  ctx.fillRect(-5, -3, 10, 17);
-  ctx.restore();
+
+  if (!playerImage.complete || playerImage.naturalWidth === 0) return;
+
+  const width = 42;
+  const height = 52;
+
+  ctx.drawImage(
+    playerImage,
+    player.x - width / 2,
+    player.y - height / 2,
+    width,
+    height
+  );
 }
 function drawEnemy(e) {
   ctx.save();
