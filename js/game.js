@@ -71,9 +71,10 @@ const PLAYER_SKINS = {
 };
 
 let selectedSkin = 'default';
-
+let previewSkinId = selectedSkin;
 const playerImage = new Image();
 playerImage.src = PLAYER_SKINS[selectedSkin].image;
+
 function changePlayerSkin(skinId) {
   if (!PLAYER_SKINS[skinId]) return;
 
