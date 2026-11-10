@@ -225,7 +225,7 @@ function makeEnemy(type, x) {
   };
 }
 function spawnGuardGroup() {
-  const count = Math.min(CONFIG.guardGroupSize, Math.max(1, currentEnemyLimit() - activeEnemyCount()));
+  const count = Math.min(CONFIG.guardGroupSize, currentEnemyLimit() - activeEnemyCount());
   if (count <= 0) return;
   const spacing = 34;
   const totalWidth = (count - 1) * spacing;
