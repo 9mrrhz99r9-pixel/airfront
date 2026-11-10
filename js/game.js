@@ -459,14 +459,18 @@ if (e.y < stopY) {
       }
       if (b.dead) break;
     }
-        // ボスとの衝突
+         // ボスとの衝突
     if (!b.dead && gameMode === 'boss' && boss && boss.active) {
       if (hit(b.x, b.y, 5, boss.x, boss.y, boss.w / 2)) {
         boss.hp--;
         b.dead = true;
+
+        if (boss.hp <= 0) {
+          boss.hp = 0;
+          endGame();
+        }
       }
     }
-  }
   playerBullets = playerBullets.filter(b => !b.dead);
   enemies = enemies.filter(e => e.alive);
   guardGroups = guardGroups.filter(g => g.members.some(m => m.alive));
