@@ -749,6 +749,13 @@ button.append(visual, name, status);
 }
 // START → モード選択画面
 startButton.addEventListener('click', () => {
+  
+  // SCORE ATTACK開始
+scoreButton.addEventListener('click', () => {
+  modeScreen.classList.add('hidden');
+  startGame();
+});
+
   titleScreen.classList.add('hidden');
   modeScreen.classList.remove('hidden');
 });
