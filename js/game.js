@@ -124,7 +124,7 @@ resize();
 // ゲーム状態
 // =========================
 let state = 'title';
-let gameMode = 'score';
+
 let player, playerBullets, enemyBullets, enemies, guardGroups;
 let score = 0, elapsed = 0, spawnTimer = 0, fireTimer = 0;
 let gameMode = 'score';
