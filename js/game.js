@@ -518,12 +518,29 @@ function drawPlayer() {
 
 function drawEnemy(e) {
   ctx.save();
-  ctx.translate(e.x, e.y);
-  ctx.fillStyle = e.type === 'shooter' ? '#ff9b64' : '#ff5c72';
-  if (e.type === 'charger') ctx.rotate(Math.PI);
-  ctx.beginPath();
-  ctx.moveTo(0, -16); ctx.lineTo(15, 12); ctx.lineTo(0, 7); ctx.lineTo(-15, 12);
-  ctx.closePath(); ctx.fill();
+
+  const img = enemyImages[e.type];
+
+  if (img && img.complete && img.naturalWidth > 0) {
+    let w = 42;
+    let h = 56;
+
+    // CHARGERは少し大きく表示
+    if (e.type === 'charger') {
+      w = 54;
+      h = 62;
+    }
+
+    // 画像は下向きのため回転させない
+    ctx.drawImage(
+      img,
+      e.x - w / 2,
+      e.y - h / 2,
+      w,
+      h
+    );
+  }
+
   ctx.restore();
 }
 function drawGuard(m) {
