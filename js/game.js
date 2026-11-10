@@ -471,6 +471,7 @@ if (e.y < stopY) {
         }
       }
     }
+  }
   playerBullets = playerBullets.filter(b => !b.dead);
   enemies = enemies.filter(e => e.alive);
   guardGroups = guardGroups.filter(g => g.members.some(m => m.alive));
