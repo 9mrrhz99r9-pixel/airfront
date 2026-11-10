@@ -836,16 +836,8 @@ button.append(visual, name, status);
     skinList.appendChild(button);
   }
 }
-// START → モード選択画面
-startButton.addEventListener('click', () => {
-  
-  // SCORE ATTACK開始
-scoreButton.addEventListener('click', () => {
-  gameMode = 'score';
-  modeScreen.classList.add('hidden');
-  startGame();
-});
 
+// START → モード選択画面
 startButton.addEventListener('click', () => {
   titleScreen.classList.add('hidden');
   modeScreen.classList.remove('hidden');
