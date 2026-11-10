@@ -58,6 +58,9 @@ enemyImages.shooter.src = './assets/enemy/shooter.PNG';
 enemyImages.charger.src = './assets/enemy/charger.PNG';
 
 const titleScreen = document.getElementById('titleScreen');
+const modeScreen = document.getElementById('modeScreen');
+const bossButton = document.getElementById('bossButton');
+const scoreButton = document.getElementById('scoreButton');
 const skinScreen = document.getElementById('skinScreen');
 const skinButton = document.getElementById('skinButton');
 const skinList = document.getElementById('skinList');
