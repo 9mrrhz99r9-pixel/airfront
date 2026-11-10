@@ -643,6 +643,23 @@ function draw() {
   }
   drawPlayer();
 
+  // ボスHPバー
+  if (gameMode === 'boss' && boss) {
+    const barWidth = W - 40;
+    const barHeight = 10;
+    const ratio = Math.max(0, boss.hp / boss.maxHp);
+
+    ctx.fillStyle = '#333';
+    ctx.fillRect(20, 62, barWidth, barHeight);
+
+    ctx.fillStyle = '#4fc5e8';
+    ctx.fillRect(20, 62, barWidth * ratio, barHeight);
+
+    ctx.strokeStyle = '#fff';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(20, 62, barWidth, barHeight);
+  }
+  
   // HUD
   ctx.fillStyle = '#fff';
   ctx.font = 'bold 18px system-ui';
