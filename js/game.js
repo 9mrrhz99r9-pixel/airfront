@@ -39,7 +39,10 @@ const CONFIG = {
   chargerRushDelay: 2.8,
   chargerRushSpeed: 180,
   guardGroupSize: 5,
-  guardSideSpeed: 38
+  guardSideSpeed: 38,
+  
+  bossMaxHp: 1000,
+  bossSpeed: 45
 };
 
 // =========================
