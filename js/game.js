@@ -428,6 +428,17 @@ if (e.y < stopY) {
   }
 
   // プレイヤー弾と敵の衝突
+  // ボスの登場
+  if (gameMode === 'boss' && boss) {
+    if (!boss.active) {
+      boss.y += boss.speed * dt;
+
+      if (boss.y >= 100) {
+        boss.y = 100;
+        boss.active = true;
+      }
+    }
+  }
   for (const b of playerBullets) {
     if (b.dead) continue;
     for (const e of enemies) {
