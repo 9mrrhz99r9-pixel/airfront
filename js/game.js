@@ -758,6 +758,13 @@ scoreButton.addEventListener('click', () => {
   startGame();
 });
 
+// BOSS BATTLE選択
+bossButton.addEventListener('click', () => {
+  gameMode = 'boss';
+  modeScreen.classList.add('hidden');
+  startGame();
+});
+
   titleScreen.classList.add('hidden');
   modeScreen.classList.remove('hidden');
 });
