@@ -617,6 +617,30 @@ function draw() {
   }
   enemies.forEach(drawEnemy);
   guardGroups.forEach(g => g.members.filter(m => m.alive).forEach(drawGuard));
+    // ボス仮表示
+  if (gameMode === 'boss' && boss) {
+    ctx.save();
+
+    // 本体
+    ctx.fillStyle = '#172b3a';
+    ctx.beginPath();
+    ctx.ellipse(boss.x, boss.y, boss.w / 2, boss.h / 2, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 中央の目
+    ctx.fillStyle = '#d8f5ff';
+    ctx.beginPath();
+    ctx.arc(boss.x, boss.y, 20, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 瞳
+    ctx.fillStyle = '#152536';
+    ctx.beginPath();
+    ctx.arc(boss.x, boss.y, 9, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore();
+  }
   drawPlayer();
 
   // HUD
