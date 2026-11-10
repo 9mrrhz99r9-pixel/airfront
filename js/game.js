@@ -747,12 +747,19 @@ button.append(visual, name, status);
     skinList.appendChild(button);
   }
 }
-startButton.addEventListener('click', startGame);
+// START → モード選択画面
+startButton.addEventListener('click', () => {
+  titleScreen.classList.add('hidden');
+  modeScreen.classList.remove('hidden');
+});
+
+// リトライ
 retryButton.addEventListener('click', startGame);
 
+// 機体選択画面
 skinButton.addEventListener('click', () => {
   renderSkinList();
-  titleScreen.classList.add('hidden');
+  modeScreen.classList.add('hidden');
   skinScreen.classList.remove('hidden');
 });
 
