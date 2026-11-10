@@ -321,11 +321,13 @@ player.x = Math.max(
   }
 
   // 難易度に応じた敵出現
+if (gameMode === 'score') {
   spawnTimer -= dt;
   if (spawnTimer <= 0 && activeEnemyCount() < currentEnemyLimit()) {
     spawnEnemy();
     spawnTimer = currentSpawnInterval();
   }
+}
 
   // プレイヤー弾
   for (const b of playerBullets) b.y -= CONFIG.playerBulletSpeed * dt;
