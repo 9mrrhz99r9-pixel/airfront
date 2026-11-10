@@ -753,6 +753,7 @@ startButton.addEventListener('click', () => {
   
   // SCORE ATTACK開始
 scoreButton.addEventListener('click', () => {
+  gameMode = 'score';
   modeScreen.classList.add('hidden');
   startGame();
 });
