@@ -145,6 +145,21 @@ function resetGame() {
   fireTimer = 0;
   invincibleTimer = 0;
   firing = false;
+  
+  boss = null;
+
+if (gameMode === 'boss') {
+  boss = {
+    x: W / 2,
+    y: -80,
+    w: 120,
+    h: 120,
+    hp: CONFIG.bossMaxHp,
+    maxHp: CONFIG.bossMaxHp,
+    speed: CONFIG.bossSpeed,
+    active: false
+  };
+}
 }
 
 function startGame() {
