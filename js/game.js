@@ -180,8 +180,12 @@ if (
 // 敵生成
 // =========================
 function activeEnemyCount() {
-  // 防御型の集団も1機ずつ数える
-  return enemies.length + guardGroups.reduce((sum, group) => sum + group.members.length, 0);
+  // 生存している敵だけ数える
+  return enemies.length + guardGroups.reduce(
+    (sum, group) =>
+      sum + group.members.filter(m => m.alive).length,
+    0
+  );
 }
 function currentEnemyLimit() {
   return CONFIG.enemyInitialLimit +
