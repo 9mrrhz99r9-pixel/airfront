@@ -846,15 +846,23 @@ scoreButton.addEventListener('click', () => {
   startGame();
 });
 
+startButton.addEventListener('click', () => {
+  titleScreen.classList.add('hidden');
+  modeScreen.classList.remove('hidden');
+});
+
+// SCORE ATTACK選択
+scoreButton.addEventListener('click', () => {
+  gameMode = 'score';
+  modeScreen.classList.add('hidden');
+  startGame();
+});
+
 // BOSS BATTLE選択
 bossButton.addEventListener('click', () => {
   gameMode = 'boss';
   modeScreen.classList.add('hidden');
   startGame();
-});
-
-  titleScreen.classList.add('hidden');
-  modeScreen.classList.remove('hidden');
 });
 
 // リトライ
