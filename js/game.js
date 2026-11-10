@@ -47,6 +47,16 @@ const CONFIG = {
 // =========================
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
+
+// 敵画像
+const enemyImages = {
+  shooter: new Image(),
+  charger: new Image()
+};
+
+enemyImages.shooter.src = './assets/enemy/shooter.PNG';
+enemyImages.charger.src = './assets/enemy/charger.PNG';
+
 const titleScreen = document.getElementById('titleScreen');
 const skinScreen = document.getElementById('skinScreen');
 const skinButton = document.getElementById('skinButton');
