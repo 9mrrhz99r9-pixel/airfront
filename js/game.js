@@ -666,8 +666,10 @@ function draw() {
   ctx.textAlign = 'left';
   ctx.fillText('♥ '.repeat(player.hp), 14, 30);
   ctx.textAlign = 'right';
-  ctx.fillText(`TIME ${formatTime(elapsed)}`, W - 14, 28);
-  ctx.fillText(`SCORE ${score}`, W - 14, 52);
+    ctx.fillText(`TIME ${formatTime(elapsed)}`, W - 14, 28);
+  if (gameMode === 'score') {
+    ctx.fillText(`SCORE ${score}`, W - 14, 52);
+  }
 }
 function formatTime(seconds) {
   const s = Math.floor(seconds);
