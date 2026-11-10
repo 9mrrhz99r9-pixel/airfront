@@ -124,6 +124,7 @@ let state = 'title';
 let gameMode = 'score';
 let player, playerBullets, enemyBullets, enemies, guardGroups;
 let score = 0, elapsed = 0, spawnTimer = 0, fireTimer = 0;
+let gameMode = 'score';
 let invincibleTimer = 0, lastTime = 0;
 let pointerActive = false, firing = false;
 let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
