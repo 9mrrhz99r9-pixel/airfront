@@ -621,10 +621,10 @@ function draw() {
   for (const b of playerBullets) {
     ctx.fillRect(b.x - 2, b.y - 9, 4, 18);
   }
-  // 敵弾
-  ctx.fillStyle = '#ffb45f';
+    // 敵弾
+  ctx.fillStyle = '#ff3030';
   for (const b of enemyBullets) {
-    ctx.beginPath(); ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(b.x - 2, b.y - 8, 4, 16);
   }
   enemies.forEach(drawEnemy);
   guardGroups.forEach(g => g.members.filter(m => m.alive).forEach(drawGuard));
