@@ -443,6 +443,54 @@ if (e.y < stopY) {
       }
     }
   }
+    // ボスの触手攻撃
+  if (gameMode === 'boss' && boss && boss.active) {
+    tentacleAttackTimer -= dt;
+
+    if (tentacleAttackTimer <= 0) {
+      for (const side of [-1, 1]) {
+        const targetX = player.x;
+        const randomX = Math.random() * W;
+
+        bossTentacles.push({
+          x: side === -1
+            ? Math.random() * (W / 2)
+            : W / 2 + Math.random() * (W / 2),
+          targetX: targetX,
+          randomX: randomX,
+          side: side,
+          y: boss.y + 40,
+          length: 0,
+          maxLength: H,
+          speed: 900,
+          retracting: false,
+          alive: true
+        });
+      }
+
+      tentacleAttackTimer = 3 + Math.random() * 2;
+    }
+  }
+
+  // 触手の伸縮
+  for (const t of bossTentacles) {
+    if (!t.retracting) {
+      t.length += t.speed * dt;
+
+      if (t.length >= t.maxLength) {
+        t.length = t.maxLength;
+        t.retracting = true;
+      }
+    } else {
+      t.length -= t.speed * dt;
+
+      if (t.length <= 0) {
+        t.alive = false;
+      }
+    }
+  }
+
+  bossTentacles = bossTentacles.filter(t => t.alive);
   for (const b of playerBullets) {
     if (b.dead) continue;
     for (const e of enemies) {
