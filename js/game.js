@@ -62,6 +62,10 @@ enemyImages.shooter.src = './assets/enemy/shooter.PNG';
 enemyImages.charger.src = './assets/enemy/charger.PNG';
 enemyImages.guard.src = './assets/enemy/guard.PNG';
 
+// ボス画像
+const bossImage = new Image();
+bossImage.src = './assets/boss/boss1.png';
+
 const titleScreen = document.getElementById('titleScreen');
 const modeScreen = document.getElementById('modeScreen');
 const bossButton = document.getElementById('bossButton');
