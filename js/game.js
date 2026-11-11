@@ -64,7 +64,7 @@ enemyImages.guard.src = './assets/enemy/guard.PNG';
 
 // ボス画像
 const bossImage = new Image();
-bossImage.src = './assets/boss/boss1.png';
+bossImage.src = './assets/boss/boss1.PNG';
 
 const titleScreen = document.getElementById('titleScreen');
 const modeScreen = document.getElementById('modeScreen');
