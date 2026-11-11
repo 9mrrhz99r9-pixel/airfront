@@ -535,7 +535,7 @@ if (e.y < stopY) {
 
           bossBeams.push({
             x: boss.x,
-            y: boss.y,
+            y: boss.y + 20,
             vx: (dx / distance) * speed,
             vy: (dy / distance) * speed,
             length: 70,
