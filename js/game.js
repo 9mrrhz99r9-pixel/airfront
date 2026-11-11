@@ -524,9 +524,9 @@ if (e.y < stopY) {
         bossBeamWarning.shotTimer -= dt;
 
         if (bossBeamWarning.shotTimer <= 0) {
-          const angles = [-30, 0, 30];
-          const angle = angles[Math.floor(Math.random() * angles.length)];
-          const rad = angle * Math.PI / 180;
+          const dx = player.x - boss.x;
+          const dy = player.y - boss.y;
+          const distance = Math.hypot(dx, dy);
           const speed = 700;
 
           bossBeams.push({
