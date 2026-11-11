@@ -469,7 +469,8 @@ if (e.y < stopY) {
       if (boss.y >= 100) {
         boss.y = 100;
         boss.active = true;
-        tentacleAttackTimer = 3;
+      leftTentacleTimer = 3;
+      rightTentacleTimer = 4.5;
       }
     }
   }
