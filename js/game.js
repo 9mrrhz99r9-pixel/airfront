@@ -185,7 +185,7 @@ function startGame() {
   requestAnimationFrame(loop);
 }
 
-function endGame() {
+function endGame(isClear = false) {
   if (state !== 'playing') return;
   state = 'gameover';
   
@@ -617,7 +617,7 @@ if (e.y < stopY) {
 
         if (boss.hp <= 0) {
           boss.hp = 0;
-          endGame();
+          endGame(true);
         }
       }
     }
