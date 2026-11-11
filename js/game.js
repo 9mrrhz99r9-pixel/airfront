@@ -690,7 +690,40 @@ function draw() {
   }
   enemies.forEach(drawEnemy);
   guardGroups.forEach(g => g.members.filter(m => m.alive).forEach(drawGuard));
-    // ボス仮表示
+    // ボスの触手
+  if (gameMode === 'boss' && boss) {
+    ctx.save();
+    ctx.strokeStyle = '#398fbd';
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+
+    for (const t of bossTentacles) {
+      ctx.beginPath();
+      ctx.moveTo(t.x, t.y);
+
+      // 少し波打つ形
+      for (let i = 1; i <= 8; i++) {
+        const progress = i / 8;
+        const wave = Math.sin(progress * Math.PI * 3) * 3;
+
+        ctx.lineTo(
+          t.x + wave,
+          t.y + t.length * progress
+        );
+      }
+
+      ctx.stroke();
+
+      // 先端を尖らせる
+      ctx.fillStyle = '#55b9e8';
+      ctx.beginPath();
+      ctx.arc(t.x, t.y + t.length, 2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
+      // ボス仮表示
   if (gameMode === 'boss' && boss) {
     ctx.save();
 
