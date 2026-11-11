@@ -551,6 +551,21 @@ if (e.y < stopY) {
     }
   }
   
+    // ボスビームの移動
+  for (const b of bossBeams) {
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+
+    if (
+      b.x < -100 || b.x > W + 100 ||
+      b.y < -100 || b.y > H + 100
+    ) {
+      b.alive = false;
+    }
+  }
+
+  bossBeams = bossBeams.filter(b => b.alive);
+  
   // 触手の伸縮
   for (const t of bossTentacles) {
     if (!t.retracting) {
