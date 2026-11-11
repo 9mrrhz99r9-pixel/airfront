@@ -887,7 +887,7 @@ if (gameMode === 'boss' && boss) {
     ctx.drawImage(
       bossImage,
       (W - imageWidth) / 2,
-      -imageHeight / 3,
+      boss.y - imageHeight / 2,
       imageWidth,
       imageHeight
     );
