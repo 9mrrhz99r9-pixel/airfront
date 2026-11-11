@@ -641,6 +641,41 @@ if (e.y < stopY) {
         }
       }
     }
+        // ボスビームとの衝突
+    if (!damaged && gameMode === 'boss') {
+      for (const b of bossBeams) {
+        const length = Math.hypot(b.vx, b.vy);
+        const dx = b.vx / length;
+        const dy = b.vy / length;
+
+        const endX = b.x + dx * b.length;
+        const endY = b.y + dy * b.length;
+
+        const px = player.x - b.x;
+        const py = player.y - b.y;
+
+        const projection = Math.max(
+          0,
+          Math.min(
+            b.length,
+            px * dx + py * dy
+          )
+        );
+
+        const closestX = b.x + dx * projection;
+        const closestY = b.y + dy * projection;
+
+        if (
+          Math.hypot(
+            player.x - closestX,
+            player.y - closestY
+          ) < 19
+        ) {
+          damaged = true;
+          break;
+        }
+      }
+    }
     if (!damaged) {
       for (const e of enemies) {
         if (e.alive && hit(e.x, e.y, e.w / 2, player.x, player.y, 18)) {
