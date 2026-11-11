@@ -41,7 +41,7 @@ const CONFIG = {
   guardGroupSize: 5,
   guardSideSpeed: 38,
   
-  bossMaxHp: 100,
+  bossMaxHp: 50,
   bossSpeed: 45
 };
 
