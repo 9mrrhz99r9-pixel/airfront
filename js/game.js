@@ -495,7 +495,7 @@ if (e.y < stopY) {
     }
   }
 
-  // ボスのビーム攻撃
+    // ボスのビーム攻撃
   if (gameMode === 'boss' && boss && boss.active) {
     if (!bossBeamWarning) {
       bossBeamTimer -= dt;
@@ -503,7 +503,7 @@ if (e.y < stopY) {
       if (bossBeamTimer <= 0) {
         bossBeamWarning = {
           timer: 0.5,
-          shots: 3,
+          shotsFired: 0,
           firing: false,
           shotTimer: 0
         };
@@ -519,8 +519,37 @@ if (e.y < stopY) {
           bossBeamWarning.shotTimer = 0;
         }
       }
+
+      if (bossBeamWarning.firing) {
+        bossBeamWarning.shotTimer -= dt;
+
+        if (bossBeamWarning.shotTimer <= 0) {
+          const angles = [-30, 0, 30];
+          const angle = angles[Math.floor(Math.random() * angles.length)];
+          const rad = angle * Math.PI / 180;
+          const speed = 700;
+
+          bossBeams.push({
+            x: boss.x,
+            y: boss.y,
+            vx: Math.sin(rad) * speed,
+            vy: Math.cos(rad) * speed,
+            length: 70,
+            alive: true
+          });
+
+          bossBeamWarning.shotsFired++;
+
+          if (bossBeamWarning.shotsFired >= 3) {
+            bossBeamWarning = null;
+            bossBeamTimer = 3 + Math.random() * 3;
+          } else {
+            bossBeamWarning.shotTimer = 0.5;
+          }
+        }
+      }
     }
-  } 
+  }
   
   // 触手の伸縮
   for (const t of bossTentacles) {
