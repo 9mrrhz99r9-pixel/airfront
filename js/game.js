@@ -54,11 +54,13 @@ const ctx = canvas.getContext('2d');
 // 敵画像
 const enemyImages = {
   shooter: new Image(),
-  charger: new Image()
+  charger: new Image(),
+  guard: new Image()
 };
 
 enemyImages.shooter.src = './assets/enemy/shooter.PNG';
 enemyImages.charger.src = './assets/enemy/charger.PNG';
+enemyImages.guard.src = './assets/enemy/guard.PNG';
 
 const titleScreen = document.getElementById('titleScreen');
 const modeScreen = document.getElementById('modeScreen');
