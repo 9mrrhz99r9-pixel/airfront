@@ -529,13 +529,13 @@ if (e.y < stopY) {
 
         if (bossBeamWarning.shotTimer <= 0) {
           const dx = player.x - boss.x;
-          const dy = player.y - (boss.y + 20);
+          const dy = player.y - (boss.y + 45);
           const distance = Math.hypot(dx, dy);
           const speed = 700;
 
           bossBeams.push({
             x: boss.x,
-            y: boss.y + 20,
+            y: boss.y + 45,
             vx: (dx / distance) * speed,
             vy: (dy / distance) * speed,
             length: 70,
