@@ -897,7 +897,7 @@ if (gameMode === 'boss' && boss) {
   if (bossBeamWarning && !bossBeamWarning.firing) {
     ctx.fillStyle = '#ff2020';
     ctx.beginPath();
-    ctx.arc(boss.x, boss.y + 20, 5, 0, Math.PI * 2);
+    ctx.arc(boss.x, boss.y + 45, 5, 0, Math.PI * 2);
     ctx.fill();
   }
 }
