@@ -877,38 +877,30 @@ function draw() {
 
     ctx.restore();
   }
-      // ボス仮表示
-  if (gameMode === 'boss' && boss) {
-    ctx.save();
+      // ボス画像表示
+if (gameMode === 'boss' && boss) {
+  if (bossImage.complete && bossImage.naturalWidth > 0) {
+    const imageWidth = W * 1.25;
+    const imageHeight =
+      imageWidth * bossImage.naturalHeight / bossImage.naturalWidth;
 
-    // 本体
-    ctx.fillStyle = '#172b3a';
-    ctx.beginPath();
-    ctx.ellipse(boss.x, boss.y, boss.w / 2, boss.h / 2, 0, 0, Math.PI * 2);
-    ctx.fill();
-
-    // 中央の目
-    ctx.fillStyle = '#d8f5ff';
-    ctx.beginPath();
-    ctx.arc(boss.x, boss.y, 20, 0, Math.PI * 2);
-    ctx.fill();
-
-    // ビーム発射前の赤い予告光
-    if (bossBeamWarning && !bossBeamWarning.firing) {
-      ctx.fillStyle = '#ff2020';
-      ctx.beginPath();
-      ctx.arc(boss.x, boss.y - 27, 5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    
-    // 瞳
-    ctx.fillStyle = '#152536';
-    ctx.beginPath();
-    ctx.arc(boss.x, boss.y, 9, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.restore();
+    ctx.drawImage(
+      bossImage,
+      (W - imageWidth) / 2,
+      -imageHeight / 3,
+      imageWidth,
+      imageHeight
+    );
   }
+
+  // ビーム発射前の赤い予告光
+  if (bossBeamWarning && !bossBeamWarning.firing) {
+    ctx.fillStyle = '#ff2020';
+    ctx.beginPath();
+    ctx.arc(boss.x, boss.y - 27, 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
   drawPlayer();
 
   // ボスHPバー
