@@ -448,17 +448,29 @@ if (e.y < stopY) {
     tentacleAttackTimer -= dt;
 
     if (tentacleAttackTimer <= 0) {
-      for (const side of [-1, 1]) {
-        const targetX = player.x;
-        const randomX = Math.random() * W;
-
+            for (const side of [-1, 1]) {
+        // プレイヤーを狙う触手
         bossTentacles.push({
           x: side === -1
             ? Math.random() * (W / 2)
             : W / 2 + Math.random() * (W / 2),
-          targetX: targetX,
-          randomX: randomX,
-          side: side,
+          targetX: player.x,
+          y: boss.y + 40,
+          length: 0,
+          maxLength: H,
+          speed: 900,
+          retracting: false,
+          alive: true
+        });
+
+        // ランダム位置を狙う触手
+        bossTentacles.push({
+          x: side === -1
+            ? Math.random() * (W / 2)
+            : W / 2 + Math.random() * (W / 2),
+          targetX: side === -1
+            ? Math.random() * (W / 2)
+            : W / 2 + Math.random() * (W / 2),
           y: boss.y + 40,
           length: 0,
           maxLength: H,
