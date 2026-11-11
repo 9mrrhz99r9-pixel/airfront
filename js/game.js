@@ -495,6 +495,33 @@ if (e.y < stopY) {
     }
   }
 
+  // ボスのビーム攻撃
+  if (gameMode === 'boss' && boss && boss.active) {
+    if (!bossBeamWarning) {
+      bossBeamTimer -= dt;
+
+      if (bossBeamTimer <= 0) {
+        bossBeamWarning = {
+          timer: 0.5,
+          shots: 3,
+          firing: false,
+          shotTimer: 0
+        };
+      }
+    }
+
+    if (bossBeamWarning) {
+      if (!bossBeamWarning.firing) {
+        bossBeamWarning.timer -= dt;
+
+        if (bossBeamWarning.timer <= 0) {
+          bossBeamWarning.firing = true;
+          bossBeamWarning.shotTimer = 0;
+        }
+      }
+    }
+  } 
+  
   // 触手の伸縮
   for (const t of bossTentacles) {
     if (!t.retracting) {
