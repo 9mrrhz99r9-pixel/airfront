@@ -532,8 +532,8 @@ if (e.y < stopY) {
           bossBeams.push({
             x: boss.x,
             y: boss.y,
-            vx: Math.sin(rad) * speed,
-            vy: Math.cos(rad) * speed,
+            vx: (dx / distance) * speed,
+            vy: (dy / distance) * speed,
             length: 70,
             alive: true
           });
