@@ -598,10 +598,20 @@ function drawEnemy(e) {
   ctx.restore();
 }
 function drawGuard(m) {
-  ctx.fillStyle = '#e5c86b';
-  ctx.fillRect(m.x - 10, m.y - 10, 20, 20);
-  ctx.fillStyle = '#5c4c25';
-  ctx.fillRect(m.x - 4, m.y - 4, 8, 8);
+  const img = enemyImages.guard;
+
+  if (img && img.complete && img.naturalWidth > 0) {
+    const w = 42;
+    const h = 42;
+
+    ctx.drawImage(
+      img,
+      m.x - w / 2,
+      m.y - h / 2,
+      w,
+      h
+    );
+  }
 }
 function draw() {
   drawBackground();
