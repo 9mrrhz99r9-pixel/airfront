@@ -536,6 +536,17 @@ if (e.y < stopY) {
         b.dead = true; damaged = true; break;
       }
     }
+        // ボスの触手との衝突
+    if (!damaged && gameMode === 'boss') {
+      for (const t of bossTentacles) {
+        if (Math.abs(player.x - t.x) < 7 &&
+            player.y >= t.y &&
+            player.y <= t.y + t.length) {
+          damaged = true;
+          break;
+        }
+      }
+    }
     if (!damaged) {
       for (const e of enemies) {
         if (e.alive && hit(e.x, e.y, e.w / 2, player.x, player.y, 18)) {
