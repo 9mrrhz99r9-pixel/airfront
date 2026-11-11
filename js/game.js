@@ -320,6 +320,35 @@ fireButton.addEventListener('pointerdown', e => {
   fireButton.addEventListener(type, () => firing = false)
 );
 
+// ボス触手の生成
+function spawnBossTentacles(side) {
+  // プレイヤーを狙う触手
+  bossTentacles.push({
+    x: player.x + side * 12,
+    y: boss.y + 40,
+    length: 0,
+    maxLength: H,
+    speed: 900,
+    retracting: false,
+    alive: true
+  });
+
+  // ランダム位置を狙う触手
+  const randomX = side === -1
+    ? Math.random() * (W / 2)
+    : W / 2 + Math.random() * (W / 2);
+
+  bossTentacles.push({
+    x: randomX,
+    y: boss.y + 40,
+    length: 0,
+    maxLength: H,
+    speed: 900,
+    retracting: false,
+    alive: true
+  });
+}
+
 // =========================
 // 更新処理
 // =========================
