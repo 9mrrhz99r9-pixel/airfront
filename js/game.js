@@ -889,6 +889,14 @@ function draw() {
     ctx.arc(boss.x, boss.y, 20, 0, Math.PI * 2);
     ctx.fill();
 
+    // ビーム発射前の赤い予告光
+    if (bossBeamWarning && !bossBeamWarning.firing) {
+      ctx.fillStyle = '#ff2020';
+      ctx.beginPath();
+      ctx.arc(boss.x, boss.y - 27, 5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    
     // 瞳
     ctx.fillStyle = '#152536';
     ctx.beginPath();
