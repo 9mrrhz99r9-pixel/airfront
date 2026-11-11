@@ -207,7 +207,11 @@ if (
     localStorage.setItem('sky_defender_best', String(bestScore));
     saveBestScore(score); // Supabase接続後にクラウド保存
   }
+  if (isClear) {
+  resultEl.innerHTML = '<strong>BOSS CLEAR!</strong>';
+} else {
   resultEl.innerHTML = `今回のスコア：<strong>${score}</strong><br>自己ベスト：<strong>${bestScore}</strong>${isNewBest ? '<br>NEW RECORD!' : ''}`;
+}
   gameOverScreen.classList.remove('hidden');
 }
 
