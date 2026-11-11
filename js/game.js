@@ -782,6 +782,27 @@ function draw() {
   for (const b of enemyBullets) {
     ctx.fillRect(b.x - 2, b.y - 8, 4, 16);
   }
+    // ボスの赤いビーム
+  ctx.save();
+  ctx.strokeStyle = '#ff2020';
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+
+  for (const b of bossBeams) {
+    const length = b.length;
+    const dx = b.vx / Math.hypot(b.vx, b.vy);
+    const dy = b.vy / Math.hypot(b.vx, b.vy);
+
+    ctx.beginPath();
+    ctx.moveTo(b.x, b.y);
+    ctx.lineTo(
+      b.x + dx * length,
+      b.y + dy * length
+    );
+    ctx.stroke();
+  }
+
+  ctx.restore();
   enemies.forEach(drawEnemy);
   guardGroups.forEach(g => g.members.filter(m => m.alive).forEach(drawGuard));
     // ボスの触手
