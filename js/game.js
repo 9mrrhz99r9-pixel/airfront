@@ -143,7 +143,6 @@ function resetGame() {
   spawnTimer = 0;
   fireTimer = 0;
   invincibleTimer = 0;
-  bossFireTimer = 2;
   firing = false;
   
   boss = null;
