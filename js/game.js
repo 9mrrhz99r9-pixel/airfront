@@ -451,10 +451,7 @@ if (e.y < stopY) {
             for (const side of [-1, 1]) {
         // プレイヤーを狙う触手
         bossTentacles.push({
-          x: side === -1
-            ? Math.random() * (W / 2)
-            : W / 2 + Math.random() * (W / 2),
-          targetX: player.x,
+          x: player.x,
           y: boss.y + 40,
           length: 0,
           maxLength: H,
