@@ -444,41 +444,21 @@ if (e.y < stopY) {
       }
     }
   }
-    // ボスの触手攻撃
+      // ボスの触手攻撃
   if (gameMode === 'boss' && boss && boss.active) {
-    tentacleAttackTimer -= dt;
+    leftTentacleTimer -= dt;
+    rightTentacleTimer -= dt;
 
-    if (tentacleAttackTimer <= 0) {
-            for (const side of [-1, 1]) {
-        // プレイヤーを狙う触手
-        bossTentacles.push({
-          x: player.x + side * 12,
-          y: boss.y + 40,
-          length: 0,
-          maxLength: H,
-          speed: 900,
-          retracting: false,
-          alive: true
-        });
+    // 左側
+    if (leftTentacleTimer <= 0) {
+      spawnBossTentacles(-1);
+      leftTentacleTimer = 3 + Math.random() * 2;
+    }
 
-        // ランダム位置を狙う触手
-        bossTentacles.push({
-          x: side === -1
-            ? Math.random() * (W / 2)
-            : W / 2 + Math.random() * (W / 2),
-          targetX: side === -1
-            ? Math.random() * (W / 2)
-            : W / 2 + Math.random() * (W / 2),
-          y: boss.y + 40,
-          length: 0,
-          maxLength: H,
-          speed: 900,
-          retracting: false,
-          alive: true
-        });
-      }
-
-      tentacleAttackTimer = 3 + Math.random() * 2;
+    // 右側
+    if (rightTentacleTimer <= 0) {
+      spawnBossTentacles(1);
+      rightTentacleTimer = 3 + Math.random() * 2;
     }
   }
 
