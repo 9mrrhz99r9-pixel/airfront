@@ -380,15 +380,14 @@ fireButton.addEventListener('pointerdown', e => {
 // ボス触手の生成
 function spawnBossTentacles(side) {
   // プレイヤーを狙う触手
-  bossTentacles.push({
-    x: player.x + side * 12,
-    y: boss.y + 40,
-    length: 0,
-    maxLength: H,
-    speed: 900,
-    retracting: false,
-    alive: true
-  });
+bossTentacles.push({
+  x: player.x + side * 12,
+  y: -180,
+  targetY: player.y - 180,
+  speed: 900,
+  retracting: false,
+  alive: true
+});
 
   // ランダム位置を狙う触手
   const randomX = side === -1
@@ -620,25 +619,25 @@ if (e.y < stopY) {
 
   bossBeams = bossBeams.filter(b => b.alive);
   
-  // 触手の伸縮
-  for (const t of bossTentacles) {
-    if (!t.retracting) {
-      t.length += t.speed * dt;
+  // 触手の上下移動
+for (const t of bossTentacles) {
+  if (!t.retracting) {
+    t.y += t.speed * dt;
 
-      if (t.length >= t.maxLength) {
-        t.length = t.maxLength;
-        t.retracting = true;
-      }
-    } else {
-      t.length -= t.speed * dt;
+    if (t.y >= t.targetY) {
+      t.y = t.targetY;
+      t.retracting = true;
+    }
+  } else {
+    t.y -= t.speed * dt;
 
-      if (t.length <= 0) {
-        t.alive = false;
-      }
+    if (t.y <= -180) {
+      t.alive = false;
     }
   }
+}
 
-  bossTentacles = bossTentacles.filter(t => t.alive);
+bossTentacles = bossTentacles.filter(t => t.alive);
   for (const b of playerBullets) {
     if (b.dead) continue;
     for (const e of enemies) {
