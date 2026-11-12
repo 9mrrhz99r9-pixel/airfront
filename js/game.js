@@ -935,6 +935,10 @@ if (gameMode === 'boss' && boss) {
 
   // ボスHPバー
   if (gameMode === 'boss' && boss) {
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 14px system-ui';
+    ctx.textAlign = 'left';
+    ctx.fillText(boss.name, 20, 54);
     const barWidth = W - 40;
     const barHeight = 10;
     const ratio = Math.max(0, boss.hp / boss.maxHp);
