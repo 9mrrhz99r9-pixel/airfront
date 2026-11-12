@@ -34,7 +34,7 @@ const CONFIG = {
     charger: 200,
     guard: 40
   },
-  shooterFireInterval: 3,
+  shooterFireInterval: 1,
   enemyBulletSpeed: 230,
   chargerRushDelay: 2.8,
   chargerRushSpeed: 180,
