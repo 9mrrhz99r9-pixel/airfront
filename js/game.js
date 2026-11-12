@@ -185,6 +185,15 @@ function startGame() {
   requestAnimationFrame(loop);
 }
 
+// 討伐時間の表示形式
+function formatBossTime(time) {
+  const minutes = Math.floor(time / 60);
+  const seconds = Math.floor(time % 60);
+  const milliseconds = Math.floor((time % 1) * 100);
+
+  return `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}.${String(milliseconds).padStart(2, '0')}`;
+}
+
 function endGame(isClear = false) {
   if (state !== 'playing') return;
   state = 'gameover';
