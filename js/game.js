@@ -162,6 +162,9 @@ function resetGame() {
   bossTentacles = [];
   bossBeams = [];
   bossBeamWarning = null;
+  bossBeamTimer = 5;
+  leftTentacleTimer = 3;
+  rightTentacleTimer = 4.5;
 
 if (gameMode === 'boss') {
   boss = {
