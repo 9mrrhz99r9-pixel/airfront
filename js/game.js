@@ -619,19 +619,19 @@ if (e.y < stopY) {
 
   bossBeams = bossBeams.filter(b => b.alive);
   
-  // 触手の上下移動
+  // 触手の伸縮
 for (const t of bossTentacles) {
   if (!t.retracting) {
-    t.y += t.speed * dt;
+    t.length += t.speed * dt;
 
-    if (t.y >= t.targetY) {
-      t.y = t.targetY;
+    if (t.length >= t.maxLength) {
+      t.length = t.maxLength;
       t.retracting = true;
     }
   } else {
-    t.y -= t.speed * dt;
+    t.length -= t.speed * dt;
 
-    if (t.y <= -180) {
+    if (t.length <= 0) {
       t.alive = false;
     }
   }
