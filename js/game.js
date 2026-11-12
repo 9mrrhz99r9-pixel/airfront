@@ -895,38 +895,27 @@ function draw() {
   enemies.forEach(drawEnemy);
   guardGroups.forEach(g => g.members.filter(m => m.alive).forEach(drawGuard));
     // ボスの触手
-  if (gameMode === 'boss' && boss) {
-    ctx.save();
-    ctx.strokeStyle = '#398fbd';
-    ctx.lineWidth = 5;
-    ctx.lineCap = 'round';
+if (gameMode === 'boss' && boss) {
+  for (let i = 0; i < bossTentacles.length; i++) {
+    const t = bossTentacles[i];
 
-    for (const t of bossTentacles) {
-      ctx.beginPath();
-      ctx.moveTo(t.x, t.y);
+    const img = i % 2 === 0
+      ? tentacleImageA
+      : tentacleImageB;
 
-      // 少し波打つ形
-      for (let i = 1; i <= 8; i++) {
-        const progress = i / 8;
-        const wave = Math.sin(progress * Math.PI * 3) * 3;
+    if (img.complete && img.naturalWidth > 0) {
+      const imageWidth = 24;
 
-        ctx.lineTo(
-          t.x + wave,
-          t.y + t.length * progress
-        );
-      }
-
-      ctx.stroke();
-
-      // 先端を尖らせる
-      ctx.fillStyle = '#55b9e8';
-      ctx.beginPath();
-      ctx.arc(t.x, t.y + t.length, 2, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.drawImage(
+        img,
+        t.x - imageWidth / 2,
+        t.y,
+        imageWidth,
+        t.length
+      );
     }
-
-    ctx.restore();
   }
+}
       // ボス画像表示
 if (gameMode === 'boss' && boss) {
   if (bossImage.complete && bossImage.naturalWidth > 0) {
