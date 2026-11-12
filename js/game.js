@@ -382,8 +382,8 @@ function spawnBossTentacles(side) {
   // プレイヤーを狙う触手
 bossTentacles.push({
   x: player.x + side * 12,
-  y: -180,
-  targetY: player.y - 180,
+  length: 0,
+  maxLength: player.y,
   speed: 900,
   retracting: false,
   alive: true
