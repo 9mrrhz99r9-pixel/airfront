@@ -161,6 +161,7 @@ function resetGame() {
 
 if (gameMode === 'boss') {
   boss = {
+    name: 'TAINT',
     x: W / 2,
     y: -80,
     w: 120,
