@@ -684,16 +684,18 @@ bossTentacles = bossTentacles.filter(t => t.alive);
       }
     }
         // ボスの触手との衝突
-    if (!damaged && gameMode === 'boss') {
-      for (const t of bossTentacles) {
-        if (Math.abs(player.x - t.x) < 7 &&
-            player.y >= t.y &&
-            player.y <= t.y + t.length) {
-          damaged = true;
-          break;
-        }
-      }
+if (!damaged && gameMode === 'boss') {
+  for (const t of bossTentacles) {
+    if (
+      Math.abs(player.x - t.x) < 14 &&
+      player.y >= 0 &&
+      player.y <= t.length
+    ) {
+      damaged = true;
+      break;
     }
+  }
+}
         // ボスビームとの衝突
     if (!damaged && gameMode === 'boss') {
       for (const b of bossBeams) {
