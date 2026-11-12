@@ -66,6 +66,13 @@ enemyImages.guard.src = './assets/enemy/guard.PNG';
 const bossImage = new Image();
 bossImage.src = './assets/boss/boss1.PNG';
 
+// ボス触手画像
+const tentacleImageA = new Image();
+tentacleImageA.src = './assets/boss/tentacle_a.png';
+
+const tentacleImageB = new Image();
+tentacleImageB.src = './assets/boss/tentacle_b.png';
+
 const titleScreen = document.getElementById('titleScreen');
 const modeScreen = document.getElementById('modeScreen');
 const bossButton = document.getElementById('bossButton');
