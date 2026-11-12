@@ -211,9 +211,20 @@ if (
   fireButton.classList.add('hidden');
   hint.classList.add('hidden');
   if (gameMode === 'boss' && isClear) {
+  const bestKey = 'sky_defender_boss1_best';
+  const savedBest = Number(localStorage.getItem(bestKey) || 0);
+  const isNewRecord = savedBest === 0 || elapsed < savedBest;
+  const bestTime = isNewRecord ? elapsed : savedBest;
+
+  if (isNewRecord) {
+    localStorage.setItem(bestKey, String(elapsed));
+  }
+
   resultEl.innerHTML = `
     <strong>BOSS CLEAR!</strong><br>
-    討伐タイム：${formatBossTime(elapsed)}
+    討伐タイム：${formatBossTime(elapsed)}<br>
+    最速討伐タイム：${formatBossTime(bestTime)}
+    ${isNewRecord ? '<br>NEW RECORD!' : ''}
   `;
 } else {
   const isNewBest = score > bestScore;
