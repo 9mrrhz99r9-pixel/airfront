@@ -214,6 +214,12 @@ if (
   firing = false;
   fireButton.classList.add('hidden');
   hint.classList.add('hidden');
+  
+  resultTitle.textContent =
+  gameMode === 'boss' && isClear
+    ? 'BOSS CLEAR!'
+    : 'GAME OVER';
+    
   if (gameMode === 'boss' && isClear) {
   const bestKey = 'sky_defender_boss1_best';
   const savedBest = Number(localStorage.getItem(bestKey) || 0);
