@@ -904,13 +904,15 @@ if (gameMode === 'boss' && boss) {
 
     if (img.complete && img.naturalWidth > 0) {
       const imageWidth = 24;
+      const scale = imageWidth / img.naturalWidth;
+      const imageHeight = img.naturalHeight * scale;
 
       ctx.drawImage(
         img,
         t.x - imageWidth / 2,
         t.y,
         imageWidth,
-        t.length
+        imageHeight
       );
     }
   }
