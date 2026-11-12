@@ -159,6 +159,9 @@ function resetGame() {
   firing = false;
   
   boss = null;
+  bossTentacles = [];
+  bossBeams = [];
+  bossBeamWarning = null;
 
 if (gameMode === 'boss') {
   boss = {
