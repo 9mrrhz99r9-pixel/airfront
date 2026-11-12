@@ -222,7 +222,7 @@ if (
   }
 
   resultEl.innerHTML = `
-    <strong>BOSS CLEAR!</strong><br>
+    <strong>${boss.name} CLEAR!</strong><br>
     討伐タイム：${formatBossTime(elapsed)}<br>
     最速討伐タイム：${formatBossTime(bestTime)}
     ${isNewRecord ? '<br>NEW RECORD!' : ''}
