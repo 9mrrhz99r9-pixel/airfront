@@ -383,7 +383,7 @@ function spawnBossTentacles(side) {
 bossTentacles.push({
   x: player.x + side * 12,
   length: 0,
-  maxLength: player.y,
+  maxLength: player.y + player.h / 2 + 10,
   speed: 900,
   retracting: false,
   alive: true
