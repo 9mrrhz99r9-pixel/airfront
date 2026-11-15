@@ -82,33 +82,62 @@ body {
 #skinScreen.hidden {
   display: none;
 }
-#bossInfo {
+/* ボス選択画面 */
+#bossSelectScreen {
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+/* 上下2段のレイアウト */
+#bossSelectLayout {
+  display: flex;
+  flex-direction: column;
   width: 90%;
-  height: 35%;
-  margin: 10px auto;
+  flex: 1;
+  min-height: 0;
+  gap: 12px;
+}
+
+/* 上部：ボス情報 */
+#bossInfo {
+  width: 100%;
+  flex: 0 0 40%;
+  min-height: 100px;
+  margin: 0;
   padding: 12px;
-  box-sizing: border-box;
   border: 1px solid #557080;
   background: rgba(10, 20, 35, 0.8);
   text-align: center;
+  overflow-y: auto;
 }
 
+/* ボス名 */
 #bossInfoName {
   color: #70dfff;
   margin-bottom: 10px;
 }
 
+/* ボス紹介文 */
 #bossInfoText {
   color: #ddd;
   font-size: 14px;
 }
 
+/* 下部：ボス一覧 */
 #bossList {
-  width: 90%;
-  margin: 10px auto;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  margin: 0;
+  padding: 10px;
+  border: 1px solid #557080;
   text-align: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
 
+/* ボス一覧のボタン */
 #bossList button {
   display: block;
   width: 100%;
