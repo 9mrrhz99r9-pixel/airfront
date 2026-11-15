@@ -1157,9 +1157,21 @@ scoreButton.addEventListener('click', () => {
 
 // BOSS BATTLE選択
 bossButton.addEventListener('click', () => {
-  gameMode = 'boss';
   modeScreen.classList.add('hidden');
+  bossSelectScreen.classList.remove('hidden');
+});
+
+// TAINT選択
+taintButton.addEventListener('click', () => {
+  gameMode = 'boss';
+  bossSelectScreen.classList.add('hidden');
   startGame();
+});
+
+// ボス選択から戻る
+bossBackButton.addEventListener('click', () => {
+  bossSelectScreen.classList.add('hidden');
+  modeScreen.classList.remove('hidden');
 });
 
 // リトライ
