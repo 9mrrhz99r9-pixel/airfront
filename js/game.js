@@ -110,6 +110,27 @@ const BOSS_DATA = [
   }
 ];
 
+// ボス一覧生成
+function renderBossList() {
+  bossList.querySelectorAll('button').forEach(button => {
+    button.remove();
+  });
+
+  for (const boss of BOSS_DATA) {
+    const button = document.createElement('button');
+
+    button.textContent = boss.name;
+
+    button.addEventListener('click', () => {
+      bossInfoName.textContent = boss.name;
+      bossInfoText.textContent = boss.description;
+      bossStartButton.disabled = false;
+    });
+
+    bossList.appendChild(button);
+  }
+}
+
 // プレイヤースキン管理
 const PLAYER_SKINS = {
   default: {
