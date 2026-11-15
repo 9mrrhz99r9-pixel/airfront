@@ -80,6 +80,7 @@ const bossSelectScreen = document.getElementById('bossSelectScreen');
 const taintButton = document.getElementById('taintButton');
 const bossInfoName = document.getElementById('bossInfoName');
 const bossInfoText = document.getElementById('bossInfoText');
+const bossDifficultyList = document.getElementById('bossDifficultyList');
 const bossList = document.getElementById('bossList');
 const bossBackButton = document.getElementById('bossBackButton');
 const bossStartButton = document.getElementById('bossStartButton');
