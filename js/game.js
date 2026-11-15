@@ -1170,6 +1170,13 @@ taintButton.addEventListener('click', () => {
   bossInfoText.textContent = '異星から侵入した生物。無数の眼と触手を持つ、侵食を広げる存在。';
 });
 
+// BATTLE START
+bossStartButton.addEventListener('click', () => {
+  gameMode = 'boss';
+  bossSelectScreen.classList.add('hidden');
+  startGame();
+});
+
 // ボス選択から戻る
 bossBackButton.addEventListener('click', () => {
   bossSelectScreen.classList.add('hidden');
