@@ -1164,6 +1164,7 @@ bossButton.addEventListener('click', () => {
   bossSelectScreen.classList.remove('hidden');
   bossInfoName.textContent = '未選択';
   bossInfoText.textContent = 'ボスを選択してください。';
+  bossStartButton.disabled = true;
 });
 
 // TAINT選択
