@@ -81,6 +81,7 @@ const taintButton = document.getElementById('taintButton');
 const bossInfoName = document.getElementById('bossInfoName');
 const bossInfoText = document.getElementById('bossInfoText');
 const bossBackButton = document.getElementById('bossBackButton');
+const bossStartButton = document.getElementById('bossStartButton');
 const scoreButton = document.getElementById('scoreButton');
 const skinScreen = document.getElementById('skinScreen');
 const skinButton = document.getElementById('skinButton');
