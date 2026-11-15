@@ -1165,9 +1165,8 @@ bossButton.addEventListener('click', () => {
 
 // TAINT選択
 taintButton.addEventListener('click', () => {
-  gameMode = 'boss';
-  bossSelectScreen.classList.add('hidden');
-  startGame();
+  bossInfoName.textContent = 'TAINT';
+  bossInfoText.textContent = '異星から侵入した生物。無数の眼と触手を持つ、侵食を広げる存在。';
 });
 
 // ボス選択から戻る
