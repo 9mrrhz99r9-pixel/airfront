@@ -97,6 +97,19 @@ const titleButton = document.getElementById('titleButton');
 const fireButton = document.getElementById('fireButton');
 const hint = document.getElementById('hint');
 
+// ボスデータ
+const BOSS_DATA = [
+  {
+    id: 'taint',
+    name: 'TAINT',
+    description:
+      '異星から侵入した、正体不明の生物。' +
+      '巨大な単眼と無数の小さな眼を持ち、無数の触手を伸ばす。' +
+      'その身体は周囲の環境を侵食し、異質なものへと変えていく。' +
+      '人類にとって、極めて危険な侵略生命体である。'
+  }
+];
+
 // プレイヤースキン管理
 const PLAYER_SKINS = {
   default: {
