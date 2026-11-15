@@ -1195,6 +1195,7 @@ scoreButton.addEventListener('click', () => {
 
 // BOSS BATTLE選択
 bossButton.addEventListener('click', () => {
+  renderBossList();
   modeScreen.classList.add('hidden');
   bossSelectScreen.classList.remove('hidden');
   bossInfoName.textContent = '未選択';
