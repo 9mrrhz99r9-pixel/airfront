@@ -1162,6 +1162,8 @@ scoreButton.addEventListener('click', () => {
 bossButton.addEventListener('click', () => {
   modeScreen.classList.add('hidden');
   bossSelectScreen.classList.remove('hidden');
+  bossInfoName.textContent = '未選択';
+  bossInfoText.textContent = 'ボスを選択してください。';
 });
 
 // TAINT選択
