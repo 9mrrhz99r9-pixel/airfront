@@ -82,3 +82,35 @@ body {
 #skinScreen.hidden {
   display: none;
 }
+#bossInfo {
+  width: 90%;
+  height: 35%;
+  margin: 10px auto;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #557080;
+  background: rgba(10, 20, 35, 0.8);
+  text-align: center;
+}
+
+#bossInfoName {
+  color: #70dfff;
+  margin-bottom: 10px;
+}
+
+#bossInfoText {
+  color: #ddd;
+  font-size: 14px;
+}
+
+#bossList {
+  width: 90%;
+  margin: 10px auto;
+  text-align: center;
+}
+
+#bossList button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+}
