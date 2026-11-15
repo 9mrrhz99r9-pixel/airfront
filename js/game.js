@@ -1164,7 +1164,6 @@ bossButton.addEventListener('click', () => {
   bossSelectScreen.classList.remove('hidden');
   bossInfoName.textContent = '未選択';
   bossInfoText.textContent = 'ボスを選択してください。';
-  bossStartButton.disabled = false;
   bossStartButton.disabled = true;
 });
 
@@ -1176,6 +1175,7 @@ taintButton.addEventListener('click', () => {
   '巨大な単眼と無数の小さな眼を持ち、無数の触手を伸ばす。' +
   'その身体は周囲の環境を侵食し、異質なものへと変えていく。' +
   '人類にとって、極めて危険な侵略生命体である。';
+  bossStartButton.disabled = false;
 });
 
 // BATTLE START
