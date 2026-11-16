@@ -132,10 +132,33 @@ function renderBossList() {
     button.textContent = boss.name;
 
     button.addEventListener('click', () => {
-      bossInfoName.textContent = boss.name;
-      bossInfoText.textContent = boss.description;
+  bossInfoName.textContent = boss.name;
+  bossInfoText.textContent = boss.description;
+
+  bossDifficultyList.innerHTML = '';
+  selectedBossDifficulty = null;
+  bossStartButton.disabled = true;
+
+  for (const difficulty of boss.difficulties) {
+    const difficultyButton = document.createElement('button');
+    difficultyButton.textContent = difficulty;
+
+    difficultyButton.addEventListener('click', () => {
+      selectedBossDifficulty = difficulty;
+
+      bossDifficultyList
+        .querySelectorAll('button')
+        .forEach(button => {
+          button.classList.remove('selected');
+        });
+
+      difficultyButton.classList.add('selected');
       bossStartButton.disabled = false;
     });
+
+    bossDifficultyList.appendChild(difficultyButton);
+  }
+});
 
     bossList.appendChild(button);
   }
