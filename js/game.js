@@ -1239,17 +1239,6 @@ bossButton.addEventListener('click', () => {
   bossStartButton.disabled = true;
 });
 
-// TAINT選択
-taintButton.addEventListener('click', () => {
-  bossInfoName.textContent = 'TAINT';
-  bossInfoText.textContent =
-  '異星から侵入した、正体不明の生物。' +
-  '巨大な単眼と無数の小さな眼を持ち、無数の触手を伸ばす。' +
-  'その身体は周囲の環境を侵食し、異質なものへと変えていく。' +
-  '人類にとって、極めて危険な侵略生命体である。';
-  bossStartButton.disabled = false;
-});
-
 // BATTLE START
 bossStartButton.addEventListener('click', () => {
   gameMode = 'boss';
