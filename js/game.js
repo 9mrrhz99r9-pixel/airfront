@@ -137,6 +137,9 @@ function renderBossList() {
 
   bossDifficultyList.innerHTML = '';
   selectedBossDifficulty = null;
+  
+  bossDifficultyList.innerHTML = '';
+  selectedBossDifficulty = null;
   bossStartButton.disabled = true;
 
   for (const difficulty of boss.difficulties) {
