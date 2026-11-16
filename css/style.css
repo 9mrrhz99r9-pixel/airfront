@@ -150,3 +150,31 @@ body {
   color: #fff;
   border: 2px solid #70dfff;
 }
+
+.bossDifficultyControl {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+}
+
+.bossDifficultyControl > button {
+  flex: 1;
+}
+
+.difficultyArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.difficultyArea span {
+  min-width: 65px;
+  text-align: center;
+}
+
+.difficultyArea button {
+  min-width: 36px;
+}
