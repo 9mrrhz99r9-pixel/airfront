@@ -675,6 +675,8 @@ if (e.y < stopY) {
         boss.active = true;
       leftTentacleTimer = 3;
       rightTentacleTimer = 4.5;
+      leftThirdTentacleTimer = 6.5;
+      rightThirdTentacleTimer = 6.5;
       }
     }
   }
