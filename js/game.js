@@ -511,6 +511,22 @@ fireButton.addEventListener('pointerdown', e => {
 
 // ボス触手の生成
 function spawnBossTentacles(side) {
+  
+function spawnBossThirdTentacle(side) {
+  const randomX = side === -1
+    ? Math.random() * (W / 2)
+    : W / 2 + Math.random() * (W / 2);
+
+  bossTentacles.push({
+    x: randomX,
+    y: boss.y + 40,
+    length: 0,
+    maxLength: H,
+    speed: 900,
+    retracting: false,
+    alive: true
+  });
+}
   // プレイヤーを狙う触手
 bossTentacles.push({
   x: player.x + side * 12,
