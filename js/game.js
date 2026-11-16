@@ -302,6 +302,7 @@ function resetGame() {
 
 if (gameMode === 'boss') {
   boss = {
+    const difficultyConfig = TAINT_DIFFICULTY[selectedBossDifficulty] || TAINT_DIFFICULTY.EASY;
     name: 'TAINT',
     x: W / 2,
     y: -80,
