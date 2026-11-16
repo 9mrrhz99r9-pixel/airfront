@@ -696,6 +696,24 @@ if (e.y < stopY) {
       spawnBossTentacles(1);
       rightTentacleTimer = 3 + Math.random() * 2;
     }
+    // HARD・EXPERT専用の3本目
+if (
+  selectedBossDifficulty === 'HARD' ||
+  selectedBossDifficulty === 'EXPERT'
+) {
+  leftThirdTentacleTimer -= dt;
+  rightThirdTentacleTimer -= dt;
+
+  if (leftThirdTentacleTimer <= 0) {
+    spawnBossThirdTentacle(-1);
+    leftThirdTentacleTimer = 3 + Math.random() * 2;
+  }
+
+  if (rightThirdTentacleTimer <= 0) {
+    spawnBossThirdTentacle(1);
+    rightThirdTentacleTimer = 3 + Math.random() * 2;
+  }
+}
   }
 
     // ボスのビーム攻撃
