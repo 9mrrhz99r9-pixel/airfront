@@ -121,6 +121,21 @@ const BOSS_DATA = [
 let selectedBoss = null;
 let selectedBossDifficulty = null;
 
+// TAINT 難易度別設定
+const TAINT_DIFFICULTY = {
+  EASY: {
+    hp: 100
+  },
+  NORMAL: {
+    hp: 150
+  },
+  HARD: {
+    hp: 200
+  },
+  EXPERT: {
+    hp: 350
+  }
+};
 
 // ボス一覧生成
 function renderBossList() {
