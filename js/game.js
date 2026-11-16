@@ -121,52 +121,86 @@ const BOSS_DATA = [
 let selectedBoss = null;
 let selectedBossDifficulty = null;
 
+
 // ボス一覧生成
 function renderBossList() {
-  bossList.querySelectorAll('button').forEach(button => {
-    button.remove();
-  });
+  bossList.querySelectorAll('button, .bossDifficultyControl')
+    .forEach(element => element.remove());
 
   for (const boss of BOSS_DATA) {
-    const button = document.createElement('button');
+    const row = document.createElement('div');
+    row.className = 'bossDifficultyControl';
 
+    const button = document.createElement('button');
     button.textContent = boss.name;
 
+    const difficultyArea = document.createElement('div');
+    difficultyArea.className = 'difficultyArea';
+
+    const leftButton = document.createElement('button');
+    leftButton.textContent = '◀';
+
+    const difficultyText = document.createElement('span');
+    difficultyText.textContent = '未選択';
+
+    const rightButton = document.createElement('button');
+    rightButton.textContent = '▶';
+
+    let difficultyIndex = 0;
+
+    function updateDifficulty() {
+      difficultyText.textContent = boss.difficulties[difficultyIndex];
+      selectedBossDifficulty = boss.difficulties[difficultyIndex];
+    }
+
     button.addEventListener('click', () => {
-  bossInfoName.textContent = boss.name;
-  bossInfoText.textContent = boss.description;
+      selectedBoss = boss;
 
-  bossDifficultyList.innerHTML = '';
-  selectedBossDifficulty = null;
-  
-  bossDifficultyList.innerHTML = '';
-  selectedBossDifficulty = null;
-  bossStartButton.disabled = true;
+      bossInfoName.textContent = boss.name;
+      bossInfoText.textContent = boss.description;
 
-  for (const difficulty of boss.difficulties) {
-    const difficultyButton = document.createElement('button');
-    difficultyButton.textContent = difficulty;
+      selectedBossDifficulty = null;
+      difficultyIndex = 0;
 
-    difficultyButton.addEventListener('click', () => {
-      selectedBossDifficulty = difficulty;
-
-      bossDifficultyList
-        .querySelectorAll('button')
-        .forEach(button => {
-          button.classList.remove('selected');
-        });
-
-      difficultyButton.classList.add('selected');
+      updateDifficulty();
       bossStartButton.disabled = false;
+
+      bossList.querySelectorAll('button')
+        .forEach(b => b.classList.remove('selected'));
+
+      button.classList.add('selected');
     });
 
-    bossDifficultyList.appendChild(difficultyButton);
-  }
-});
+    leftButton.addEventListener('click', () => {
+      if (selectedBoss !== boss) return;
 
-    bossList.appendChild(button);
+      difficultyIndex =
+        (difficultyIndex - 1 + boss.difficulties.length) %
+        boss.difficulties.length;
+
+      updateDifficulty();
+    });
+
+    rightButton.addEventListener('click', () => {
+      if (selectedBoss !== boss) return;
+
+      difficultyIndex =
+        (difficultyIndex + 1) % boss.difficulties.length;
+
+      updateDifficulty();
+    });
+
+    difficultyArea.appendChild(leftButton);
+    difficultyArea.appendChild(difficultyText);
+    difficultyArea.appendChild(rightButton);
+
+    row.appendChild(button);
+    row.appendChild(difficultyArea);
+
+    bossList.appendChild(row);
   }
 }
+
 
 // プレイヤースキン管理
 const PLAYER_SKINS = {
