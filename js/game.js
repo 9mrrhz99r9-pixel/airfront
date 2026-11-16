@@ -937,7 +937,10 @@ function hit(x1, y1, r1, x2, y2, r2) {
 // 描画
 // =========================
 function drawBackground() {
-  ctx.fillStyle = '#07111f';
+  ctx.fillStyle =
+  gameMode === 'boss' && selectedBossDifficulty === 'EXPERT'
+    ? '#3b1018'
+    : '#07111f';
   ctx.fillRect(0, 0, W, H);
   ctx.strokeStyle = 'rgba(110,180,220,.12)';
   ctx.lineWidth = 1;
