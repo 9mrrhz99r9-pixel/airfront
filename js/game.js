@@ -118,6 +118,7 @@ const BOSS_DATA = [
   }
 ];
 
+let selectedBoss = null;
 let selectedBossDifficulty = null;
 
 // ボス一覧生成
