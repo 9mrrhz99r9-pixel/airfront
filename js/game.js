@@ -943,11 +943,7 @@ function drawBackground() {
     ? '#3b1018'
     : '#07111f';
   ctx.fillRect(0, 0, W, H);
-  ctx.strokeStyle = 'rgba(110,180,220,.12)';
-  ctx.lineWidth = 1;
-  for (let y = (elapsed * 35) % 48; y < H; y += 48) {
-    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
-  }
+  
   for (let i = 0; i < 35; i++) {
     const x = (i * 97) % W;
     const y = (i * 173 + elapsed * 20) % H;
