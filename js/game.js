@@ -301,8 +301,8 @@ function resetGame() {
   rightTentacleTimer = 4.5;
 
 if (gameMode === 'boss') {
+const difficultyConfig = TAINT_DIFFICULTY[selectedBossDifficulty] || TAINT_DIFFICULTY.EASY;
   boss = {
-    const difficultyConfig = TAINT_DIFFICULTY[selectedBossDifficulty] || TAINT_DIFFICULTY.EASY;
     name: 'TAINT',
     x: W / 2,
     y: -80,
