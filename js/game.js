@@ -308,8 +308,8 @@ if (gameMode === 'boss') {
     y: -80,
     w: 120,
     h: 120,
-    hp: CONFIG.bossMaxHp,
-    maxHp: CONFIG.bossMaxHp,
+   hp: difficultyConfig.hp,
+   maxHp: difficultyConfig.hp,
     speed: CONFIG.bossSpeed,
     active: false
   };
