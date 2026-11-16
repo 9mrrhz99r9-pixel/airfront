@@ -301,6 +301,8 @@ function resetGame() {
   bossBeamTimer = 5;
   leftTentacleTimer = 3;
   rightTentacleTimer = 4.5;
+  leftThirdTentacleTimer = 6.5;
+  rightThirdTentacleTimer = 6.5;
 
 if (gameMode === 'boss') {
 const difficultyConfig = TAINT_DIFFICULTY[selectedBossDifficulty] || TAINT_DIFFICULTY.EASY;
