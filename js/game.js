@@ -761,8 +761,10 @@ if (
 
           bossBeamWarning.shotsFired++;
 
-          if (bossBeamWarning.shotsFired >= 3) {
-            bossBeamWarning = null;
+          if (
+          bossBeamWarning.shotsFired >=
+          (selectedBossDifficulty === 'EXPERT' ? 5 : 3)
+         ) {bossBeamWarning = null;
             bossBeamTimer = 3 + Math.random() * 3;
           } else {
             bossBeamWarning.shotTimer = 0.5;
