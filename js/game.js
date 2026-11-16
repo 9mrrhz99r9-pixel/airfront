@@ -118,6 +118,8 @@ const BOSS_DATA = [
   }
 ];
 
+let selectedBossDifficulty = null;
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button').forEach(button => {
