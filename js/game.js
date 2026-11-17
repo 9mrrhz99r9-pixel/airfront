@@ -332,6 +332,27 @@ function startGame() {
   requestAnimationFrame(loop);
 }
 
+// 難易度別クリアタイム上位3件
+function renderBossRecords(difficulty) {
+  const recordKey = `sky_defender_boss1_records_${difficulty}`;
+  const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
+
+  records.sort((a, b) => a - b);
+
+  const topRecords = records.slice(0, 3);
+
+  bossRecordList.innerHTML = `
+    <h3>BEST TIME</h3>
+    ${
+      topRecords.length > 0
+        ? topRecords.map((time, index) =>
+            `<p>${index + 1}位：${formatBossTime(time)}</p>`
+          ).join('')
+        : '<p>記録なし</p>'
+    }
+  `;
+}
+
 // 討伐時間の表示形式
 function formatBossTime(time) {
   const minutes = Math.floor(time / 60);
