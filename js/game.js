@@ -165,9 +165,11 @@ function renderBossList() {
     let difficultyIndex = 0;
 
     function updateDifficulty() {
-      difficultyText.textContent = boss.difficulties[difficultyIndex];
-      selectedBossDifficulty = boss.difficulties[difficultyIndex];
-    }
+  difficultyText.textContent = boss.difficulties[difficultyIndex];
+  selectedBossDifficulty = boss.difficulties[difficultyIndex];
+
+  renderBossRecords(selectedBossDifficulty);
+}
 
     button.addEventListener('click', () => {
       selectedBoss = boss;
