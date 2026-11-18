@@ -847,7 +847,7 @@ if (dreadnoughtRainTimer <= 0) {
 
     if (laser.chargeTimer <= 0) {
       const dx = laser.targetX - boss.x;
-      const dy = laser.targetY - boss.y;
+      const dy = laser.targetY - (boss.y + 45);
       const distance = Math.hypot(dx, dy) || 1;
 
       laser.directionX = dx / distance;
