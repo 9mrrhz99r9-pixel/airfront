@@ -1027,6 +1027,41 @@ if (!damaged && gameMode === 'boss') {
     }
     if (!damaged) {
       for (const e of enemies) {
+        
+// DREADNOUGHT 主砲レーザーとの衝突
+    if (!damaged && boss && boss.id === 'dreadnought' && dreadnoughtLaser.firing) {
+      const laser = dreadnoughtLaser;
+      const startX = boss.x;
+      const startY = boss.y + 45;
+      const length = Math.hypot(W, H) * 1.5;
+
+      const endX = startX + laser.directionX * length;
+      const endY = startY + laser.directionY * length;
+
+      const px = player.x - startX;
+      const py = player.y - startY;
+
+      const projection = Math.max(
+        0,
+        Math.min(
+          length,
+          px * laser.directionX + py * laser.directionY
+        )
+      );
+
+      const closestX = startX + laser.directionX * projection;
+      const closestY = startY + laser.directionY * projection;
+
+      if (
+        Math.hypot(
+          player.x - closestX,
+          player.y - closestY
+        ) < 27
+      ) {
+        damaged = true;
+      }
+    }
+    
         if (e.alive && hit(e.x, e.y, e.w / 2, player.x, player.y, 18)) {
           e.alive = false; damaged = true; break;
         }
