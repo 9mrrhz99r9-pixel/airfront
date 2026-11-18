@@ -784,8 +784,8 @@ if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
     laser.chargeTimer -= dt;
 
     if (laser.chargeTimer <= 0) {
-      const dx = player.x - boss.x;
-      const dy = player.y - boss.y;
+      const dx = laser.targetX - boss.x;
+      const dy = laser.targetY - boss.y;
       const distance = Math.hypot(dx, dy) || 1;
 
       laser.directionX = dx / distance;
