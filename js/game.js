@@ -1294,7 +1294,7 @@ if (gameMode === 'boss' && boss) {
       ctx.lineCap = 'round';
 
       ctx.strokeStyle = '#ff3344';
-      ctx.lineWidth = 30;
+      ctx.lineWidth = 60;
       ctx.shadowColor = '#ff2020';
       ctx.shadowBlur = 25;
       ctx.beginPath();
@@ -1303,7 +1303,7 @@ if (gameMode === 'boss' && boss) {
       ctx.stroke();
 
       ctx.strokeStyle = '#ffffff';
-      ctx.lineWidth = 8;
+      ctx.lineWidth = 16;
       ctx.shadowBlur = 12;
       ctx.beginPath();
       ctx.moveTo(cannonX, cannonY);
