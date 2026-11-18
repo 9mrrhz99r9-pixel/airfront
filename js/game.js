@@ -306,6 +306,7 @@ let bossTentacles = [];
 let bossBeams = [];
 let bossBeamTimer = 5;
 let dreadnoughtGuardTimer = 8;
+let dreadnoughtRainTimer = 0.4;
 
 // DREADNOUGHT 主砲レーザー
 let dreadnoughtLaser = {
@@ -347,6 +348,7 @@ function resetGame() {
   bossBeamWarning = null;
   bossBeamTimer = 5;
   dreadnoughtGuardTimer = 8;
+  dreadnoughtRainTimer = 0.4;
   
   dreadnoughtLaser = {
   chargeTimer: 0,
