@@ -847,7 +847,7 @@ if (dreadnoughtRainTimer <= 0) {
 
     if (laser.chargeTimer <= 0) {
       const dx = laser.targetX - boss.x;
-      const dy = laser.targetY - (boss.y + 45);
+      const dy = laser.targetY - (boss.y + 55);
       const distance = Math.hypot(dx, dy) || 1;
 
       laser.directionX = dx / distance;
@@ -1094,7 +1094,7 @@ if (!damaged && gameMode === 'boss') {
     if (!damaged && boss && boss.id === 'dreadnought' && dreadnoughtLaser.firing) {
       const laser = dreadnoughtLaser;
       const startX = boss.x;
-      const startY = boss.y + 45;
+      const startY = boss.y + 55;
       const length = Math.hypot(W, H) * 1.5;
 
       const endX = startX + laser.directionX * length;
