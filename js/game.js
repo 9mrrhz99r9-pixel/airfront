@@ -712,9 +712,11 @@ if (gameMode === 'score') {
   for (const b of playerBullets) b.y -= CONFIG.playerBulletSpeed * dt;
   playerBullets = playerBullets.filter(b => b.y > -20);
 
-  // 敵弾
-  for (const b of enemyBullets) b.y += CONFIG.enemyBulletSpeed * dt;
-  enemyBullets = enemyBullets.filter(b => b.y < H + 20);
+// 敵弾
+for (const b of enemyBullets) {
+  b.y += (b.speed || CONFIG.enemyBulletSpeed) * dt;
+}
+enemyBullets = enemyBullets.filter(b => b.y < H + 20);
 
   // 通常敵
   for (const e of enemies) {
