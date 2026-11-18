@@ -152,6 +152,22 @@ const TAINT_DIFFICULTY = {
   }
 };
 
+// DREADNOUGHT 難易度別設定
+const DREADNOUGHT_DIFFICULTY = {
+  EASY: {
+    hp: 100
+  },
+  NORMAL: {
+    hp: 150
+  },
+  HARD: {
+    hp: 200
+  },
+  EXPERT: {
+    hp: 350
+  }
+};
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
