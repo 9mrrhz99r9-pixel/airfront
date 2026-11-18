@@ -793,6 +793,7 @@ if (e.y < stopY) {
 
       if (boss.y >= 100) {
         boss.y = 100;
+        dreadnoughtGuardTimer = 8;
         boss.active = true;
       leftTentacleTimer = 3;
       rightTentacleTimer = 4.5;
