@@ -116,9 +116,23 @@ const BOSS_DATA = [
       'HARD',
       'EXPERT'
     ]
+    },
+  {
+    id: 'dreadnought',
+    name: 'DREADNOUGHT',
+    description:
+      'かつて宇宙を航行していた巨大戦艦。' +
+      'その船体は正体不明の異星生命体に侵食され、' +
+      '今や意思を持つ異形の戦闘兵器と化している。',
+
+    difficulties: [
+      'EASY',
+      'NORMAL',
+      'HARD',
+      'EXPERT'
+    ]
   }
 ];
-
 let selectedBoss = null;
 let selectedBossDifficulty = null;
 
