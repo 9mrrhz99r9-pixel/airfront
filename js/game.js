@@ -546,6 +546,37 @@ function spawnGuardGroup() {
   guardGroups.push({ members, direction: 1, stopped: false, stopY: H * 0.5 });
 }
 
+// DREADNOUGHT専用 GUARD召喚
+function spawnDreadnoughtGuards() {
+  for (const side of [-1, 1]) {
+    const count = 3 + Math.floor(Math.random() * 3);
+    const spacing = 34;
+    const startX = side === -1
+      ? 20
+      : W - 20 - (count - 1) * spacing;
+
+    const members = [];
+
+    for (let i = 0; i < count; i++) {
+      members.push({
+        x: startX + i * spacing,
+        y: -30 - Math.random() * 80,
+        w: 24,
+        h: 24,
+        hp: CONFIG.enemyHp.guard,
+        alive: true
+      });
+    }
+
+    guardGroups.push({
+      members,
+      direction: side === -1 ? 1 : -1,
+      stopped: false,
+      stopY: H * (0.3 + Math.random() * 0.2)
+    });
+  }
+}
+
 // =========================
 // 入力
 // =========================
