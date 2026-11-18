@@ -1307,6 +1307,7 @@ if (gameMode === 'boss' && boss) {
     }
   }
 }
+if (gameMode === 'boss' && boss) {
       // ボス画像表示
 const currentBossImage =
   boss.id === 'dreadnought'
