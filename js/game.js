@@ -901,7 +901,7 @@ if (
   }
 
     // ボスのビーム攻撃
-  if (gameMode === 'boss' && boss && boss.active) {
+  if (gameMode === 'boss' && boss && boss.active && boss.id === 'taint') {
     if (!bossBeamWarning) {
       bossBeamTimer -= dt;
 
