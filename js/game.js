@@ -1224,6 +1224,59 @@ if (gameMode === 'boss' && boss) {
     );
   }
 
+  // DREADNOUGHT 主砲レーザー
+  if (boss.id === 'dreadnought') {
+    const laser = dreadnoughtLaser;
+    const cannonX = boss.x;
+    const cannonY = boss.y + 45;
+
+    // チャージ中の発光
+    if (laser.charging) {
+      const chargeRatio = 1 - laser.chargeTimer / 2;
+      const radius = 6 + chargeRatio * 12;
+
+      ctx.save();
+      ctx.globalAlpha = 0.5 + chargeRatio * 0.5;
+      ctx.fillStyle = '#ff3344';
+      ctx.shadowColor = '#ff2020';
+      ctx.shadowBlur = 12 + chargeRatio * 25;
+
+      ctx.beginPath();
+      ctx.arc(cannonX, cannonY, radius, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+    }
+
+    // レーザー照射中
+    if (laser.firing) {
+      const length = Math.hypot(W, H) * 1.5;
+      const endX = cannonX + laser.directionX * length;
+      const endY = cannonY + laser.directionY * length;
+
+      ctx.save();
+      ctx.lineCap = 'round';
+
+      ctx.strokeStyle = '#ff3344';
+      ctx.lineWidth = 30;
+      ctx.shadowColor = '#ff2020';
+      ctx.shadowBlur = 25;
+      ctx.beginPath();
+      ctx.moveTo(cannonX, cannonY);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 8;
+      ctx.shadowBlur = 12;
+      ctx.beginPath();
+      ctx.moveTo(cannonX, cannonY);
+      ctx.lineTo(endX, endY);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+  }
+  
   // ビーム発射前の赤い予告光
   if (bossBeamWarning && !bossBeamWarning.firing) {
     ctx.fillStyle = '#ff2020';
