@@ -816,6 +816,19 @@ if (dreadnoughtGuardTimer <= 0) {
   dreadnoughtGuardTimer = 8;
 }
 
+dreadnoughtRainTimer -= dt;
+
+if (dreadnoughtRainTimer <= 0) {
+  enemyBullets.push({
+    x: 20 + Math.random() * (W - 40),
+    y: -10,
+    r: 5,
+    speed: CONFIG.enemyBulletSpeed * 1.25
+  });
+
+  dreadnoughtRainTimer = 0.4;
+}
+
   if (!laser.charging && !laser.firing) {
   laser.charging = true;
   laser.chargeTimer = 2;
