@@ -1025,10 +1025,8 @@ if (!damaged && gameMode === 'boss') {
         }
       }
     }
-    if (!damaged) {
-      for (const e of enemies) {
-        
-// DREADNOUGHT 主砲レーザーとの衝突
+    
+    // DREADNOUGHT 主砲レーザーとの衝突
     if (!damaged && boss && boss.id === 'dreadnought' && dreadnoughtLaser.firing) {
       const laser = dreadnoughtLaser;
       const startX = boss.x;
@@ -1062,6 +1060,8 @@ if (!damaged && gameMode === 'boss') {
       }
     }
     
+    if (!damaged) {
+      for (const e of enemies) {
         if (e.alive && hit(e.x, e.y, e.w / 2, player.x, player.y, 18)) {
           e.alive = false; damaged = true; break;
         }
