@@ -744,7 +744,7 @@ if (e.y < stopY) {
     }
   }
       // ボスの触手攻撃
-  if (gameMode === 'boss' && boss && boss.active) {
+  if (gameMode === 'boss' && boss && boss.active && boss.id === 'taint') {
     leftTentacleTimer -= dt;
     rightTentacleTimer -= dt;
 
