@@ -774,9 +774,11 @@ if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   const laser = dreadnoughtLaser;
 
   if (!laser.charging && !laser.firing) {
-    laser.charging = true;
-    laser.chargeTimer = 2;
-  }
+  laser.charging = true;
+  laser.chargeTimer = 2;
+  laser.targetX = player.x;
+  laser.targetY = player.y;
+}
 
   if (laser.charging) {
     laser.chargeTimer -= dt;
