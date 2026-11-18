@@ -338,15 +338,23 @@ function resetGame() {
   rightThirdTentacleTimer = 6.5;
 
 if (gameMode === 'boss') {
-const difficultyConfig = TAINT_DIFFICULTY[selectedBossDifficulty] || TAINT_DIFFICULTY.EASY;
+  const difficultyTable =
+    selectedBoss.id === 'dreadnought'
+      ? DREADNOUGHT_DIFFICULTY
+      : TAINT_DIFFICULTY;
+
+  const difficultyConfig =
+    difficultyTable[selectedBossDifficulty] || difficultyTable.EASY;
+
   boss = {
-    name: 'TAINT',
+    id: selectedBoss.id,
+    name: selectedBoss.name,
     x: W / 2,
     y: -80,
     w: 120,
     h: 120,
-   hp: difficultyConfig.hp,
-   maxHp: difficultyConfig.hp,
+    hp: difficultyConfig.hp,
+    maxHp: difficultyConfig.hp,
     speed: CONFIG.bossSpeed,
     active: false
   };
