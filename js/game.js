@@ -305,6 +305,19 @@ let boss = null;
 let bossTentacles = [];
 let bossBeams = [];
 let bossBeamTimer = 5;
+
+// DREADNOUGHT 主砲レーザー
+let dreadnoughtLaser = {
+  chargeTimer: 0,
+  firingTimer: 0,
+  targetX: 0,
+  targetY: 0,
+  directionX: 0,
+  directionY: 0,
+  charging: false,
+  firing: false
+};
+
 let bossBeamWarning = null;
 let leftTentacleTimer = 3;
 let rightTentacleTimer = 4.5;
