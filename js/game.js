@@ -305,6 +305,7 @@ let boss = null;
 let bossTentacles = [];
 let bossBeams = [];
 let bossBeamTimer = 5;
+let dreadnoughtGuardTimer = 8;
 
 // DREADNOUGHT 主砲レーザー
 let dreadnoughtLaser = {
