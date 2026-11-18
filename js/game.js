@@ -66,6 +66,10 @@ enemyImages.guard.src = './assets/enemy/guard.PNG';
 const bossImage = new Image();
 bossImage.src = './assets/boss/boss1.PNG';
 
+// DREADNOUGHT画像
+const dreadnoughtBossImage = new Image();
+dreadnoughtBossImage.src = './assets/boss/boss2.PNG';
+
 // ボス触手画像
 const tentacleImageA = new Image();
 tentacleImageA.src = './assets/boss/tentacle_a.png';
