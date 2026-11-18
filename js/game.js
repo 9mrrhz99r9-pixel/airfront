@@ -1373,7 +1373,7 @@ if (gameMode === 'boss' && boss) {
   }
   
   // ビーム発射前の赤い予告光
-  if (bossBeamWarning && !bossBeamWarning.firing) {
+  if (boss && boss.id === 'taint' && bossBeamWarning && !bossBeamWarning.firing) {
     ctx.fillStyle = '#ff2020';
     ctx.beginPath();
     ctx.arc(boss.x, boss.y + 45, 5, 0, Math.PI * 2);
