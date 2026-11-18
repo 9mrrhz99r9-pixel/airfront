@@ -1308,20 +1308,24 @@ if (gameMode === 'boss' && boss) {
   }
 }
       // ボス画像表示
-if (gameMode === 'boss' && boss) {
-  if (bossImage.complete && bossImage.naturalWidth > 0) {
-    const imageWidth = W * 1.25;
-    const imageHeight =
-      imageWidth * bossImage.naturalHeight / bossImage.naturalWidth;
+const currentBossImage =
+  boss.id === 'dreadnought'
+    ? dreadnoughtBossImage
+    : bossImage;
 
-    ctx.drawImage(
-      bossImage,
-      (W - imageWidth) / 2,
-      boss.y - imageHeight / 2,
-      imageWidth,
-      imageHeight
-    );
-  }
+if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
+  const imageWidth = W * 1.25;
+  const imageHeight =
+    imageWidth * currentBossImage.naturalHeight / currentBossImage.naturalWidth;
+
+  ctx.drawImage(
+    currentBossImage,
+    (W - imageWidth) / 2,
+    boss.y - imageHeight / 2,
+    imageWidth,
+    imageHeight
+  );
+}
 
   // DREADNOUGHT 主砲レーザー
   if (boss.id === 'dreadnought') {
