@@ -768,6 +768,42 @@ if (e.y < stopY) {
       }
     }
   }
+  
+  // DREADNOUGHT 主砲レーザー
+if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
+  const laser = dreadnoughtLaser;
+
+  if (!laser.charging && !laser.firing) {
+    laser.charging = true;
+    laser.chargeTimer = 2;
+  }
+
+  if (laser.charging) {
+    laser.chargeTimer -= dt;
+
+    if (laser.chargeTimer <= 0) {
+      const dx = player.x - boss.x;
+      const dy = player.y - boss.y;
+      const distance = Math.hypot(dx, dy) || 1;
+
+      laser.directionX = dx / distance;
+      laser.directionY = dy / distance;
+
+      laser.charging = false;
+      laser.firing = true;
+      laser.firingTimer = 3;
+    }
+  }
+
+  if (laser.firing) {
+    laser.firingTimer -= dt;
+
+    if (laser.firingTimer <= 0) {
+      laser.firing = false;
+    }
+  }
+}
+  
       // ボスの触手攻撃
   if (gameMode === 'boss' && boss && boss.active && boss.id === 'taint') {
     leftTentacleTimer -= dt;
