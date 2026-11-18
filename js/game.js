@@ -806,6 +806,13 @@ if (e.y < stopY) {
   // DREADNOUGHT 主砲レーザー
 if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   const laser = dreadnoughtLaser;
+  
+  dreadnoughtGuardTimer -= dt;
+
+if (dreadnoughtGuardTimer <= 0) {
+  spawnDreadnoughtGuards();
+  dreadnoughtGuardTimer = 8;
+}
 
   if (!laser.charging && !laser.firing) {
   laser.charging = true;
