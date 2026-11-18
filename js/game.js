@@ -345,6 +345,18 @@ function resetGame() {
   bossBeams = [];
   bossBeamWarning = null;
   bossBeamTimer = 5;
+  
+  dreadnoughtLaser = {
+  chargeTimer: 0,
+  firingTimer: 0,
+  targetX: 0,
+  targetY: 0,
+  directionX: 0,
+  directionY: 0,
+  charging: false,
+  firing: false
+};
+
   leftTentacleTimer = 3;
   rightTentacleTimer = 4.5;
   leftThirdTentacleTimer = 6.5;
