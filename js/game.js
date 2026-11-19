@@ -27,7 +27,9 @@ const CONFIG = {
   enemyHp: {
     shooter: 2,
     charger: 3,
-    guard: 1
+    guard: 1,
+    bomber: 1,
+    splitter: 3
   },
   enemyScore: {
     shooter: 120,
