@@ -34,7 +34,9 @@ const CONFIG = {
   enemyScore: {
     shooter: 120,
     charger: 200,
-    guard: 40
+    guard: 40,
+    bomber: 100,
+    splitter: 200
   },
   shooterFireInterval: 3,
   enemyBulletSpeed: 230,
