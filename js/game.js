@@ -324,6 +324,7 @@ let dreadnoughtRainTimer = 0.4;
 let dreadnoughtLaser = {
   chargeTimer: 0,
   firingTimer: 0,
+  reloadTimer: 0,
   targetX: 0,
   targetY: 0,
   directionX: 0,
