@@ -547,7 +547,9 @@ function makeEnemy(type, x) {
     // 停止位置
 stopY: type === 'bomber'
   ? H * 0.5
-  : H * (0.25 + Math.random() * 0.15),
+  : type === 'splitter'
+    ? H * (0.2 + Math.random() * 0.3)
+    : H * (0.25 + Math.random() * 0.15),
   
     alive: true
   };
