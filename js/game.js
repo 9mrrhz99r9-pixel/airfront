@@ -932,6 +932,13 @@ if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   EXPERT: 0
 }[selectedBossDifficulty] ?? 0;
   
+  const rainMultiplier = {
+  EASY: 1,
+  NORMAL: 1,
+  HARD: 1.5,
+  EXPERT: 2
+}[selectedBossDifficulty] ?? 1;
+
   if (laser.reloadTimer > 0) {
   laser.reloadTimer -= dt;
 }
