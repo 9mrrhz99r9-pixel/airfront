@@ -926,15 +926,16 @@ if (e.y < stopY) {
 if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   const laser = dreadnoughtLaser;
   const reloadDelay = {
-  if (laser.reloadTimer > 0) {
-  laser.reloadTimer -= dt;
-}
   EASY: 5,
   NORMAL: 3,
   HARD: 0,
   EXPERT: 0
 }[selectedBossDifficulty] ?? 0;
   
+  if (laser.reloadTimer > 0) {
+  laser.reloadTimer -= dt;
+}
+
   dreadnoughtGuardTimer -= dt;
 
 if (dreadnoughtGuardTimer <= 0) {
