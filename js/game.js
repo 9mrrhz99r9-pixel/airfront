@@ -782,20 +782,20 @@ if (e.y < stopY) {
         enemyBullets.push({ x: e.x, y: e.y + 15, r: 5 });
         e.fireTimer = CONFIG.shooterFireInterval;
       }
-    } else if (e.type === 'charger') {
+        } else if (e.type === 'charger') {
       if (!e.rushing && e.age >= CONFIG.chargerRushDelay) {
         e.rushing = true;
         e.vx = (player.x >= e.x ? 1 : -1) * CONFIG.chargerRushSpeed * 0.25;
       }
+
       if (e.rushing) {
         e.y += CONFIG.chargerRushSpeed * dt;
         e.x += e.vx * dt;
       } else {
         e.y += CONFIG.enemySpeed.charger * dt;
       }
-    }
-    
-        } else if (e.type === 'bomber') {
+
+    } else if (e.type === 'bomber') {
       if (e.y < e.stopY) {
         e.y = Math.min(
           e.y + CONFIG.enemySpeed.guard * dt,
@@ -814,9 +814,14 @@ if (e.y < stopY) {
           e.direction = -1;
         }
       }
-      
-    if (e.y > H + 50 || e.x < -60 || e.x > W + 60) e.alive = false;
+
+    }
+
+    if (e.y > H + 50 || e.x < -60 || e.x > W + 60) {
+      e.alive = false;
+    }
   }
+
   enemies = enemies.filter(e => e.alive);
 
   // 防御型集団：所定位置まで進んだら横移動
