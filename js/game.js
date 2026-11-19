@@ -937,7 +937,7 @@ if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   EASY: 1,
   NORMAL: 1,
   HARD: 1.5,
-  EXPERT: 2
+  EXPERT: 3
 }[selectedBossDifficulty] ?? 1;
 
   if (laser.reloadTimer > 0) {
