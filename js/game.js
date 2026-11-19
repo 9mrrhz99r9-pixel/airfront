@@ -460,7 +460,8 @@ if (
     : 'GAME OVER';
     
   if (gameMode === 'boss' && isClear) {
-  const recordKey = `sky_defender_boss1_records_${selectedBossDifficulty}`;
+  const bossRecordId = boss.id === 'dreadnought' ? 'boss2' : 'boss1';
+const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty}`;
   const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
 
   records.push(elapsed);
