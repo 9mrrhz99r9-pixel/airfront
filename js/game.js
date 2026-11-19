@@ -1097,6 +1097,27 @@ bossTentacles = bossTentacles.filter(t => t.alive);
       });
     }
   }
+  } else if (e.type === 'splitter' && !e.isSplitterChild) {
+    for (const direction of [-1, 1]) {
+      const child = makeEnemy('splitter', e.x);
+
+      child.x = e.x;
+      child.y = e.y;
+      child.hp = 1;
+      child.w = 22;
+      child.h = 22;
+      child.isSplitterChild = true;
+      child.splitPhase = 0;
+      child.direction = direction;
+
+      child.targetX = Math.max(
+        25,
+        Math.min(W - 25, e.x + direction * W * 0.2)
+      );
+
+      enemies.push(child);
+    }
+  }
 }
         break;
       }
