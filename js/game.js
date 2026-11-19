@@ -1043,7 +1043,24 @@ bossTentacles = bossTentacles.filter(t => t.alive);
     for (const e of enemies) {
       if (e.alive && hit(b.x, b.y, 5, e.x, e.y, e.w / 2)) {
         e.hp--; b.dead = true;
-        if (e.hp <= 0) { e.alive = false; score += CONFIG.enemyScore[e.type]; }
+        if (e.hp <= 0) {
+  e.alive = false;
+  score += CONFIG.enemyScore[e.type];
+
+  if (e.type === 'bomber') {
+    for (let i = 0; i < 8; i++) {
+      const angle = (Math.PI * 2 / 8) * i;
+
+      enemyBullets.push({
+        x: e.x,
+        y: e.y,
+        vx: Math.cos(angle) * CONFIG.enemyBulletSpeed,
+        vy: Math.sin(angle) * CONFIG.enemyBulletSpeed,
+        r: 5
+      });
+    }
+  }
+}
         break;
       }
     }
