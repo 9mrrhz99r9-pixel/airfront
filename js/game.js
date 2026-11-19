@@ -825,7 +825,7 @@ if (e.y < stopY) {
 
     }
     
-   } else if (e.type === 'splitter' && !e.isSplitterChild) {
+     else if (e.type === 'splitter' && !e.isSplitterChild) {
   if (e.y < e.stopY) {
     e.y = Math.min(
       e.y + CONFIG.enemySpeed.guard * dt,
