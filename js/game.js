@@ -67,6 +67,8 @@ const enemyImages = {
 enemyImages.shooter.src = './assets/enemy/shooter.PNG';
 enemyImages.charger.src = './assets/enemy/charger.PNG';
 enemyImages.guard.src = './assets/enemy/guard.PNG';
+enemyImages.bomber.src = './assets/enemy/bomber.PNG';
+enemyImages.splitter.src = './assets/enemy/splitter.PNG';
 
 // ボス画像
 const bossImage = new Image();
