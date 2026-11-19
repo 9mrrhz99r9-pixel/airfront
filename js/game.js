@@ -516,12 +516,16 @@ function currentSpawnInterval() {
 }
 function spawnEnemy() {
   const roll = Math.random();
-  if (roll < 0.48) {
+  if (roll < 0.43) {
     enemies.push(makeEnemy('shooter', Math.random() * (W - 50) + 25));
-  } else if (roll < 0.78) {
+  } else if (roll < 0.70) {
     enemies.push(makeEnemy('charger', Math.random() * (W - 50) + 25));
-  } else {
+  } else if (roll < 0.85) {
     spawnGuardGroup();
+  } else if (roll < 0.925) {
+    enemies.push(makeEnemy('bomber', Math.random() * (W - 50) + 25));
+  } else {
+    enemies.push(makeEnemy('splitter', Math.random() * (W - 50) + 25));
   }
 }
 function makeEnemy(type, x) {
