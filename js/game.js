@@ -361,7 +361,7 @@ function resetGame() {
   bossBeamWarning = null;
   bossBeamTimer = 5;
   dreadnoughtGuardTimer = 8;
-  dreadnoughtRainTimer = 0.4;
+  dreadnoughtRainTimer = 0.4 / rainMultiplier;
   
   dreadnoughtLaser = {
   chargeTimer: 0,
