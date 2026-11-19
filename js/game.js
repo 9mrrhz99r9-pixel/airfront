@@ -825,25 +825,56 @@ if (e.y < stopY) {
 
     }
     
-        } else if (e.type === 'splitter' && !e.isSplitterChild) {
-      if (e.y < e.stopY) {
-        e.y = Math.min(
-          e.y + CONFIG.enemySpeed.guard * dt,
-          e.stopY
-        );
-      } else {
-        e.x += e.direction * CONFIG.guardSideSpeed * 1.5 * dt;
+   } else if (e.type === 'splitter' && !e.isSplitterChild) {
+  if (e.y < e.stopY) {
+    e.y = Math.min(
+      e.y + CONFIG.enemySpeed.guard * dt,
+      e.stopY
+    );
+  } else {
+    e.x += e.direction * CONFIG.guardSideSpeed * 1.5 * dt;
 
-        if (e.x <= 25) {
-          e.x = 25;
-          e.direction = 1;
-        }
+    if (e.x <= 25) {
+      e.x = 25;
+      e.direction = 1;
+    }
 
-        if (e.x >= W - 25) {
-          e.x = W - 25;
-          e.direction = -1;
-        }
-      }
+    if (e.x >= W - 25) {
+      e.x = W - 25;
+      e.direction = -1;
+    }
+  }
+
+} else if (e.type === 'splitter' && e.isSplitterChild) {
+  if (e.splitPhase === 0) {
+    const splitSpeed = W * 0.2;
+
+    e.x += e.direction * splitSpeed * dt;
+
+    if (
+      (e.direction === -1 && e.x <= e.targetX) ||
+      (e.direction === 1 && e.x >= e.targetX)
+    ) {
+      e.x = e.targetX;
+
+      e.targetX = player.x;
+      e.targetY = player.y;
+
+      const dx = e.targetX - e.x;
+      const dy = e.targetY - e.y;
+      const length = Math.hypot(dx, dy) || 1;
+      const speed = CONFIG.chargerRushSpeed * 2;
+
+      e.vx = dx / length * speed;
+      e.vy = dy / length * speed;
+
+      e.splitPhase = 1;
+    }
+  } else if (e.splitPhase === 1) {
+    e.x += e.vx * dt;
+    e.y += e.vy * dt;
+  }
+}
 
     if (e.y > H + 50 || e.x < -60 || e.x > W + 60) {
       e.alive = false;
