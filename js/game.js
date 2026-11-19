@@ -824,6 +824,26 @@ if (e.y < stopY) {
       }
 
     }
+    
+        } else if (e.type === 'splitter' && !e.isSplitterChild) {
+      if (e.y < e.stopY) {
+        e.y = Math.min(
+          e.y + CONFIG.enemySpeed.guard * dt,
+          e.stopY
+        );
+      } else {
+        e.x += e.direction * CONFIG.guardSideSpeed * 1.5 * dt;
+
+        if (e.x <= 25) {
+          e.x = 25;
+          e.direction = 1;
+        }
+
+        if (e.x >= W - 25) {
+          e.x = W - 25;
+          e.direction = -1;
+        }
+      }
 
     if (e.y > H + 50 || e.x < -60 || e.x > W + 60) {
       e.alive = false;
