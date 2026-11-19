@@ -956,7 +956,7 @@ if (dreadnoughtRainTimer <= 0) {
   dreadnoughtRainTimer = 0.4;
 }
 
-  if (!laser.charging && !laser.firing) {
+  if (!laser.charging && !laser.firing && laser.reloadTimer <= 0) {
   laser.charging = true;
   laser.chargeTimer = 2;
   laser.targetX = player.x;
