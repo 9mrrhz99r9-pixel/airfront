@@ -961,7 +961,7 @@ if (dreadnoughtRainTimer <= 0) {
     speed: CONFIG.enemyBulletSpeed * 1.25
   });
 
-  dreadnoughtRainTimer = 0.4;
+  dreadnoughtRainTimer = 0.4 / rainMultiplier;
 }
 
   if (!laser.charging && !laser.firing && laser.reloadTimer <= 0) {
