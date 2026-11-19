@@ -1127,7 +1127,6 @@ bossTentacles = bossTentacles.filter(t => t.alive);
         r: 5
       });
     }
-  }
   } else if (e.type === 'splitter' && !e.isSplitterChild) {
     for (const direction of [-1, 1]) {
       const child = makeEnemy('splitter', e.x);
