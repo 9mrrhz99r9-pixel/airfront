@@ -545,12 +545,18 @@ function makeEnemy(type, x) {
     direction: Math.random() < 0.5 ? -1 : 1,
 
     // 停止位置
-stopY: type === 'bomber'
-  ? H * 0.5
-  : type === 'splitter'
-    ? H * (0.2 + Math.random() * 0.3)
-    : H * (0.25 + Math.random() * 0.15),
-  
+    stopY: type === 'bomber'
+      ? H * 0.5
+      : type === 'splitter'
+        ? H * (0.2 + Math.random() * 0.3)
+        : H * (0.25 + Math.random() * 0.15),
+
+    // SPLITTER小型機用
+    isSplitterChild: false,
+    splitPhase: 0,
+    targetX: 0,
+    targetY: 0,
+
     alive: true
   };
 }
