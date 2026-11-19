@@ -781,6 +781,27 @@ if (e.y < stopY) {
         e.y += CONFIG.enemySpeed.charger * dt;
       }
     }
+    
+        } else if (e.type === 'bomber') {
+      if (e.y < e.stopY) {
+        e.y = Math.min(
+          e.y + CONFIG.enemySpeed.guard * dt,
+          e.stopY
+        );
+      } else {
+        e.x += e.direction * CONFIG.guardSideSpeed * dt;
+
+        if (e.x <= 25) {
+          e.x = 25;
+          e.direction = 1;
+        }
+
+        if (e.x >= W - 25) {
+          e.x = W - 25;
+          e.direction = -1;
+        }
+      }
+      
     if (e.y > H + 50 || e.x < -60 || e.x > W + 60) e.alive = false;
   }
   enemies = enemies.filter(e => e.alive);
