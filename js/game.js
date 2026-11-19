@@ -924,6 +924,12 @@ if (e.y < stopY) {
   // DREADNOUGHT 主砲レーザー
 if (gameMode === 'boss' && boss && boss.active && boss.id === 'dreadnought') {
   const laser = dreadnoughtLaser;
+  const reloadDelay = {
+  EASY: 5,
+  NORMAL: 3,
+  HARD: 0,
+  EXPERT: 0
+}[selectedBossDifficulty] ?? 0;
   
   dreadnoughtGuardTimer -= dt;
 
