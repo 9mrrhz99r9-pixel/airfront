@@ -730,9 +730,18 @@ if (gameMode === 'score') {
 
 // 敵弾
 for (const b of enemyBullets) {
-  b.y += (b.speed || CONFIG.enemyBulletSpeed) * dt;
+  if (b.vx !== undefined && b.vy !== undefined) {
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+  } else {
+    b.y += (b.speed || CONFIG.enemyBulletSpeed) * dt;
+  }
 }
-enemyBullets = enemyBullets.filter(b => b.y < H + 20);
+
+enemyBullets = enemyBullets.filter(b =>
+  b.x > -30 && b.x < W + 30 &&
+  b.y > -30 && b.y < H + 30
+);
 
   // 通常敵
   for (const e of enemies) {
