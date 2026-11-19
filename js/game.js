@@ -980,8 +980,9 @@ if (dreadnoughtRainTimer <= 0) {
     laser.firingTimer -= dt;
 
     if (laser.firingTimer <= 0) {
-      laser.firing = false;
-    }
+  laser.firing = false;
+  laser.reloadTimer = reloadDelay;
+}
   }
 }
   
