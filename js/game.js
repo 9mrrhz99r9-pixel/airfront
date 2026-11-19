@@ -59,7 +59,9 @@ const ctx = canvas.getContext('2d');
 const enemyImages = {
   shooter: new Image(),
   charger: new Image(),
-  guard: new Image()
+  guard: new Image(),
+  bomber: new Image(),
+  splitter: new Image()
 };
 
 enemyImages.shooter.src = './assets/enemy/shooter.PNG';
