@@ -1394,8 +1394,8 @@ function drawPlayer() {
   ) {
     if (!playerImage.complete || playerImage.naturalWidth === 0) return;
 
-    const maxWidth = 58;
-    const maxHeight = 58;
+    const maxWidth = width;
+    const maxHeight = height;
 
     const scale = Math.min(
       maxWidth / playerImage.naturalWidth,
