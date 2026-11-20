@@ -1385,6 +1385,35 @@ function drawPlayer() {
 
   const width = 42;
   const height = 52;
+  
+    if (
+    selectedSkin === 'experimental' ||
+    selectedSkin === 'organic' ||
+    selectedSkin === 'special' ||
+    selectedSkin === 'saucer'
+  ) {
+    if (!playerImage.complete || playerImage.naturalWidth === 0) return;
+
+    const maxWidth = 58;
+    const maxHeight = 58;
+
+    const scale = Math.min(
+      maxWidth / playerImage.naturalWidth,
+      maxHeight / playerImage.naturalHeight
+    );
+
+    const drawWidth = playerImage.naturalWidth * scale;
+    const drawHeight = playerImage.naturalHeight * scale;
+
+    ctx.drawImage(
+      playerImage,
+      player.x - drawWidth / 2,
+      player.y - drawHeight / 2,
+      drawWidth,
+      drawHeight
+    );
+    return;
+  }
 
   if (selectedSkin === 'stealth') {
     if (!stealthImage.complete || stealthImage.naturalWidth === 0) return;
