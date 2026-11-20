@@ -270,13 +270,41 @@ const PLAYER_SKINS = {
     unlocked: true,
     hint: ''
   },
-  
+
   stealth: {
-  name: '低被探知型迎撃機',
-  image: './assets/player/stealth_sheet.PNG',
-  unlocked: localStorage.getItem('sky_defender_stealth_unlocked') === 'true',
-  hint: 'SCORE ATTACKで10,000点以上を獲得する'
-}
+    name: '低被探知型迎撃機',
+    image: './assets/player/stealth_sheet.PNG',
+    unlocked: localStorage.getItem('sky_defender_stealth_unlocked') === 'true',
+    hint: 'SCORE ATTACKで10,000点以上を獲得する'
+  },
+
+  experimental: {
+    name: '実験機',
+    image: './assets/player/04_experimental.png',
+    unlocked: true,
+    hint: ''
+  },
+
+  organic: {
+    name: '異形機',
+    image: './assets/player/05_organic.png',
+    unlocked: true,
+    hint: ''
+  },
+
+  special: {
+    name: '特別仕様機',
+    image: './assets/player/06_special.png',
+    unlocked: true,
+    hint: ''
+  },
+
+  saucer: {
+    name: '円盤型宇宙艇',
+    image: './assets/player/07_saucer.png',
+    unlocked: true,
+    hint: ''
+  }
 };
 
 let selectedSkin = 'default';
