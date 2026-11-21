@@ -1411,7 +1411,10 @@ function drawPlayer() {
     selectedSkin === 'experimental' ||
     selectedSkin === 'organic' ||
     selectedSkin === 'special' ||
-    selectedSkin === 'saucer'
+    selectedSkin === 'saucer' ||
+    selectedSkin === 'heavyArmor' ||
+    selectedSkin === 'highMobility' ||
+    selectedSkin === 'heavyArmed'
   ) {
     if (!playerImage.complete || playerImage.naturalWidth === 0) return;
 
