@@ -304,6 +304,27 @@ const PLAYER_SKINS = {
     image: './assets/player/07_saucer.png',
     unlocked: true,
     hint: ''
+  },
+  
+  heavyArmor: {
+    name: '重装甲機',
+    image: './assets/player/01_heavy_armor.png',
+    unlocked: true,
+    hint: ''
+  },
+
+  highMobility: {
+    name: '高機動機',
+    image: './assets/player/02_high_mobility.png',
+    unlocked: true,
+    hint: ''
+  },
+
+  heavyArmed: {
+    name: '重武装機',
+    image: './assets/player/03_heavy_armed.png',
+    unlocked: true,
+    hint: ''
   }
 };
 
