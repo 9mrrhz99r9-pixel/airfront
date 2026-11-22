@@ -1216,6 +1216,10 @@ function spawnBossThirdTentacle(side) {
 // 更新処理
 // =========================
 function update(dt) {
+  
+    // 電磁防壁の再展開タイマーを更新
+  updateShield(dt);
+  
   elapsed += dt;
   if (invincibleTimer > 0) invincibleTimer -= dt;
 
