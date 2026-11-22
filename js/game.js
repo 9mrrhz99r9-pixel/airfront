@@ -1809,7 +1809,7 @@ if (bossHit) {
 if (!damaged && gameMode === 'boss') {
   for (const t of bossTentacles) {
     if (
-      Math.abs(player.x - t.x) < 14 &&
+      Math.abs(player.x - t.x) < (shieldHp > 0 ? 21 : 14) &&
       player.y >= 0 &&
       player.y <= t.length
     ) {
