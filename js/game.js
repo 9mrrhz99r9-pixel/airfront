@@ -244,6 +244,76 @@ loadAttachmentData();
 // =========================
 function renderAttachmentList() {
   // =========================
+// アタッチメント合成
+// =========================
+attachmentSynthesizeButton.addEventListener('click', () => {
+  if (!selectedAttachment) return;
+
+  const { id, rarity } = selectedAttachment;
+
+  const rarityIndex = ATTACHMENT_RARITIES.findIndex(
+    item => item.id === rarity
+  );
+
+  // 最高レアリティは合成不可
+  if (
+    rarityIndex < 0 ||
+    rarityIndex >= ATTACHMENT_RARITIES.length - 1
+  ) return;
+
+  // 同種・同レアリティが3個必要
+  if (getAttachmentCount(id, rarity) < 3) return;
+
+  const attachment = ATTACHMENT_DATA.find(
+    item => item.id === id
+  );
+
+  const nextRarity = ATTACHMENT_RARITIES[rarityIndex + 1];
+
+  if (!attachment) return;
+
+  // 合成前の確認
+  const confirmed = confirm(
+    `${attachment.name}\n` +
+    `${ATTACHMENT_RARITIES[rarityIndex].name} ×3\n` +
+    `↓\n` +
+    `${nextRarity.name} ×1\n\n` +
+    `合成しますか？`
+  );
+
+  if (!confirmed) return;
+
+  // 素材を3個消費
+  attachmentInventory[id][rarity] -= 3;
+
+  // 素材が0個になった場合、装備を解除
+  if (
+    attachmentInventory[id][rarity] === 0 &&
+    equippedAttachment?.id === id &&
+    equippedAttachment?.rarity === rarity
+  ) {
+    equippedAttachment = null;
+  }
+
+  // 上位レアリティを1個獲得
+  addAttachment(id, nextRarity.id, 1);
+
+  // 保存
+  saveAttachmentData();
+
+  // 一覧と詳細を更新
+  renderAttachmentList();
+
+  const rarityData = ATTACHMENT_RARITIES[rarityIndex];
+  showAttachmentInfo(attachment, rarityData);
+
+  alert(
+    `合成成功！\n` +
+    `${attachment.name}\n` +
+    `${nextRarity.name} ×1 を獲得しました`
+  );
+});
+  // =========================
 // アタッチメント装備・解除
 // =========================
 let selectedAttachment = null;
