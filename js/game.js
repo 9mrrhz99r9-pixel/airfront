@@ -1214,10 +1214,20 @@ if (equippedAttachment?.id === 'bullet_accelerator') {
 
 // 弾の移動
 for (const b of playerBullets) {
-  b.y -= bulletSpeed * dt;
+  // 横方向の移動
+  b.x += (b.vx ?? 0) * bulletSpeed * dt;
+
+  // 縦方向の移動
+  b.y += (b.vy ?? -1) * bulletSpeed * dt;
 }
 
-playerBullets = playerBullets.filter(b => b.y > -20);
+// 画面外に出た弾を削除
+playerBullets = playerBullets.filter(
+  b =>
+    b.y > -20 &&
+    b.x > -20 &&
+    b.x < W + 20
+);
 
 // 敵弾
 for (const b of enemyBullets) {
