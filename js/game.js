@@ -1156,8 +1156,26 @@ if (gameMode === 'score') {
 }
 
   // プレイヤー弾
-  for (const b of playerBullets) b.y -= CONFIG.playerBulletSpeed * dt;
-  playerBullets = playerBullets.filter(b => b.y > -20);
+let bulletSpeed = CONFIG.playerBulletSpeed;
+
+// 弾体加速モジュールの効果
+if (equippedAttachment?.id === 'bullet_accelerator') {
+  const speedMultiplier = {
+    common: 1.10,
+    rare: 1.20,
+    epic: 1.30,
+    legendary: 1.50
+  };
+
+  bulletSpeed *= speedMultiplier[equippedAttachment.rarity] ?? 1;
+}
+
+// 弾の移動
+for (const b of playerBullets) {
+  b.y -= bulletSpeed * dt;
+}
+
+playerBullets = playerBullets.filter(b => b.y > -20);
 
 // 敵弾
 for (const b of enemyBullets) {
