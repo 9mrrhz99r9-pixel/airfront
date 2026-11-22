@@ -760,7 +760,29 @@ let pointerActive = false, firing = false;
 let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
 
 function resetGame() {
-  player = { x: W / 2, y: H - 140, w: 34, h: 42, hp: CONFIG.playerMaxHp };
+  // 基本最大HP
+  let maxHp = CONFIG.playerMaxHp;
+
+  // 複合装甲モジュールの効果
+  if (equippedAttachment?.id === 'armor_module') {
+    const armorHp = {
+      common: 4,
+      rare: 5,
+      epic: 6,
+      legendary: 8
+    };
+
+    maxHp = armorHp[equippedAttachment.rarity] ?? maxHp;
+  }
+
+  // プレイヤー初期化
+  player = {
+    x: W / 2,
+    y: H - 140,
+    w: 34,
+    h: 42,
+    hp: maxHp
+  };
   playerBullets = [];
   enemyBullets = [];
   enemies = [];
