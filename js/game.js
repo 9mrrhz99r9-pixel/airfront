@@ -1143,11 +1143,31 @@ player.x = Math.max(
 fireTimer -= dt;
 
 if (firing && fireTimer <= 0) {
+  // 拡散射撃ユニット
+const spreadAngles = {
+  common: [-5, 5],
+  rare: [-10, 0, 10],
+  epic: [-15, -5, 5, 15],
+  legendary: [-20, -10, 0, 10, 20]
+};
+
+const angles =
+  equippedAttachment?.id === 'spread_unit'
+    ? spreadAngles[equippedAttachment.rarity] ?? [0]
+    : [0];
+
+// 角度ごとに弾を生成
+for (const angle of angles) {
+  const rad = angle * Math.PI / 180;
+
   playerBullets.push({
     x: player.x,
     y: player.y - 25,
-    r: 4
+    r: 4,
+    vx: Math.sin(rad),
+    vy: -Math.cos(rad)
   });
+}
 
   // 基本発射間隔
   let fireInterval = CONFIG.playerFireInterval;
