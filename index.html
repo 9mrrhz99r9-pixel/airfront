@@ -44,6 +44,31 @@
   <button id="bossStartButton">BATTLE START</button>
 </div>
 
+<!-- アタッチメント選択画面 -->
+<div id="attachmentScreen" class="screen hidden">
+  <h1>ATTACHMENTS</h1>
+
+  <!-- 上半分：選択中のアタッチメント情報 -->
+  <div id="attachmentInfo">
+    <h2 id="attachmentInfoName">未装備</h2>
+    <p id="attachmentInfoRarity"></p>
+    <p id="attachmentInfoEffect"></p>
+    <p id="attachmentInfoCount"></p>
+    <p id="attachmentInfoStatus"></p>
+
+    <button id="attachmentEquipButton" class="hidden">装備</button>
+    <button id="attachmentSynthesizeButton" class="hidden">合成</button>
+    <p id="attachmentSynthesizeHint"></p>
+  </div>
+
+  <!-- 下半分：アタッチメント一覧 -->
+  <div id="attachmentListArea">
+    <div id="attachmentList"></div>
+  </div>
+
+  <button id="attachmentBackButton">戻る</button>
+</div>
+
 <div id="skinScreen" class="screen hidden">
   <h1>機体選択</h1>
 
