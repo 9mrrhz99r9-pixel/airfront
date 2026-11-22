@@ -1793,8 +1793,8 @@ if (bossHit) {
   guardGroups = guardGroups.filter(g => g.members.some(m => m.alive));
 
   // 被弾判定
-  if (invincibleTimer <= 0) {
-    let damaged = false;
+if (invincibleTimer <= 0 || shieldHp > 0) {
+  let damaged = false;
     for (const b of enemyBullets) {
   // 防壁展開中は当たり判定を少し大きくする
   const hitRadius = shieldHp > 0 ? 24 : 17;
