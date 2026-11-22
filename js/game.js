@@ -244,6 +244,43 @@ loadAttachmentData();
 // =========================
 function renderAttachmentList() {
   // =========================
+// アタッチメント装備・解除
+// =========================
+let selectedAttachment = null;
+
+attachmentEquipButton.addEventListener('click', () => {
+  if (!selectedAttachment) return;
+
+  const { id, rarity } = selectedAttachment;
+
+  // 未所持なら操作できない
+  if (getAttachmentCount(id, rarity) <= 0) return;
+
+  const isEquipped =
+    equippedAttachment?.id === id &&
+    equippedAttachment?.rarity === rarity;
+
+  // 装備中なら解除、それ以外なら装備
+  equippedAttachment = isEquipped
+    ? null
+    : { id, rarity };
+
+  saveAttachmentData();
+
+  // 一覧と詳細を更新
+  renderAttachmentList();
+
+  const attachment = ATTACHMENT_DATA.find(
+    item => item.id === id
+  );
+
+  const rarityData = ATTACHMENT_RARITIES.find(
+    item => item.id === rarity
+  );
+
+  showAttachmentInfo(attachment, rarityData);
+});
+  // =========================
 // アタッチメント詳細表示
 // =========================
 function showAttachmentInfo(attachment, rarity) {
