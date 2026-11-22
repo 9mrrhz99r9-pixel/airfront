@@ -1882,7 +1882,7 @@ if (!damaged && gameMode === 'boss') {
         Math.hypot(
           player.x - closestX,
           player.y - closestY
-        ) < 27
+        ) < (shieldHp > 0 ? 34 : 27)
       ) {
         damaged = true;
       }
