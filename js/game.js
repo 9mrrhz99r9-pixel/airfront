@@ -1889,12 +1889,19 @@ if (!damaged && gameMode === 'boss') {
     }
     
     if (!damaged) {
-      for (const e of enemies) {
-        if (e.alive && hit(e.x, e.y, e.w / 2, player.x, player.y, 18)) {
-          e.alive = false; damaged = true; break;
-        }
-      }
+  const hitRadius = shieldHp > 0 ? 24 : 18;
+
+  for (const e of enemies) {
+    if (
+      e.alive &&
+      hit(e.x, e.y, e.w / 2, player.x, player.y, hitRadius)
+    ) {
+      e.alive = false;
+      damaged = true;
+      break;
     }
+  }
+}
     if (!damaged) {
       for (const g of guardGroups) {
         for (const m of g.members) {
