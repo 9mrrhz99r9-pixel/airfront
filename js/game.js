@@ -243,6 +243,65 @@ loadAttachmentData();
 // アタッチメント一覧表示
 // =========================
 function renderAttachmentList() {
+  // =========================
+// アタッチメント詳細表示
+// =========================
+function showAttachmentInfo(attachment, rarity) {
+  const count = getAttachmentCount(
+    attachment.id,
+    rarity.id
+  );
+
+  attachmentInfoName.textContent = attachment.name;
+  attachmentInfoRarity.textContent = rarity.name;
+  attachmentInfoRarity.style.color = rarity.color;
+
+  // 未所持
+  if (count <= 0) {
+    attachmentInfoEffect.textContent = '未所持';
+    attachmentInfoCount.textContent = '';
+    attachmentInfoStatus.textContent = '';
+
+    attachmentEquipButton.classList.add('hidden');
+    attachmentSynthesizeButton.classList.add('hidden');
+    attachmentSynthesizeHint.textContent = '';
+    return;
+  }
+
+  const rarityIndex = ATTACHMENT_RARITIES.findIndex(
+    item => item.id === rarity.id
+  );
+
+  attachmentInfoEffect.textContent =
+    attachment.effects[rarityIndex];
+
+  attachmentInfoCount.textContent = `所持数：${count}`;
+
+  const isEquipped =
+    equippedAttachment?.id === attachment.id &&
+    equippedAttachment?.rarity === rarity.id;
+
+  attachmentInfoStatus.textContent =
+    isEquipped ? '装備中' : '未装備';
+
+  attachmentEquipButton.textContent =
+    isEquipped ? '装備解除' : '装備';
+
+  attachmentEquipButton.classList.remove('hidden');
+
+  // 合成条件
+  const isMaxRarity = rarity.id === 'legendary';
+  const canSynthesize = count >= 3 && !isMaxRarity;
+
+  attachmentSynthesizeButton.classList.remove('hidden');
+  attachmentSynthesizeButton.disabled = !canSynthesize;
+
+  attachmentSynthesizeHint.textContent = isMaxRarity
+    ? '最高レアリティ'
+    : canSynthesize
+      ? '合成可能'
+      : `合成まであと${3 - count}個`;
+}
   attachmentList.innerHTML = '';
 
   // レアリティ順 → アタッチメント種類順
