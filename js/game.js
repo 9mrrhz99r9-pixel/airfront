@@ -1796,10 +1796,15 @@ if (bossHit) {
   if (invincibleTimer <= 0) {
     let damaged = false;
     for (const b of enemyBullets) {
-      if (hit(b.x, b.y, b.r, player.x, player.y, 17)) {
-        b.dead = true; damaged = true; break;
-      }
-    }
+  // 防壁展開中は当たり判定を少し大きくする
+  const hitRadius = shieldHp > 0 ? 24 : 17;
+
+  if (hit(b.x, b.y, b.r, player.x, player.y, hitRadius)) {
+    b.dead = true;
+    damaged = true;
+    break;
+  }
+}
         // ボスの触手との衝突
 if (!damaged && gameMode === 'boss') {
   for (const t of bossTentacles) {
