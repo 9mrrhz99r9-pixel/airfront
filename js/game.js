@@ -1911,4 +1911,17 @@ titleButton.addEventListener('click', () => {
   gameOverScreen.classList.add('hidden');
   titleScreen.classList.remove('hidden');
 });
+
+// 機体選択 → アタッチメント選択
+attachmentSelectButton.addEventListener('click', () => {
+  skinScreen.classList.add('hidden');
+  attachmentScreen.classList.remove('hidden');
+});
+
+// アタッチメント選択 → 機体選択
+attachmentBackButton.addEventListener('click', () => {
+  attachmentScreen.classList.add('hidden');
+  skinScreen.classList.remove('hidden');
+});
+
 })();
