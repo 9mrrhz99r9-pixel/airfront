@@ -2209,8 +2209,47 @@ attachmentSelectButton.addEventListener('click', () => {
   skinScreen.classList.add('hidden');
   attachmentScreen.classList.remove('hidden');
 
-  // アタッチメント一覧を生成
+  // 選択状態を初期化
+  selectedAttachment = null;
+
+  // 一覧を生成
   renderAttachmentList();
+
+  // 装備中のアタッチメントがある場合
+  if (equippedAttachment) {
+    const attachment = ATTACHMENT_DATA.find(
+      item => item.id === equippedAttachment.id
+    );
+
+    const rarity = ATTACHMENT_RARITIES.find(
+      item => item.id === equippedAttachment.rarity
+    );
+
+    if (
+      attachment &&
+      rarity &&
+      getAttachmentCount(attachment.id, rarity.id) > 0
+    ) {
+      selectedAttachment = {
+        id: attachment.id,
+        rarity: rarity.id
+      };
+
+      showAttachmentInfo(attachment, rarity);
+      return;
+    }
+  }
+
+  // 未装備の場合
+  attachmentInfoName.textContent = '未装備';
+  attachmentInfoRarity.textContent = '';
+  attachmentInfoEffect.textContent = '';
+  attachmentInfoCount.textContent = '';
+  attachmentInfoStatus.textContent = '';
+
+  attachmentEquipButton.classList.add('hidden');
+  attachmentSynthesizeButton.classList.add('hidden');
+  attachmentSynthesizeHint.textContent = '';
 });
 
 // アタッチメント選択 → 機体選択
