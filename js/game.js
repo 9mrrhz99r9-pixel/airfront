@@ -108,6 +108,60 @@ const attachmentScreen = document.getElementById('attachmentScreen');
 const attachmentSelectButton = document.getElementById('attachmentSelectButton');
 const attachmentBackButton = document.getElementById('attachmentBackButton');
 
+// =========================
+// アタッチメント基本データ
+// =========================
+const ATTACHMENT_DATA = [
+  {
+    id: 'bullet_accelerator',
+    name: '弾体加速モジュール',
+    image: 'assets/attachments/bullet_accelerator.PNG',
+    effects: ['弾速+10%', '弾速+20%', '弾速+30%', '弾速+50%']
+  },
+  {
+    id: 'rapid_loader',
+    name: '高速装填機構',
+    image: 'assets/attachments/rapid_loader.PNG',
+    effects: ['発射間隔0.45秒', '発射間隔0.40秒', '発射間隔0.30秒', '発射間隔0.20秒']
+  },
+  {
+    id: 'spread_unit',
+    name: '拡散射撃ユニット',
+    image: 'assets/attachments/spread_unit.PNG',
+    effects: ['2方向射撃', '3方向射撃', '4方向射撃', '5方向射撃']
+  },
+  {
+    id: 'armor_module',
+    name: '複合装甲モジュール',
+    image: 'assets/attachments/armor_module.PNG',
+    effects: ['最大HP4', '最大HP5', '最大HP6', '最大HP8']
+  },
+  {
+    id: 'shield_generator',
+    name: '電磁防壁発生器',
+    image: 'assets/attachments/shield_generator.PNG',
+    effects: [
+      '防壁HP1・再展開20秒',
+      '防壁HP1・再展開16秒',
+      '防壁HP1・再展開12秒',
+      '防壁HP2・再展開10秒'
+    ]
+  },
+  {
+    id: 'evasion_system',
+    name: '緊急回避システム',
+    image: 'assets/attachments/evasion_system.PNG',
+    effects: ['ダメージ無効化5%', 'ダメージ無効化10%', 'ダメージ無効化15%', 'ダメージ無効化25%']
+  }
+];
+
+const ATTACHMENT_RARITIES = [
+  { id: 'common', name: 'COMMON', color: '#ffffff' },
+  { id: 'rare', name: 'RARE', color: '#3498ff' },
+  { id: 'epic', name: 'EPIC', color: '#ad63ff' },
+  { id: 'legendary', name: 'LEGENDARY', color: '#ffcc33' }
+];
+
 const gameOverScreen = document.getElementById('gameOverScreen');
 const resultTitle = document.getElementById('resultTitle');
 const resultEl = document.getElementById('result');
