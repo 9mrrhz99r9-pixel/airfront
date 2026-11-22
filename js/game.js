@@ -162,6 +162,73 @@ const ATTACHMENT_RARITIES = [
   { id: 'legendary', name: 'LEGENDARY', color: '#ffcc33' }
 ];
 
+// =========================
+// アタッチメント所持・装備データ
+// =========================
+const ATTACHMENT_SAVE_KEY = 'sky_defender_attachments_v1';
+
+// 所持数：アタッチメントID → レアリティ → 個数
+let attachmentInventory = {};
+
+// 装備中：未装備ならnull
+let equippedAttachment = null;
+
+// 保存データの読み込み
+function loadAttachmentData() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(ATTACHMENT_SAVE_KEY)
+    );
+
+    attachmentInventory =
+      saved?.inventory &&
+      typeof saved.inventory === 'object' &&
+      !Array.isArray(saved.inventory)
+        ? saved.inventory
+        : {};
+
+    equippedAttachment = saved?.equipped ?? null;
+  } catch (error) {
+    attachmentInventory = {};
+    equippedAttachment = null;
+  }
+}
+
+// 保存データの書き込み
+function saveAttachmentData() {
+  localStorage.setItem(
+    ATTACHMENT_SAVE_KEY,
+    JSON.stringify({
+      inventory: attachmentInventory,
+      equipped: equippedAttachment
+    })
+  );
+}
+
+// 指定した種類・レアリティの所持数
+function getAttachmentCount(id, rarity) {
+  return attachmentInventory[id]?.[rarity] ?? 0;
+}
+
+// アタッチメントを所持品に追加
+function addAttachment(id, rarity, amount = 1) {
+  if (!ATTACHMENT_DATA.some(item => item.id === id)) return;
+  if (!ATTACHMENT_RARITIES.some(item => item.id === rarity)) return;
+  if (!Number.isInteger(amount) || amount <= 0) return;
+
+  if (!attachmentInventory[id]) {
+    attachmentInventory[id] = {};
+  }
+
+  attachmentInventory[id][rarity] =
+    getAttachmentCount(id, rarity) + amount;
+
+  saveAttachmentData();
+}
+
+// 保存済みデータを読み込む
+loadAttachmentData();
+
 const gameOverScreen = document.getElementById('gameOverScreen');
 const resultTitle = document.getElementById('resultTitle');
 const resultEl = document.getElementById('result');
