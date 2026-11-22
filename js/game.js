@@ -1922,9 +1922,12 @@ if (!damaged && gameMode === 'boss') {
   }
 }
     if (damaged) {
-  // 防壁が展開中なら防壁がダメージを吸収
-  if (!absorbShieldDamage()) {
-    // 防壁がない場合は通常ダメージ
+  // 防壁が展開中なら優先してダメージを吸収
+  if (shieldHp > 0) {
+    absorbShieldDamage();
+  }
+  // 防壁がない場合、無敵時間が終了していればダメージ
+  else if (invincibleTimer <= 0) {
     player.hp--;
     invincibleTimer = CONFIG.invincibleTime;
 
