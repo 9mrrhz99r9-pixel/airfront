@@ -1901,10 +1901,15 @@ if (!damaged && gameMode === 'boss') {
       }
     }
     if (damaged) {
-      player.hp--;
-      invincibleTimer = CONFIG.invincibleTime;
-      if (player.hp <= 0) endGame();
-    }
+  // 防壁が展開中なら防壁がダメージを吸収
+  if (!absorbShieldDamage()) {
+    // 防壁がない場合は通常ダメージ
+    player.hp--;
+    invincibleTimer = CONFIG.invincibleTime;
+
+    if (player.hp <= 0) endGame();
+  }
+}
   }
   enemyBullets = enemyBullets.filter(b => !b.dead);
   enemies = enemies.filter(e => e.alive);
