@@ -1961,8 +1961,8 @@ function drawBackground() {
     ctx.fillRect(x, y, 2, 2);
   }
 }
-function drawPlayer() {
-  // =========================
+
+// =========================
 // 電磁防壁の描画
 // =========================
 function drawShield() {
@@ -1983,6 +1983,8 @@ function drawShield() {
 
   ctx.restore();
 }
+
+function drawPlayer() {
   if (invincibleTimer > 0 && Math.floor(invincibleTimer * 12) % 2 === 0) return;
 
   const width = 42;
