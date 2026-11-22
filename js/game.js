@@ -348,8 +348,8 @@ function showAttachmentInfo(attachment, rarity) {
       }
 
       button.addEventListener('click', () => {
-        // 詳細表示は次の手順で実装
-      });
+      showAttachmentInfo(attachment, rarity);
+       });
 
       attachmentList.appendChild(button);
     }
