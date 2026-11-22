@@ -1962,6 +1962,27 @@ function drawBackground() {
   }
 }
 function drawPlayer() {
+  // =========================
+// 電磁防壁の描画
+// =========================
+function drawShield() {
+  if (shieldHp <= 0) return;
+
+  ctx.save();
+
+  // 半透明の防壁
+  ctx.beginPath();
+  ctx.arc(player.x, player.y, 24, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(60, 200, 255, 0.15)';
+  ctx.fill();
+
+  // 防壁の輪郭
+  ctx.strokeStyle = 'rgba(100, 220, 255, 0.85)';
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  ctx.restore();
+}
   if (invincibleTimer > 0 && Math.floor(invincibleTimer * 12) % 2 === 0) return;
 
   const width = 42;
