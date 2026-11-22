@@ -1903,15 +1903,24 @@ if (!damaged && gameMode === 'boss') {
   }
 }
     if (!damaged) {
-      for (const g of guardGroups) {
-        for (const m of g.members) {
-          if (m.alive && hit(m.x, m.y, m.w / 2, player.x, player.y, 18)) {
-            m.alive = false; damaged = true; break;
-          }
-        }
-        if (damaged) break;
+  // 防壁展開中は当たり判定を拡大
+  const hitRadius = shieldHp > 0 ? 24 : 18;
+
+  for (const g of guardGroups) {
+    for (const m of g.members) {
+      if (
+        m.alive &&
+        hit(m.x, m.y, m.w / 2, player.x, player.y, hitRadius)
+      ) {
+        m.alive = false;
+        damaged = true;
+        break;
       }
     }
+
+    if (damaged) break;
+  }
+}
     if (damaged) {
   // 防壁が展開中なら防壁がダメージを吸収
   if (!absorbShieldDamage()) {
