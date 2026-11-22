@@ -1846,7 +1846,7 @@ if (!damaged && gameMode === 'boss') {
           Math.hypot(
             player.x - closestX,
             player.y - closestY
-          ) < 19
+          ) < (shieldHp > 0 ? 26 : 19)
         ) {
           damaged = true;
           break;
