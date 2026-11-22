@@ -107,6 +107,16 @@ const skinBackButton = document.getElementById('skinBackButton');
 const attachmentScreen = document.getElementById('attachmentScreen');
 const attachmentSelectButton = document.getElementById('attachmentSelectButton');
 const attachmentBackButton = document.getElementById('attachmentBackButton');
+// アタッチメント一覧・情報表示
+const attachmentList = document.getElementById('attachmentList');
+const attachmentInfoName = document.getElementById('attachmentInfoName');
+const attachmentInfoRarity = document.getElementById('attachmentInfoRarity');
+const attachmentInfoEffect = document.getElementById('attachmentInfoEffect');
+const attachmentInfoCount = document.getElementById('attachmentInfoCount');
+const attachmentInfoStatus = document.getElementById('attachmentInfoStatus');
+const attachmentEquipButton = document.getElementById('attachmentEquipButton');
+const attachmentSynthesizeButton = document.getElementById('attachmentSynthesizeButton');
+const attachmentSynthesizeHint = document.getElementById('attachmentSynthesizeHint');
 
 // =========================
 // アタッチメント基本データ
