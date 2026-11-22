@@ -857,6 +857,9 @@ function resetGame() {
   fireTimer = 0;
   invincibleTimer = 0;
   firing = false;
+
+  // 電磁防壁発生器を初期化
+  resetShield();
   
   boss = null;
   bossTentacles = [];
