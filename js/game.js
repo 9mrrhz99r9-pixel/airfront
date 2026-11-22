@@ -239,6 +239,64 @@ function addAttachment(id, rarity, amount = 1) {
 // 保存済みデータを読み込む
 loadAttachmentData();
 
+// =========================
+// アタッチメント一覧表示
+// =========================
+function renderAttachmentList() {
+  attachmentList.innerHTML = '';
+
+  // レアリティ順 → アタッチメント種類順
+  for (const rarity of ATTACHMENT_RARITIES) {
+    for (const attachment of ATTACHMENT_DATA) {
+      const count = getAttachmentCount(
+        attachment.id,
+        rarity.id
+      );
+
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'attachment-item';
+
+      // レアリティごとの枠色
+      button.style.borderColor = rarity.color;
+
+      // 未所持は暗く表示
+      if (count === 0) {
+        button.classList.add('unowned');
+      }
+
+      const img = document.createElement('img');
+      img.src = attachment.image;
+      img.alt = attachment.name;
+      img.className = 'attachment-icon';
+
+      button.appendChild(img);
+
+      // 所持数を右下に表示
+      if (count > 0) {
+        const countLabel = document.createElement('span');
+        countLabel.className = 'attachment-count';
+        countLabel.textContent = `×${count}`;
+        button.appendChild(countLabel);
+      }
+
+      // 装備中のアタッチメントを強調
+      if (
+        equippedAttachment?.id === attachment.id &&
+        equippedAttachment?.rarity === rarity.id
+      ) {
+        button.classList.add('equipped');
+      }
+
+      button.addEventListener('click', () => {
+        // 詳細表示は次の手順で実装
+      });
+
+      attachmentList.appendChild(button);
+    }
+  }
+}
+
 const gameOverScreen = document.getElementById('gameOverScreen');
 const resultTitle = document.getElementById('resultTitle');
 const resultEl = document.getElementById('result');
