@@ -102,6 +102,12 @@ const skinScreen = document.getElementById('skinScreen');
 const skinButton = document.getElementById('skinButton');
 const skinList = document.getElementById('skinList');
 const skinBackButton = document.getElementById('skinBackButton');
+
+// アタッチメント選択画面
+const attachmentScreen = document.getElementById('attachmentScreen');
+const attachmentSelectButton = document.getElementById('attachmentSelectButton');
+const attachmentBackButton = document.getElementById('attachmentBackButton');
+
 const gameOverScreen = document.getElementById('gameOverScreen');
 const resultTitle = document.getElementById('resultTitle');
 const resultEl = document.getElementById('result');
