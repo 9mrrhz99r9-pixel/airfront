@@ -385,8 +385,15 @@ function showAttachmentInfo(attachment, rarity) {
       }
 
       button.addEventListener('click', () => {
-      showAttachmentInfo(attachment, rarity);
-       });
+  // 選択中のアタッチメントを記録
+  selectedAttachment = {
+    id: attachment.id,
+    rarity: rarity.id
+  };
+
+  // 詳細情報を更新
+  showAttachmentInfo(attachment, rarity);
+});
 
       attachmentList.appendChild(button);
     }
