@@ -759,6 +759,70 @@ let invincibleTimer = 0, lastTime = 0;
 let pointerActive = false, firing = false;
 let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
 
+// =========================
+// 電磁防壁発生器
+// =========================
+let shieldHp = 0;
+let shieldMaxHp = 0;
+let shieldCooldown = 0;
+let shieldCooldownTime = 0;
+
+// ミッション開始時の防壁初期化
+function resetShield() {
+  shieldHp = 0;
+  shieldMaxHp = 0;
+  shieldCooldown = 0;
+  shieldCooldownTime = 0;
+
+  if (equippedAttachment?.id !== 'shield_generator') {
+    return;
+  }
+
+  const shieldSettings = {
+    common: { hp: 1, cooldown: 20 },
+    rare: { hp: 1, cooldown: 16 },
+    epic: { hp: 1, cooldown: 12 },
+    legendary: { hp: 2, cooldown: 10 }
+  };
+
+  const settings =
+    shieldSettings[equippedAttachment.rarity];
+
+  if (!settings) return;
+
+  shieldMaxHp = settings.hp;
+  shieldCooldownTime = settings.cooldown;
+
+  // 開始時は防壁なし。再展開まで待機
+  shieldCooldown = shieldCooldownTime;
+}
+
+// 防壁の再展開タイマー更新
+function updateShield(dt) {
+  if (shieldMaxHp <= 0 || shieldHp > 0) return;
+
+  shieldCooldown -= dt;
+
+  if (shieldCooldown <= 0) {
+    shieldHp = shieldMaxHp;
+    shieldCooldown = 0;
+  }
+}
+
+// 防壁が攻撃を吸収
+function absorbShieldDamage() {
+  if (shieldHp <= 0) return false;
+
+  shieldHp--;
+
+  if (shieldHp <= 0) {
+    shieldHp = 0;
+    shieldCooldown = shieldCooldownTime;
+  }
+
+  return true;
+}
+
 function resetGame() {
   // 基本最大HP
   let maxHp = CONFIG.playerMaxHp;
