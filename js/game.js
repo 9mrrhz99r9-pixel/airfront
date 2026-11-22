@@ -2105,6 +2105,9 @@ titleButton.addEventListener('click', () => {
 attachmentSelectButton.addEventListener('click', () => {
   skinScreen.classList.add('hidden');
   attachmentScreen.classList.remove('hidden');
+
+  // アタッチメント一覧を生成
+  renderAttachmentList();
 });
 
 // アタッチメント選択 → 機体選択
