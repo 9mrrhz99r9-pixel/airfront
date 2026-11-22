@@ -1140,11 +1140,33 @@ player.x = Math.max(
 );
 
   // 発砲
-  fireTimer -= dt;
-  if (firing && fireTimer <= 0) {
-    playerBullets.push({ x: player.x, y: player.y - 25, r: 4 });
-    fireTimer = CONFIG.playerFireInterval;
+fireTimer -= dt;
+
+if (firing && fireTimer <= 0) {
+  playerBullets.push({
+    x: player.x,
+    y: player.y - 25,
+    r: 4
+  });
+
+  // 基本発射間隔
+  let fireInterval = CONFIG.playerFireInterval;
+
+  // 高速装填機構の効果
+  if (equippedAttachment?.id === 'rapid_loader') {
+    const fireIntervals = {
+      common: 0.45,
+      rare: 0.40,
+      epic: 0.30,
+      legendary: 0.20
+    };
+
+    fireInterval =
+      fireIntervals[equippedAttachment.rarity] ?? fireInterval;
   }
+
+  fireTimer = fireInterval;
+}
 
   // 難易度に応じた敵出現
 if (gameMode === 'score') {
