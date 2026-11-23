@@ -269,6 +269,51 @@ function grantTestAttachments() {
 }
 
 // =========================
+// ボス撃破時のドロップ抽選
+// =========================
+function rollBossAttachmentDrop(difficulty, dropIds) {
+  const dropRates = {
+    EASY: 0.20,
+    NORMAL: 0.35,
+    HARD: 0.50,
+    EXPERT: 0.65
+  };
+
+  const dropRate = dropRates[difficulty] ?? 0;
+
+  // ドロップしなかった場合
+  if (Math.random() >= dropRate) {
+    return null;
+  }
+
+  // レアリティ抽選
+  const roll = Math.random();
+
+  let rarity;
+
+  if (roll < 0.50) {
+    rarity = 'common';
+  } else if (roll < 0.80) {
+    rarity = 'rare';
+  } else if (roll < 0.95) {
+    rarity = 'epic';
+  } else {
+    rarity = 'legendary';
+  }
+
+  // ボス固有のドロップ候補から1種類選ぶ
+  if (!Array.isArray(dropIds) || dropIds.length === 0) {
+    return null;
+  }
+
+  const id = dropIds[
+    Math.floor(Math.random() * dropIds.length)
+  ];
+
+  return { id, rarity };
+}
+
+// =========================
 // 選択中のアタッチメント
 // =========================
 let selectedAttachment = null;
