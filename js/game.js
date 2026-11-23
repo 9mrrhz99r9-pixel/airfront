@@ -1982,16 +1982,36 @@ function drawShield() {
 
   ctx.save();
 
-  // 半透明の防壁
+  // 展開直後の発光の強さ（0〜1）
+  const flash = Math.min(1, shieldFlashTimer / 0.4);
+
+  // 防壁本体
   ctx.beginPath();
   ctx.arc(player.x, player.y, 24, 0, Math.PI * 2);
-  ctx.fillStyle = 'rgba(60, 200, 255, 0.15)';
+
+  ctx.fillStyle = `rgba(60, 200, 255, ${0.15 + flash * 0.35})`;
   ctx.fill();
 
   // 防壁の輪郭
-  ctx.strokeStyle = 'rgba(100, 220, 255, 0.85)';
-  ctx.lineWidth = 2;
+  ctx.strokeStyle = `rgba(100, 220, 255, ${0.85 + flash * 0.15})`;
+  ctx.lineWidth = 2 + flash * 2;
+
+  // 展開時だけ発光
+  ctx.shadowColor = '#66ddff';
+  ctx.shadowBlur = flash * 25;
+
   ctx.stroke();
+
+  // 展開時に外側へ広がる光のリング
+  if (flash > 0) {
+    const radius = 24 + (1 - flash) * 18;
+
+    ctx.beginPath();
+    ctx.arc(player.x, player.y, radius, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(130, 230, 255, ${flash * 0.8})`;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  }
 
   ctx.restore();
 }
