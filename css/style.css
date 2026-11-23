@@ -270,3 +270,37 @@ body {
   outline: 2px solid white;
   outline-offset: 2px;
 }
+
+/* =========================
+   ボス撃破時のアタッチメント報酬
+========================= */
+
+.attachment-drop-result {
+  margin-top: 18px;
+  padding: 14px 18px;
+
+  background: rgba(10, 30, 50, 0.85);
+  border: 1px solid rgba(80, 200, 255, 0.6);
+  border-radius: 6px;
+
+  box-shadow:
+    0 0 12px rgba(40, 160, 255, 0.2),
+    inset 0 0 10px rgba(40, 160, 255, 0.08);
+
+  text-align: center;
+  line-height: 1.8;
+}
+
+.attachment-drop-result strong {
+  display: block;
+  margin-bottom: 6px;
+
+  color: #80dfff;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.attachment-drop-result div {
+  font-size: 15px;
+  font-weight: bold;
+}
