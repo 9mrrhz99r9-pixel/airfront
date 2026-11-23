@@ -886,28 +886,12 @@ function tryEmergencyEvasion() {
   return Math.random() < rate;
 }
 
-// 防壁が攻撃を吸収
-function absorbShieldDamage() {
-  // =========================
+// =========================
 // 電磁防壁の破壊エフェクト
 // =========================
 let shieldParticles = [];
 
-// 防壁破壊時に粒子を生成
 function createShieldBreakEffect() {
-  // 防壁破壊エフェクトの更新
-function updateShieldParticles(dt) {
-  for (const p of shieldParticles) {
-    p.x += p.vx * dt;
-    p.y += p.vy * dt;
-    p.life -= dt;
-  }
-
-  // 寿命が尽きた粒子を削除
-  shieldParticles = shieldParticles.filter(
-    p => p.life > 0
-  );
-}
   const particleCount = 20;
 
   for (let i = 0; i < particleCount; i++) {
@@ -925,17 +909,33 @@ function updateShieldParticles(dt) {
     });
   }
 }
+
+// 粒子の移動と寿命管理
+function updateShieldParticles(dt) {
+  for (const p of shieldParticles) {
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.life -= dt;
+  }
+
+  shieldParticles = shieldParticles.filter(
+    p => p.life > 0
+  );
+}
+
+// 防壁が攻撃を吸収
+function absorbShieldDamage() {
   if (shieldHp <= 0) return false;
 
   shieldHp--;
 
   if (shieldHp <= 0) {
-  shieldHp = 0;
-  shieldCooldown = shieldCooldownTime;
+    shieldHp = 0;
+    shieldCooldown = shieldCooldownTime;
 
-  // 防壁破壊時の粒子エフェクト
-  createShieldBreakEffect();
-}
+    // 防壁破壊時の粒子エフェクト
+    createShieldBreakEffect();
+  }
 
   return true;
 }
