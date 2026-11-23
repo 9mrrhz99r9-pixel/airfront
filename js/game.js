@@ -240,6 +240,41 @@ function addAttachment(id, rarity, amount = 1) {
 loadAttachmentData();
 
 // =========================
+// アタッチメント動作確認用
+// =========================
+function grantTestAttachments() {
+  const testIds = [
+    'bullet_accelerator',
+    'rapid_loader',
+    'spread_unit',
+    'armor_module',
+    'shield_generator',
+    'evasion_system'
+  ];
+
+  const rarities = [
+    'common',
+    'rare',
+    'epic',
+    'legendary'
+  ];
+
+  for (const id of testIds) {
+    for (const rarity of rarities) {
+      if (getAttachmentCount(id, rarity) === 0) {
+        addAttachment(id, rarity, 1);
+      }
+    }
+  }
+}
+
+// テスト用：初回のみ実行
+if (localStorage.getItem('sky_defender_attachment_test_v1') !== 'done') {
+  grantTestAttachments();
+  localStorage.setItem('sky_defender_attachment_test_v1', 'done');
+}
+
+// =========================
 // アタッチメント一覧表示
 // =========================
 function renderAttachmentList() {
