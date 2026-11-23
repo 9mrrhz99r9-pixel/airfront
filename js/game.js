@@ -829,8 +829,8 @@ function updateShield(dt) {
 // =========================
 function tryEmergencyEvasion() {
   if (
-    !equippedAttachment ||
-    equippedAttachment.id !== 'evasion_system'
+    !battleAttachment ||
+    battleAttachment.id !== 'evasion_system'
   ) {
     return false;
   }
@@ -842,7 +842,7 @@ function tryEmergencyEvasion() {
     legendary: 0.25
   };
 
-  const rate = evasionRates[equippedAttachment.rarity] ?? 0;
+  const rate = evasionRates[battleAttachment.rarity] ?? 0;
 
   return Math.random() < rate;
 }
