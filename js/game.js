@@ -352,7 +352,6 @@ attachmentSynthesizeButton.addEventListener('click', () => {
   // =========================
 // アタッチメント装備・解除
 // =========================
-let selectedAttachment = null;
 
 attachmentEquipButton.addEventListener('click', () => {
   if (!selectedAttachment) return;
