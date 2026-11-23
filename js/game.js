@@ -793,7 +793,7 @@ function resetShield() {
   };
 
   const settings =
-    shieldSettings[equippedAttachment.rarity];
+    shieldSettings[battleAttachment.rarity];
 
   if (!settings) return;
 
