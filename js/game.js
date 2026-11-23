@@ -767,6 +767,9 @@ let shieldMaxHp = 0;
 let shieldCooldown = 0;
 let shieldCooldownTime = 0;
 
+// 防壁展開時の発光演出
+let shieldFlashTimer = 0;
+
 // ミッション開始時の防壁初期化
 function resetShield() {
   shieldHp = 0;
