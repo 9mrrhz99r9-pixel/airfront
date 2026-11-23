@@ -770,6 +770,9 @@ let shieldCooldownTime = 0;
 // 防壁展開時の発光演出
 let shieldFlashTimer = 0;
 
+// 戦闘開始時のアタッチメント情報
+let battleAttachment = null;
+
 // ミッション開始時の防壁初期化
 function resetShield() {
   shieldHp = 0;
