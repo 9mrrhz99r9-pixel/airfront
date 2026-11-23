@@ -289,12 +289,13 @@ const BOSS_ATTACHMENT_DROPS = {
 // ボス撃破時のドロップ抽選
 // =========================
 function rollBossAttachmentDrop(difficulty, dropIds) {
-  const dropRates = {
-    EASY: 0.20,
-    NORMAL: 0.35,
-    HARD: 0.50,
-    EXPERT: 0.65
-  };
+  // テスト用：全難易度で必ずドロップ
+const dropRates = {
+  EASY: 1.00,
+  NORMAL: 1.00,
+  HARD: 1.00,
+  EXPERT: 1.00
+};
 
   const dropRate = dropRates[difficulty] ?? 0;
 
