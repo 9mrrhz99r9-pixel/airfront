@@ -1355,7 +1355,7 @@ for (const angle of angles) {
   let fireInterval = CONFIG.playerFireInterval;
 
   // 高速装填機構の効果
-  if (equippedAttachment?.id === 'rapid_loader') {
+  if (battleAttachment?.id === 'rapid_loader') {
     const fireIntervals = {
       common: 0.45,
       rare: 0.40,
