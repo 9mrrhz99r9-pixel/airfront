@@ -444,6 +444,10 @@ function showAttachmentInfo(attachment, rarity) {
       ? '合成可能'
       : `合成まであと${3 - count}個`;
 }
+// =========================
+// アタッチメント一覧表示
+// =========================
+function renderAttachmentList() {
   attachmentList.innerHTML = '';
 
   // レアリティ順 → アタッチメント種類順
