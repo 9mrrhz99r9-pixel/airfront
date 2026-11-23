@@ -275,10 +275,11 @@ if (localStorage.getItem('sky_defender_attachment_test_v1') !== 'done') {
 }
 
 // =========================
-// アタッチメント一覧表示
+// 選択中のアタッチメント
 // =========================
-function renderAttachmentList() {
-  // =========================
+let selectedAttachment = null;
+
+// =========================
 // アタッチメント合成
 // =========================
 attachmentSynthesizeButton.addEventListener('click', () => {
