@@ -823,6 +823,30 @@ function updateShield(dt) {
 
 // 防壁が攻撃を吸収
 function absorbShieldDamage() {
+  // =========================
+// 電磁防壁の破壊エフェクト
+// =========================
+let shieldParticles = [];
+
+// 防壁破壊時に粒子を生成
+function createShieldBreakEffect() {
+  const particleCount = 20;
+
+  for (let i = 0; i < particleCount; i++) {
+    const angle = Math.PI * 2 * i / particleCount;
+    const speed = 60 + Math.random() * 100;
+
+    shieldParticles.push({
+      x: player.x + Math.cos(angle) * 24,
+      y: player.y + Math.sin(angle) * 24,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 0.5,
+      maxLife: 0.5,
+      size: 2 + Math.random() * 2
+    });
+  }
+}
   if (shieldHp <= 0) return false;
 
   shieldHp--;
