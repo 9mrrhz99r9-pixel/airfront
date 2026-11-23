@@ -1364,7 +1364,7 @@ for (const angle of angles) {
     };
 
     fireInterval =
-      fireIntervals[equippedAttachment.rarity] ?? fireInterval;
+      fireIntervals[battleAttachment.rarity] ?? fireInterval;
   }
 
   fireTimer = fireInterval;
