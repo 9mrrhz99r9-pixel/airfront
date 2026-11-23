@@ -821,6 +821,29 @@ function updateShield(dt) {
 }
 }
 
+// =========================
+// 緊急回避システム
+// =========================
+function tryEmergencyEvasion() {
+  if (
+    !equippedAttachment ||
+    equippedAttachment.id !== 'evasion_system'
+  ) {
+    return false;
+  }
+
+  const evasionRates = {
+    common: 0.05,
+    rare: 0.10,
+    epic: 0.15,
+    legendary: 0.25
+  };
+
+  const rate = evasionRates[equippedAttachment.rarity] ?? 0;
+
+  return Math.random() < rate;
+}
+
 // 防壁が攻撃を吸収
 function absorbShieldDamage() {
   // =========================
