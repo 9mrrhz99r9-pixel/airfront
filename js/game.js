@@ -936,6 +936,9 @@ function resetGame() {
   // 電磁防壁発生器を初期化
   resetShield();
   
+  // 前の戦闘の防壁破壊エフェクトを削除
+shieldParticles = [];
+
   boss = null;
   bossTentacles = [];
   bossBeams = [];
