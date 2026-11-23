@@ -2018,6 +2018,31 @@ function drawBackground() {
 }
 
 // =========================
+// 電磁防壁の破壊粒子を描画
+// =========================
+function drawShieldParticles() {
+  ctx.save();
+
+  for (const p of shieldParticles) {
+    // 寿命に応じて透明になる
+    const alpha = Math.max(0, p.life / p.maxLife);
+
+    ctx.fillStyle = `rgba(100, 220, 255, ${alpha})`;
+    ctx.shadowColor = '#66ddff';
+    ctx.shadowBlur = 8;
+
+    ctx.fillRect(
+      p.x - p.size / 2,
+      p.y - p.size / 2,
+      p.size,
+      p.size
+    );
+  }
+
+  ctx.restore();
+}
+
+// =========================
 // 電磁防壁の描画
 // =========================
 function drawShield() {
