@@ -1157,6 +1157,23 @@ if (
     : 'GAME OVER';
     
   if (gameMode === 'boss' && isClear) {
+    // ボス固有のドロップ候補
+  const dropIds = BOSS_ATTACHMENT_DROPS[boss.id] ?? [];
+
+  // 難易度に応じてドロップ抽選
+  const attachmentDrop = rollBossAttachmentDrop(
+    selectedBossDifficulty,
+    dropIds
+  );
+
+  // ドロップした場合は所持品に追加して保存
+  if (attachmentDrop) {
+    addAttachment(
+      attachmentDrop.id,
+      attachmentDrop.rarity,
+      1
+    );
+  }
   const bossRecordId = boss.id === 'dreadnought' ? 'boss2' : 'boss1';
 const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty}`;
   const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
