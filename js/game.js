@@ -1383,7 +1383,7 @@ if (gameMode === 'score') {
 let bulletSpeed = CONFIG.playerBulletSpeed;
 
 // 弾体加速モジュールの効果
-if (equippedAttachment?.id === 'bullet_accelerator') {
+if (battleAttachment?.id === 'bullet_accelerator') {
   const speedMultiplier = {
     common: 1.10,
     rare: 1.20,
