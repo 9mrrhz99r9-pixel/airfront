@@ -2332,12 +2332,15 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
     ctx.fill();
   }
 }
-   // プレイヤー機体
+     // プレイヤー機体
   drawPlayer();
 
-  // 電磁防壁（機体の上に半透明で表示）
+  // 電磁防壁
   drawShield();
 
+  // 防壁破壊時の粒子
+  drawShieldParticles();
+  
   // ボスHPバー
   if (gameMode === 'boss' && boss) {
     ctx.fillStyle = '#fff';
