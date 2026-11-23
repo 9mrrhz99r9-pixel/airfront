@@ -269,6 +269,23 @@ function grantTestAttachments() {
 }
 
 // =========================
+// ボス別アタッチメントドロップ候補
+// =========================
+const BOSS_ATTACHMENT_DROPS = {
+  taint: [
+    'bullet_accelerator',
+    'shield_generator',
+    'evasion_system'
+  ],
+
+  dreadnought: [
+    'rapid_loader',
+    'armor_module',
+    'bullet_accelerator'
+  ]
+};
+
+// =========================
 // ボス撃破時のドロップ抽選
 // =========================
 function rollBossAttachmentDrop(difficulty, dropIds) {
