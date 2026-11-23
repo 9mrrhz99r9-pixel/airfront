@@ -820,7 +820,7 @@ function resetShield() {
   shieldCooldownTime = 0;
   shieldFlashTimer = 0;
 
-  if (battleAttachment?.id === 'shield_generator') {
+  if (battleAttachment?.id !== 'shield_generator') {
     return;
   }
 
