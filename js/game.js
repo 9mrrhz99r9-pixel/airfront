@@ -852,9 +852,12 @@ function createShieldBreakEffect() {
   shieldHp--;
 
   if (shieldHp <= 0) {
-    shieldHp = 0;
-    shieldCooldown = shieldCooldownTime;
-  }
+  shieldHp = 0;
+  shieldCooldown = shieldCooldownTime;
+
+  // 防壁破壊時の粒子エフェクト
+  createShieldBreakEffect();
+}
 
   return true;
 }
