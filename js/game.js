@@ -2000,16 +2000,25 @@ if (!damaged && gameMode === 'boss') {
   }
 }
     if (damaged) {
-  // 防壁が展開中なら優先してダメージを吸収
   if (shieldHp > 0) {
+    // 電磁防壁でダメージを吸収
     absorbShieldDamage();
-  }
-  // 防壁がない場合、無敵時間が終了していればダメージ
-  else if (invincibleTimer <= 0) {
-    player.hp--;
+
+  } else if (invincibleTimer <= 0) {
+    // 緊急回避システムの判定
+    const evaded = tryEmergencyEvasion();
+
+    // 回避失敗時のみHP減少
+    if (!evaded) {
+      player.hp--;
+    }
+
+    // 回避成功・失敗に関係なく通常の被弾演出
     invincibleTimer = CONFIG.invincibleTime;
 
-    if (player.hp <= 0) endGame();
+    if (player.hp <= 0) {
+      endGame();
+    }
   }
 }
   }
