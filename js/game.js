@@ -902,6 +902,11 @@ function updateShieldParticles(dt) {
 }
 
 function resetGame() {
+  // 戦闘開始時の装備を固定
+  battleAttachment = equippedAttachment
+    ? { ...equippedAttachment }
+    : null;
+
   // 基本最大HP
   let maxHp = CONFIG.playerMaxHp;
 
