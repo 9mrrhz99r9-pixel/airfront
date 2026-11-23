@@ -919,7 +919,7 @@ function resetGame() {
       legendary: 8
     };
 
-    maxHp = armorHp[equippedAttachment.rarity] ?? maxHp;
+    maxHp = armorHp[battleAttachment.rarity] ?? maxHp;
   }
 
   // プレイヤー初期化
