@@ -911,7 +911,7 @@ function resetGame() {
   let maxHp = CONFIG.playerMaxHp;
 
   // 複合装甲モジュールの効果
-  if (equippedAttachment?.id === 'armor_module') {
+  if (battleAttachment?.id === 'armor_module') {
     const armorHp = {
       common: 4,
       rare: 5,
