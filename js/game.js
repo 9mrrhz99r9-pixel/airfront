@@ -1272,6 +1272,9 @@ function update(dt) {
     // 電磁防壁の再展開タイマーを更新
   updateShield(dt);
   
+  // 防壁破壊エフェクトを更新
+  updateShieldParticles(dt);
+  
   elapsed += dt;
   if (invincibleTimer > 0) invincibleTimer -= dt;
 
