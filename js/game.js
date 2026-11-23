@@ -268,12 +268,6 @@ function grantTestAttachments() {
   }
 }
 
-// テスト用：初回のみ実行
-if (localStorage.getItem('sky_defender_attachment_test_v1') !== 'done') {
-  grantTestAttachments();
-  localStorage.setItem('sky_defender_attachment_test_v1', 'done');
-}
-
 // =========================
 // 選択中のアタッチメント
 // =========================
