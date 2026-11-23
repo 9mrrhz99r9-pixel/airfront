@@ -1184,11 +1184,37 @@ const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty
   const topRecords = records.slice(0, 3);
   localStorage.setItem(recordKey, JSON.stringify(topRecords));
 
+    // 獲得アタッチメントの表示情報
+  let dropHtml = '';
+
+  if (attachmentDrop) {
+    const attachment = ATTACHMENT_DATA.find(
+      item => item.id === attachmentDrop.id
+    );
+
+    const rarity = ATTACHMENT_RARITIES.find(
+      item => item.id === attachmentDrop.rarity
+    );
+
+    if (attachment && rarity) {
+      dropHtml = `
+        <div class="attachment-drop-result">
+          <strong>獲得アタッチメント</strong>
+          <div>${attachment.name}</div>
+          <div style="color: ${rarity.color}">
+            ${rarity.name}
+          </div>
+        </div>
+      `;
+    }
+  }
+
   resultEl.innerHTML = `
     <strong>${boss.name} CLEAR!</strong><br>
     難易度：${selectedBossDifficulty}<br>
     討伐タイム：${formatBossTime(elapsed)}<br>
     最速討伐タイム：${formatBossTime(topRecords[0])}
+    ${dropHtml}
   `;
 } else {
   const isNewBest = score > bestScore;
