@@ -1334,8 +1334,8 @@ const spreadAngles = {
 };
 
 const angles =
-  equippedAttachment?.id === 'spread_unit'
-    ? spreadAngles[equippedAttachment.rarity] ?? [0]
+  battleAttachment?.id === 'spread_unit'
+    ? spreadAngles[battleAttachment.rarity] ?? [0]
     : [0];
 
 // 角度ごとに弾を生成
