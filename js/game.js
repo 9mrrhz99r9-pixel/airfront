@@ -936,6 +936,11 @@ function resetGame() {
   invincibleTimer = 0;
   firing = false;
 
+  // 戦闘開始時の装備を固定
+  battleAttachment = equippedAttachment
+  ? { ...equippedAttachment }
+  : null;
+  
   // 電磁防壁発生器を初期化
   resetShield();
   
