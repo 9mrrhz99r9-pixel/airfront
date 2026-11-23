@@ -1391,7 +1391,7 @@ if (battleAttachment?.id === 'bullet_accelerator') {
     legendary: 1.50
   };
 
-  bulletSpeed *= speedMultiplier[equippedAttachment.rarity] ?? 1;
+  bulletSpeed *= speedMultiplier[battleAttachment.rarity] ?? 1;
 }
 
 // 弾の移動
