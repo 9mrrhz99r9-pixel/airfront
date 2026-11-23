@@ -808,9 +808,12 @@ function updateShield(dt) {
   shieldCooldown -= dt;
 
   if (shieldCooldown <= 0) {
-    shieldHp = shieldMaxHp;
-    shieldCooldown = 0;
-  }
+  shieldHp = shieldMaxHp;
+  shieldCooldown = 0;
+
+  // 展開時に0.4秒間発光
+  shieldFlashTimer = 0.4;
+}
 }
 
 // 防壁が攻撃を吸収
