@@ -803,8 +803,13 @@ function resetShield() {
 
 // 防壁の再展開タイマー更新
 function updateShield(dt) {
-  if (shieldMaxHp <= 0 || shieldHp > 0) return;
+  // 発光タイマーを更新
+  if (shieldFlashTimer > 0) {
+    shieldFlashTimer = Math.max(0, shieldFlashTimer - dt);
+  }
 
+  if (shieldMaxHp <= 0 || shieldHp > 0) return;
+  
   shieldCooldown -= dt;
 
   if (shieldCooldown <= 0) {
