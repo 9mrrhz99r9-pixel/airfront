@@ -830,6 +830,19 @@ let shieldParticles = [];
 
 // 防壁破壊時に粒子を生成
 function createShieldBreakEffect() {
+  // 防壁破壊エフェクトの更新
+function updateShieldParticles(dt) {
+  for (const p of shieldParticles) {
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.life -= dt;
+  }
+
+  // 寿命が尽きた粒子を削除
+  shieldParticles = shieldParticles.filter(
+    p => p.life > 0
+  );
+}
   const particleCount = 20;
 
   for (let i = 0; i < particleCount; i++) {
