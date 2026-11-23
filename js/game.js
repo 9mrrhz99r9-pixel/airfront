@@ -776,6 +776,7 @@ function resetShield() {
   shieldMaxHp = 0;
   shieldCooldown = 0;
   shieldCooldownTime = 0;
+  shieldFlashTimer = 0;
 
   if (equippedAttachment?.id !== 'shield_generator') {
     return;
