@@ -1649,7 +1649,10 @@ if (
       1
     );
   }
-  const bossRecordId = boss.id === 'dreadnought' ? 'boss2' : 'boss1';
+  const bossRecordId =
+  boss.id === 'bastion' ? 'boss3' :
+  boss.id === 'dreadnought' ? 'boss2' :
+  'boss1';
 const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty}`;
   const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
 
