@@ -674,6 +674,38 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION ミサイルの描画
+function drawBastionMissiles() {
+  if (
+    !bastionMissileImage.complete ||
+    bastionMissileImage.naturalWidth === 0
+  ) return;
+
+  const missileWidth = W * 0.055;
+  const missileHeight =
+    missileWidth *
+    bastionMissileImage.naturalHeight /
+    bastionMissileImage.naturalWidth;
+
+  for (const missile of bastionMissiles) {
+    if (missile.dead) continue;
+
+    ctx.save();
+    ctx.translate(missile.x, missile.y);
+    ctx.rotate(missile.angle - Math.PI / 2);
+
+    ctx.drawImage(
+      bastionMissileImage,
+      -missileWidth / 2,
+      -missileHeight / 2,
+      missileWidth,
+      missileHeight
+    );
+
+    ctx.restore();
+  }
+}
+
 // BASTION ミサイルの移動・誘導
 function updateBastionMissiles(dt) {
   for (const missile of bastionMissiles) {
