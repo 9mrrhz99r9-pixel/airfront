@@ -854,9 +854,6 @@ function spawnBastionArmorParticles(armor) {
   }
 }
 
-// BASTION 難易度別設定
-const BASTION_DIFFICULTY = {
-
 // BASTION 伸縮式アーム
 let bastionArms = [];
 let bastionArmTimer = 3;
@@ -889,6 +886,8 @@ let bastionArmorParticles = [];
 
 const BASTION_ARMOR_COUNT = 6;
 const BASTION_ARMOR_ROTATION_SPEED = Math.PI * 2 / 20;
+  // BASTION 難易度別設定
+const BASTION_DIFFICULTY = {
   EASY: {
     hp: 100,
     armorHp: 10,
