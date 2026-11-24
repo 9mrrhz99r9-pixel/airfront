@@ -1155,6 +1155,7 @@ if (gameMode === 'boss') {
 
   bastionArmors = [];
   bastionArmorAngle = 0;
+  bastionArmorParticles = [];
 
   if (selectedBoss.id === 'bastion') {
     for (let i = 0; i < BASTION_ARMOR_COUNT; i++) {
