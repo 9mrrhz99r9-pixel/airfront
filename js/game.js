@@ -1786,9 +1786,13 @@ if (e.y < stopY) {
   }
 
   // プレイヤー弾と敵の衝突
-  // ボスの登場
+    // ボスの登場
   if (gameMode === 'boss' && boss) {
-    if (!boss.active) {
+    if (boss.id === 'bastion') {
+      boss.x = W / 2;
+      boss.y = H * 0.18;
+      boss.active = true;
+    } else if (!boss.active) {
       boss.y += boss.speed * dt;
 
       if (boss.y >= 100) {
