@@ -1913,6 +1913,7 @@ if (e.y < stopY) {
       boss.x = W / 2;
       boss.y = H * 0.18;
       boss.active = true;
+      updateBastionArms(dt);
 
       // 回転装甲の角度更新
       bastionArmorAngle += BASTION_ARMOR_ROTATION_SPEED * dt;
