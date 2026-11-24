@@ -3147,7 +3147,7 @@ if (
   bastionArmorImage.naturalWidth > 0
 ) {
   const orbitRadius = boss.w * 0.65;
-  const armorWidth = boss.w * 1.1;
+  const armorWidth = orbitRadius * 1.1;
   const armorHeight =
     armorWidth * bastionArmorImage.naturalHeight /
     bastionArmorImage.naturalWidth;
