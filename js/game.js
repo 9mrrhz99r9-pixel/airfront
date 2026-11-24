@@ -688,6 +688,9 @@ function getBastionArmBase(arm) {
 
 // BASTION アームの更新
 function updateBastionArms(dt) {
+  const config =
+    BASTION_DIFFICULTY[selectedBossDifficulty];
+
   for (const arm of bastionArms) {
     const base = getBastionArmBase(arm);
 
@@ -696,6 +699,59 @@ function updateBastionArms(dt) {
         player.y - base.y,
         player.x - base.x
       );
+
+    } else if (arm.phase === 'extending') {
+      arm.timer += dt;
+
+      const progress = Math.min(
+        1,
+        arm.timer / BASTION_ARM_EXTEND_TIME
+      );
+
+      arm.length = arm.maxLength * progress;
+
+      if (progress >= 1) {
+        arm.phase = 'retracting';
+        arm.timer = 0;
+      }
+
+    } else if (arm.phase === 'retracting') {
+      arm.timer += dt;
+
+      const progress = Math.min(
+        1,
+        arm.timer / BASTION_ARM_RETRACT_TIME
+      );
+
+      arm.length = arm.maxLength * (1 - progress);
+
+      if (progress >= 1) {
+        arm.phase = 'idle';
+        arm.length = 0;
+        arm.timer = 0;
+
+        bastionNextArm = 1 - bastionNextArm;
+        bastionArmTimer = config.armCooldown;
+        return;
+      }
+    }
+  }
+
+  // 両方が待機中の場合のみ次の動作を開始
+  if (bastionArms.every(arm => arm.phase === 'idle')) {
+    bastionArmTimer -= dt;
+
+    if (bastionArmTimer <= 0) {
+      const arm = bastionArms[bastionNextArm];
+      const base = getBastionArmBase(arm);
+
+      arm.maxLength =
+        (H - base.y + 80) /
+        Math.max(0.1, Math.sin(arm.angle));
+
+      arm.phase = 'extending';
+      arm.timer = 0;
+      arm.length = 0;
     }
   }
 }
