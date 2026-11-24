@@ -674,6 +674,36 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION ミサイルの発射制御
+function updateBastionMissileAttack(dt) {
+  const config =
+    BASTION_DIFFICULTY[selectedBossDifficulty];
+
+  if (bastionMissilesRemaining === 0) {
+    bastionMissileTimer -= dt;
+
+    if (bastionMissileTimer <= 0) {
+      bastionMissilesRemaining = config.missileCount;
+      bastionMissileShotTimer = 0;
+    }
+  }
+
+  if (bastionMissilesRemaining > 0) {
+    bastionMissileShotTimer -= dt;
+
+    if (bastionMissileShotTimer <= 0) {
+      spawnBastionMissile();
+      bastionMissilesRemaining--;
+
+      if (bastionMissilesRemaining === 0) {
+        bastionMissileTimer = BASTION_MISSILE_COOLDOWN;
+      } else {
+        bastionMissileShotTimer = BASTION_MISSILE_INTERVAL;
+      }
+    }
+  }
+}
+
 // BASTION ミサイルの生成
 function spawnBastionMissile() {
   const config =
