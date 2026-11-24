@@ -2158,13 +2158,36 @@ bossTentacles = bossTentacles.filter(t => t.alive);
   : hit(b.x, b.y, 5, boss.x, boss.y, boss.w / 2);
 
 if (bossHit) {
-  // BASTIONの装甲が全て健在なら本体へのダメージを防ぐ
-  if (
-    boss.id === 'bastion' &&
-    bastionArmors.every(armor => !armor.destroyed)
-  ) {
-    b.dead = true;
-    continue;
+    // BASTIONの回転装甲による防御判定
+  if (boss.id === 'bastion') {
+    const hitAngle = Math.atan2(
+      b.y - boss.y,
+      b.x - boss.x
+    );
+
+    const sectorSize = Math.PI * 2 / BASTION_ARMOR_COUNT;
+
+    const relativeAngle =
+      ((hitAngle - bastionArmorAngle + sectorSize / 2)
+      % (Math.PI * 2) + Math.PI * 2)
+      % (Math.PI * 2);
+
+    const armorIndex = Math.floor(relativeAngle / sectorSize);
+    const armor = bastionArmors[armorIndex];
+
+    if (armor && !armor.destroyed) {
+      armor.hp--;
+      b.dead = true;
+
+      if (armor.hp <= 0) {
+        armor.hp = 0;
+        armor.destroyed = true;
+        armor.regenTimer =
+          BASTION_DIFFICULTY[selectedBossDifficulty].armorRegenTime;
+      }
+
+      continue;
+    }
   }
 
   boss.hp--;
