@@ -1193,6 +1193,29 @@ if (gameMode === 'boss') {
   bastionArmors = [];
   bastionArmorAngle = 0;
   bastionArmorParticles = [];
+  
+    // BASTION アームの初期化
+  bastionArmTimer = 3;
+  bastionNextArm = 0;
+
+  bastionArms = [
+    {
+      side: -1,
+      phase: 'idle',
+      angle: 0,
+      length: 0,
+      maxLength: 0,
+      timer: 0
+    },
+    {
+      side: 1,
+      phase: 'idle',
+      angle: 0,
+      length: 0,
+      maxLength: 0,
+      timer: 0
+    }
+  ];
 
   if (selectedBoss.id === 'bastion') {
     for (let i = 0; i < BASTION_ARMOR_COUNT; i++) {
