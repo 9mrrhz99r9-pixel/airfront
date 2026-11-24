@@ -605,6 +605,21 @@ const BOSS_DATA = [
       'NORMAL',
       'HARD',
       'EXPERT'
+        ]
+  },
+  {
+    id: 'bastion',
+    name: 'BASTION',
+    description:
+      '荒廃した惑星で稼働し続ける旧文明の機械生命体。' +
+      '巨大な伸縮式アームと誘導ミサイルを備え、' +
+      '自己再生する回転装甲によって本体を守る。',
+
+    difficulties: [
+      'EASY',
+      'NORMAL',
+      'HARD',
+      'EXPERT'
     ]
   }
 ];
