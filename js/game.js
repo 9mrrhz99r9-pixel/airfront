@@ -2178,6 +2178,7 @@ bossTentacles = bossTentacles.filter(t => t.alive);
           if (armor.hp <= 0) {
             armor.hp = 0;
             armor.destroyed = true;
+            spawnBastionArmorParticles(armor);
             armor.regenTimer =
               BASTION_DIFFICULTY[selectedBossDifficulty].armorRegenTime;
           }
@@ -2226,6 +2227,7 @@ if (bossHit) {
       if (armor.hp <= 0) {
         armor.hp = 0;
         armor.destroyed = true;
+        spawnBastionArmorParticles(armor);
         armor.regenTimer =
           BASTION_DIFFICULTY[selectedBossDifficulty].armorRegenTime;
       }
