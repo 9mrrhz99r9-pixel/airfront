@@ -2451,6 +2451,42 @@ if (bossHit) {
   // 被弾判定
 if (invincibleTimer <= 0 || shieldHp > 0) {
   let damaged = false;
+    // BASTION アームとの接触判定
+  if (
+    gameMode === 'boss' &&
+    boss &&
+    boss.active &&
+    boss.id === 'bastion'
+  ) {
+    const armWidth = W * BASTION_ARM_WIDTH_RATIO;
+    const playerRadius = shieldHp > 0 ? 24 : 17;
+
+    for (const arm of bastionArms) {
+      if (arm.phase === 'idle') continue;
+
+      const base = getBastionArmBase(arm);
+      const dx = player.x - base.x;
+      const dy = player.y - base.y;
+
+      const cos = Math.cos(arm.angle);
+      const sin = Math.sin(arm.angle);
+
+      const forward = dx * cos + dy * sin;
+      const sideways = -dx * sin + dy * cos;
+
+      const totalLength =
+        arm.length + armWidth * 468 / 320;
+
+      if (
+        forward >= -playerRadius &&
+        forward <= totalLength + playerRadius &&
+        Math.abs(sideways) <= armWidth / 2 + playerRadius
+      ) {
+        damaged = true;
+        break;
+      }
+    }
+  }
     for (const b of enemyBullets) {
   // 防壁展開中は当たり判定を少し大きくする
   const hitRadius = shieldHp > 0 ? 24 : 17;
