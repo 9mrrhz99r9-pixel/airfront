@@ -674,6 +674,47 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION ミサイルの移動・誘導
+function updateBastionMissiles(dt) {
+  for (const missile of bastionMissiles) {
+    const targetAngle = Math.atan2(
+      player.y - missile.y,
+      player.x - missile.x
+    );
+
+    const minAngle = Math.PI / 6;
+    const maxAngle = Math.PI * 5 / 6;
+
+    const desiredAngle = Math.max(
+      minAngle,
+      Math.min(maxAngle, targetAngle)
+    );
+
+    const turnSpeed = 1.5;
+    const angleDiff = desiredAngle - missile.angle;
+
+    missile.angle += Math.max(
+      -turnSpeed * dt,
+      Math.min(turnSpeed * dt, angleDiff)
+    );
+
+    missile.x += Math.cos(missile.angle) * missile.speed * dt;
+    missile.y += Math.sin(missile.angle) * missile.speed * dt;
+
+    if (
+      missile.y > H + 80 ||
+      missile.x < -80 ||
+      missile.x > W + 80
+    ) {
+      missile.dead = true;
+    }
+  }
+
+  bastionMissiles = bastionMissiles.filter(
+    missile => !missile.dead
+  );
+}
+
 // BASTION ミサイルの発射制御
 function updateBastionMissileAttack(dt) {
   const config =
