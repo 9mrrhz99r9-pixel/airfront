@@ -2527,6 +2527,11 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
 
   const imageHeight = imageWidth * aspectRatio;
   
+    if (boss.id === 'bastion') {
+    boss.w = imageWidth;
+    boss.h = imageHeight;
+  }
+  
   ctx.drawImage(
     currentBossImage,
     (W - imageWidth) / 2,
