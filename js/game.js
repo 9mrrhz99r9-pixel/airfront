@@ -734,7 +734,7 @@ function updateBastionMissiles(dt) {
       Math.min(maxAngle, targetAngle)
     );
 
-    const turnSpeed = 1.5;
+    const turnSpeed = 0.8;
     const angleDiff = desiredAngle - missile.angle;
 
     missile.angle += Math.max(
