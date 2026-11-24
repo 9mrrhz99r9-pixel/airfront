@@ -674,6 +674,34 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION 装甲破壊エフェクト生成
+function spawnBastionArmorParticles(armor) {
+  const orbitRadius = boss.w * 0.65;
+
+  const angle =
+    bastionArmorAngle +
+    armor.index * Math.PI * 2 / BASTION_ARMOR_COUNT;
+
+  const x = boss.x + Math.cos(angle) * orbitRadius;
+  const y = boss.y + Math.sin(angle) * orbitRadius;
+
+  for (let i = 0; i < 24; i++) {
+    const direction = Math.random() * Math.PI * 2;
+    const speed = 40 + Math.random() * 120;
+    const isSpark = i < 10;
+
+    bastionArmorParticles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(direction) * speed,
+      vy: Math.sin(direction) * speed,
+      size: isSpark ? 2 : 3 + Math.random() * 4,
+      color: isSpark ? '#ff9922' : '#71665b',
+      life: 0.4 + Math.random() * 0.6
+    });
+  }
+}
+
 // BASTION 難易度別設定
 const BASTION_DIFFICULTY = {
 
