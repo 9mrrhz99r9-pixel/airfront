@@ -2696,6 +2696,31 @@ if (
       armorHeight
     );
 
+    // 装甲の亀裂
+    if (damageStage >= 1) {
+      ctx.strokeStyle = '#29201c';
+      ctx.lineWidth = 2;
+
+      ctx.beginPath();
+      ctx.moveTo(-armorWidth * 0.18, -armorHeight * 0.25);
+      ctx.lineTo(-armorWidth * 0.05, -armorHeight * 0.08);
+      ctx.lineTo(-armorWidth * 0.12, armorHeight * 0.05);
+      ctx.lineTo(armorWidth * 0.02, armorHeight * 0.18);
+      ctx.stroke();
+    }
+
+    // 深刻な装甲損傷
+    if (damageStage >= 2) {
+      ctx.lineWidth = 3;
+
+      ctx.beginPath();
+      ctx.moveTo(armorWidth * 0.22, -armorHeight * 0.20);
+      ctx.lineTo(armorWidth * 0.08, -armorHeight * 0.02);
+      ctx.lineTo(armorWidth * 0.18, armorHeight * 0.10);
+      ctx.lineTo(armorWidth * 0.05, armorHeight * 0.28);
+      ctx.stroke();
+    }
+    
     ctx.restore();
   }
 }
