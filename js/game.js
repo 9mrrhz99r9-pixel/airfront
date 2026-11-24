@@ -1817,6 +1817,19 @@ if (e.y < stopY) {
       // 回転装甲の角度更新
       bastionArmorAngle += BASTION_ARMOR_ROTATION_SPEED * dt;
       bastionArmorAngle %= Math.PI * 2;
+      
+            // 破壊された装甲の再生処理
+      for (const armor of bastionArmors) {
+        if (!armor.destroyed) continue;
+
+        armor.regenTimer -= dt;
+
+        if (armor.regenTimer <= 0) {
+          armor.hp = armor.maxHp;
+          armor.destroyed = false;
+          armor.regenTimer = 0;
+        }
+      }
     } else if (!boss.active) {
       boss.y += boss.speed * dt;
 
