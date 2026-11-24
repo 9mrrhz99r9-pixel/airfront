@@ -693,6 +693,26 @@ function drawBastionMissiles() {
     ctx.save();
     ctx.translate(missile.x, missile.y);
     ctx.rotate(missile.angle - Math.PI / 2);
+    
+    // ミサイルの噴射炎
+const flameLength =
+  missileWidth * (0.7 + Math.random() * 0.4);
+
+ctx.fillStyle = '#ff6600';
+ctx.beginPath();
+ctx.moveTo(-missileWidth * 0.2, -missileHeight / 2);
+ctx.lineTo(missileWidth * 0.2, -missileHeight / 2);
+ctx.lineTo(0, -missileHeight / 2 - flameLength);
+ctx.closePath();
+ctx.fill();
+
+ctx.fillStyle = '#ffdd88';
+ctx.beginPath();
+ctx.moveTo(-missileWidth * 0.1, -missileHeight / 2);
+ctx.lineTo(missileWidth * 0.1, -missileHeight / 2);
+ctx.lineTo(0, -missileHeight / 2 - flameLength * 0.6);
+ctx.closePath();
+ctx.fill();
 
     ctx.drawImage(
       bastionMissileImage,
