@@ -1809,10 +1809,14 @@ if (e.y < stopY) {
   // プレイヤー弾と敵の衝突
     // ボスの登場
   if (gameMode === 'boss' && boss) {
-    if (boss.id === 'bastion') {
+        if (boss.id === 'bastion') {
       boss.x = W / 2;
       boss.y = H * 0.18;
       boss.active = true;
+
+      // 回転装甲の角度更新
+      bastionArmorAngle += BASTION_ARMOR_ROTATION_SPEED * dt;
+      bastionArmorAngle %= Math.PI * 2;
     } else if (!boss.active) {
       boss.y += boss.speed * dt;
 
