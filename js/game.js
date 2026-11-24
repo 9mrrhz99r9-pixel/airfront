@@ -674,6 +674,18 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION アームの基部座標
+function getBastionArmBase(arm) {
+  const armWidth = W * BASTION_ARM_WIDTH_RATIO;
+
+  return {
+    x: arm.side === -1
+      ? armWidth / 2
+      : W - armWidth / 2,
+    y: armWidth / 2
+  };
+}
+
 // BASTION 装甲破壊エフェクト生成
 function spawnBastionArmorParticles(armor) {
   const orbitRadius = boss.w * 0.65;
