@@ -705,6 +705,15 @@ function spawnBastionArmorParticles(armor) {
 // BASTION 難易度別設定
 const BASTION_DIFFICULTY = {
 
+// BASTION 伸縮式アーム
+let bastionArms = [];
+let bastionArmTimer = 3;
+let bastionNextArm = 0;
+
+const BASTION_ARM_WIDTH_RATIO = 0.15;
+const BASTION_ARM_EXTEND_TIME = 3;
+const BASTION_ARM_RETRACT_TIME = 2;
+
   // BASTION 回転装甲
 let bastionArmors = [];
 let bastionArmorAngle = 0;
