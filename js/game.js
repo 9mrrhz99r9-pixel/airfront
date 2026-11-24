@@ -2107,6 +2107,42 @@ bossTentacles = bossTentacles.filter(t => t.alive);
     }
          // ボスとの衝突
     if (!b.dead && gameMode === 'boss' && boss && boss.active) {
+          // BASTION 回転装甲との衝突
+    if (
+      !b.dead &&
+      gameMode === 'boss' &&
+      boss &&
+      boss.active &&
+      boss.id === 'bastion'
+    ) {
+      const orbitRadius = boss.w * 0.65;
+      const armorRadius = orbitRadius * 0.55;
+
+      for (const armor of bastionArmors) {
+        if (armor.destroyed) continue;
+
+        const angle =
+          bastionArmorAngle +
+          armor.index * Math.PI * 2 / BASTION_ARMOR_COUNT;
+
+        const x = boss.x + Math.cos(angle) * orbitRadius;
+        const y = boss.y + Math.sin(angle) * orbitRadius;
+
+        if (hit(b.x, b.y, 5, x, y, armorRadius)) {
+          armor.hp--;
+          b.dead = true;
+
+          if (armor.hp <= 0) {
+            armor.hp = 0;
+            armor.destroyed = true;
+            armor.regenTimer =
+              BASTION_DIFFICULTY[selectedBossDifficulty].armorRegenTime;
+          }
+
+          break;
+        }
+      }
+    }
       const bossHit = boss.id === 'dreadnought'
   ? (() => {
       const isSide = Math.abs(b.x - boss.x) > boss.w / 2;
