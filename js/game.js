@@ -1371,6 +1371,13 @@ if (gameMode === 'boss') {
   bastionArmorAngle = 0;
   bastionArmorParticles = [];
   
+  // BASTION ミサイルの初期化
+bastionMissiles = [];
+bastionMissileTimer = 5;
+bastionMissilesRemaining = 0;
+bastionMissileShotTimer = 0;
+bastionMissileSide = -1;
+
     // BASTION アームの初期化
   bastionArmTimer = 3;
   bastionNextArm = 0;
