@@ -674,6 +674,22 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION ミサイルの生成
+function spawnBastionMissile() {
+  const config =
+    BASTION_DIFFICULTY[selectedBossDifficulty];
+
+  bastionMissiles.push({
+    x: boss.x + boss.w * 0.4 * bastionMissileSide,
+    y: boss.y + boss.h * 0.2,
+    angle: Math.PI / 2,
+    speed: config.missileSpeed,
+    dead: false
+  });
+
+  bastionMissileSide *= -1;
+}
+
 // BASTION アームの描画
 function drawBastionArms() {
   if (
