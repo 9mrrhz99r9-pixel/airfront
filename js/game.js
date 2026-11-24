@@ -1151,6 +1151,21 @@ if (gameMode === 'boss') {
   const difficultyConfig =
     difficultyTable[selectedBossDifficulty] || difficultyTable.EASY;
 
+  bastionArmors = [];
+  bastionArmorAngle = 0;
+
+  if (selectedBoss.id === 'bastion') {
+    for (let i = 0; i < BASTION_ARMOR_COUNT; i++) {
+      bastionArmors.push({
+        index: i,
+        hp: difficultyConfig.armorHp,
+        maxHp: difficultyConfig.armorHp,
+        destroyed: false,
+        regenTimer: 0
+      });
+    }
+  }
+  
   boss = {
     id: selectedBoss.id,
     name: selectedBoss.name,
