@@ -1566,6 +1566,17 @@ function spawnBossThirdTentacle(side) {
 // =========================
 function update(dt) {
   
+    // BASTION 装甲破壊パーティクルの更新
+  for (const p of bastionArmorParticles) {
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.vy += 80 * dt;
+    p.life -= dt;
+  }
+
+  bastionArmorParticles =
+    bastionArmorParticles.filter(p => p.life > 0);
+  
     // 電磁防壁の再展開タイマーを更新
   updateShield(dt);
   
