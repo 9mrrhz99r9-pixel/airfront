@@ -288,17 +288,9 @@ function grantTestAttachments() {
 // ボス別アタッチメントドロップ候補
 // =========================
 const BOSS_ATTACHMENT_DROPS = {
-  taint: [
-    'bullet_accelerator',
-    'shield_generator',
-    'evasion_system'
-  ],
-
-  dreadnought: [
-    'rapid_loader',
-    'armor_module',
-    'bullet_accelerator'
-  ]
+  taint: ['bullet_accelerator', 'shield_generator', 'evasion_system'],
+  dreadnought: ['rapid_loader', 'armor_module', 'bullet_accelerator'],
+  bastion: ['spread_unit', 'armor_module', 'shield_generator']
 };
 
 // =========================
