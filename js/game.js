@@ -676,9 +676,11 @@ const DREADNOUGHT_DIFFICULTY = {
 
 // BASTION 難易度別設定
 const BASTION_DIFFICULTY = {
+
   // BASTION 回転装甲
 let bastionArmors = [];
 let bastionArmorAngle = 0;
+let bastionArmorParticles = [];
 
 const BASTION_ARMOR_COUNT = 6;
 const BASTION_ARMOR_ROTATION_SPEED = Math.PI * 2 / 20;
