@@ -2609,6 +2609,36 @@ if (bossHit) {
   // 被弾判定
 if (invincibleTimer <= 0 || shieldHp > 0) {
   let damaged = false;
+  
+  // BASTION ミサイルとの接触判定
+if (
+  gameMode === 'boss' &&
+  boss &&
+  boss.id === 'bastion'
+) {
+  const missileRadius = W * 0.055 / 2;
+  const playerRadius = shieldHp > 0 ? 24 : 17;
+
+  for (const missile of bastionMissiles) {
+    if (missile.dead) continue;
+
+    if (
+      hit(
+        missile.x,
+        missile.y,
+        missileRadius,
+        player.x,
+        player.y,
+        playerRadius
+      )
+    ) {
+      missile.dead = true;
+      damaged = true;
+      break;
+    }
+  }
+}
+
     // BASTION アームとの接触判定
   if (
     gameMode === 'boss' &&
