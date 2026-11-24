@@ -2507,9 +2507,11 @@ if (gameMode === 'boss' && boss) {
 if (gameMode === 'boss' && boss) {
       // ボス画像表示
 const currentBossImage =
-  boss.id === 'dreadnought'
-    ? dreadnoughtBossImage
-    : bossImage;
+  boss.id === 'bastion'
+    ? bastionBossImage
+    : boss.id === 'dreadnought'
+      ? dreadnoughtBossImage
+      : bossImage;
 
 if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
   const imageWidth = W * 1.25;
