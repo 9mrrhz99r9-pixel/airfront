@@ -2158,7 +2158,16 @@ bossTentacles = bossTentacles.filter(t => t.alive);
   : hit(b.x, b.y, 5, boss.x, boss.y, boss.w / 2);
 
 if (bossHit) {
-        boss.hp--;
+  // BASTIONの装甲が全て健在なら本体へのダメージを防ぐ
+  if (
+    boss.id === 'bastion' &&
+    bastionArmors.every(armor => !armor.destroyed)
+  ) {
+    b.dead = true;
+    continue;
+  }
+
+  boss.hp--;
         b.dead = true;
 
         if (boss.hp <= 0) {
