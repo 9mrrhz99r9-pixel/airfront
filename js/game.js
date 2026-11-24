@@ -686,6 +686,20 @@ function getBastionArmBase(arm) {
   };
 }
 
+// BASTION アームの更新
+function updateBastionArms(dt) {
+  for (const arm of bastionArms) {
+    const base = getBastionArmBase(arm);
+
+    if (arm.phase === 'idle') {
+      arm.angle = Math.atan2(
+        player.y - base.y,
+        player.x - base.x
+      );
+    }
+  }
+}
+
 // BASTION 装甲破壊エフェクト生成
 function spawnBastionArmorParticles(armor) {
   const orbitRadius = boss.w * 0.65;
