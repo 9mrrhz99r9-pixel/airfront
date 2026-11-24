@@ -2907,6 +2907,11 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
   );
 }
 
+// BASTION アームの描画
+if (boss.id === 'bastion') {
+  drawBastionArms();
+}
+
 // BASTION 装甲破壊パーティクルの描画
 if (boss.id === 'bastion') {
   ctx.save();
