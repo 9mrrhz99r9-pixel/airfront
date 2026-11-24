@@ -1148,10 +1148,14 @@ if (gameMode === 'boss') {
   boss = {
     id: selectedBoss.id,
     name: selectedBoss.name,
-    x: W / 2,
-    y: -80,
-    w: 120,
-    h: 120,
+       x: W / 2,
+    y: selectedBoss.id === 'bastion' ? H * 0.18 : -80,
+    w: selectedBoss.id === 'bastion'
+      ? Math.min(W * 0.45, H * 0.25)
+      : 120,
+    h: selectedBoss.id === 'bastion'
+      ? Math.min(W * 0.45, H * 0.25)
+      : 120,
     hp: difficultyConfig.hp,
     maxHp: difficultyConfig.hp,
     speed: CONFIG.bossSpeed,
