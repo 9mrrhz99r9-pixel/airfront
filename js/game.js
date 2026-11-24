@@ -2105,9 +2105,8 @@ bossTentacles = bossTentacles.filter(t => t.alive);
       }
       if (b.dead) break;
     }
-         // ボスとの衝突
-    if (!b.dead && gameMode === 'boss' && boss && boss.active) {
-          // BASTION 回転装甲との衝突
+    
+    // BASTION 回転装甲との衝突
     if (
       !b.dead &&
       gameMode === 'boss' &&
@@ -2143,6 +2142,9 @@ bossTentacles = bossTentacles.filter(t => t.alive);
         }
       }
     }
+    
+         // ボスとの衝突
+    if (!b.dead && gameMode === 'boss' && boss && boss.active) {
       const bossHit = boss.id === 'dreadnought'
   ? (() => {
       const isSide = Math.abs(b.x - boss.x) > boss.w / 2;
