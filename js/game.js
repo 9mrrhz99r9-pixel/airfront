@@ -2566,6 +2566,44 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
   );
 }
 
+// BASTION 回転装甲の描画
+if (
+  boss.id === 'bastion' &&
+  bastionArmorImage.complete &&
+  bastionArmorImage.naturalWidth > 0
+) {
+  const orbitRadius = boss.w * 0.65;
+  const armorWidth = orbitRadius * 1.1;
+  const armorHeight =
+    armorWidth * bastionArmorImage.naturalHeight /
+    bastionArmorImage.naturalWidth;
+
+  for (const armor of bastionArmors) {
+    if (armor.destroyed) continue;
+
+    const angle =
+      bastionArmorAngle +
+      armor.index * Math.PI * 2 / BASTION_ARMOR_COUNT;
+
+    const x = boss.x + Math.cos(angle) * orbitRadius;
+    const y = boss.y + Math.sin(angle) * orbitRadius;
+
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.rotate(angle + Math.PI / 2);
+
+    ctx.drawImage(
+      bastionArmorImage,
+      -armorWidth / 2,
+      -armorHeight / 2,
+      armorWidth,
+      armorHeight
+    );
+
+    ctx.restore();
+  }
+}
+
   // DREADNOUGHT 主砲レーザー
   if (boss.id === 'dreadnought') {
     const laser = dreadnoughtLaser;
