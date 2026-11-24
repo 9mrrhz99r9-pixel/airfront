@@ -2706,6 +2706,25 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
   );
 }
 
+// BASTION 装甲破壊パーティクルの描画
+if (boss.id === 'bastion') {
+  ctx.save();
+
+  for (const p of bastionArmorParticles) {
+    ctx.globalAlpha = Math.min(1, p.life * 2);
+    ctx.fillStyle = p.color;
+
+    ctx.fillRect(
+      p.x - p.size / 2,
+      p.y - p.size / 2,
+      p.size,
+      p.size
+    );
+  }
+
+  ctx.restore();
+}
+
 // BASTION 回転装甲の描画
 if (
   boss.id === 'bastion' &&
