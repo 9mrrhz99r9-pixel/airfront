@@ -2721,6 +2721,39 @@ if (
       ctx.stroke();
     }
     
+        // 装甲内部の発光と火花
+    if (damageStage >= 3) {
+      ctx.save();
+
+      const glow = 0.6 + Math.sin(elapsed * 8) * 0.3;
+
+      ctx.globalAlpha = glow;
+      ctx.strokeStyle = '#ff7722';
+      ctx.shadowColor = '#ff5500';
+      ctx.shadowBlur = 8;
+      ctx.lineWidth = 3;
+
+      ctx.beginPath();
+      ctx.moveTo(-armorWidth * 0.12, -armorHeight * 0.15);
+      ctx.lineTo(armorWidth * 0.05, 0);
+      ctx.lineTo(-armorWidth * 0.03, armorHeight * 0.20);
+      ctx.stroke();
+
+      // 断続的な火花
+      if (Math.sin(elapsed * 15 + armor.index) > 0.7) {
+        ctx.fillStyle = '#ffcc66';
+
+        for (let i = 0; i < 4; i++) {
+          const sx = (Math.random() - 0.5) * armorWidth * 0.6;
+          const sy = (Math.random() - 0.5) * armorHeight * 0.6;
+
+          ctx.fillRect(sx, sy, 2, 2);
+        }
+      }
+
+      ctx.restore();
+    }
+    
     ctx.restore();
   }
 }
