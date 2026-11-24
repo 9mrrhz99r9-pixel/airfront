@@ -2064,19 +2064,6 @@ if (e.y < stopY) {
       for (const armor of bastionArmors) {
         if (!armor.destroyed) continue;
         
-            // 装甲の残り耐久率
-    const hpRatio = armor.hp / armor.maxHp;
-
-    let damageStage = 0;
-
-    if (hpRatio <= 0.25) {
-      damageStage = 3;
-    } else if (hpRatio <= 0.50) {
-      damageStage = 2;
-    } else if (hpRatio <= 0.75) {
-      damageStage = 1;
-    }
-
         armor.regenTimer -= dt;
 
         if (armor.regenTimer <= 0) {
