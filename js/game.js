@@ -1135,10 +1135,12 @@ shieldParticles = [];
   rightThirdTentacleTimer = 6.5;
 
 if (gameMode === 'boss') {
-  const difficultyTable =
-    selectedBoss.id === 'dreadnought'
-      ? DREADNOUGHT_DIFFICULTY
-      : TAINT_DIFFICULTY;
+    const difficultyTable =
+    selectedBoss.id === 'bastion'
+      ? BASTION_DIFFICULTY
+      : selectedBoss.id === 'dreadnought'
+        ? DREADNOUGHT_DIFFICULTY
+        : TAINT_DIFFICULTY;
 
   const difficultyConfig =
     difficultyTable[selectedBossDifficulty] || difficultyTable.EASY;
