@@ -674,6 +674,76 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION アームの描画
+function drawBastionArms() {
+  if (
+    !bastionArmImage.complete ||
+    bastionArmImage.naturalWidth === 0
+  ) return;
+
+  const armWidth = W * BASTION_ARM_WIDTH_RATIO;
+  const scaleX = bastionArmImage.naturalWidth / 512;
+  const scaleY = bastionArmImage.naturalHeight / 1536;
+
+  function drawPart(part, x, y, w, h) {
+    ctx.drawImage(
+      bastionArmImage,
+      part.x * scaleX,
+      part.y * scaleY,
+      part.w * scaleX,
+      part.h * scaleY,
+      x, y, w, h
+    );
+  }
+
+  for (const arm of bastionArms) {
+    const base = getBastionArmBase(arm);
+
+    const segmentHeight = armWidth * 474 / 320;
+    const tipHeight = armWidth * 468 / 320;
+    const baseHeight = armWidth * 594 / 512;
+
+    ctx.save();
+    ctx.translate(base.x, base.y);
+    ctx.rotate(arm.angle - Math.PI / 2);
+
+    // 連結装甲
+    for (
+      let y = 0;
+      y < arm.length;
+      y += segmentHeight * 0.9
+    ) {
+      drawPart(
+        BASTION_ARM_SPRITES.segment,
+        -armWidth / 2,
+        y,
+        armWidth,
+        segmentHeight
+      );
+    }
+
+    // 先端
+    drawPart(
+      BASTION_ARM_SPRITES.tip,
+      -armWidth / 2,
+      arm.length,
+      armWidth,
+      tipHeight
+    );
+
+    // 基部
+    drawPart(
+      BASTION_ARM_SPRITES.base,
+      -armWidth / 2,
+      -baseHeight / 2,
+      armWidth,
+      baseHeight
+    );
+
+    ctx.restore();
+  }
+}
+
 // BASTION アームの基部座標
 function getBastionArmBase(arm) {
   const armWidth = W * BASTION_ARM_WIDTH_RATIO;
