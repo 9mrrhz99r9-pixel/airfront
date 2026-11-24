@@ -2737,8 +2737,61 @@ if (
     armorWidth * bastionArmorImage.naturalHeight /
     bastionArmorImage.naturalWidth;
 
-  for (const armor of bastionArmors) {
-    if (armor.destroyed) continue;
+    for (const armor of bastionArmors) {
+    if (armor.destroyed) {
+      // 再生1秒前から再構築演出
+      if (armor.regenTimer <= 1) {
+        const progress = 1 - armor.regenTimer;
+
+        const angle =
+          bastionArmorAngle +
+          armor.index * Math.PI * 2 / BASTION_ARMOR_COUNT;
+
+        const x = boss.x + Math.cos(angle) * orbitRadius;
+        const y = boss.y + Math.sin(angle) * orbitRadius;
+
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(angle + Math.PI / 2);
+
+        // 再構築中の発光
+        ctx.globalAlpha = progress * 0.8;
+        ctx.shadowColor = '#ff7700';
+        ctx.shadowBlur = 15;
+
+        ctx.drawImage(
+          bastionArmorImage,
+          -armorWidth / 2,
+          -armorHeight / 2,
+          armorWidth,
+          armorHeight
+        );
+
+        // 集まってくる金属片
+        ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
+
+        for (let i = 0; i < 12; i++) {
+          const direction = i * Math.PI * 2 / 12;
+          const distance = armorWidth * (1.5 - progress * 1.5);
+
+          ctx.fillStyle = i % 3 === 0
+            ? '#ff9922'
+            : '#71665b';
+
+          ctx.fillRect(
+            Math.cos(direction) * distance - 2,
+            Math.sin(direction) * distance - 2,
+            4,
+            4
+          );
+        }
+
+        ctx.restore();
+      }
+
+      continue;
+    }
 
     const angle =
       bastionArmorAngle +
