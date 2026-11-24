@@ -674,6 +674,42 @@ const DREADNOUGHT_DIFFICULTY = {
   }
 };
 
+// BASTION 難易度別設定
+const BASTION_DIFFICULTY = {
+  EASY: {
+    hp: 100,
+    armorHp: 10,
+    armorRegenTime: 30,
+    armCooldown: 3,
+    missileCount: 2,
+    missileSpeed: 150
+  },
+  NORMAL: {
+    hp: 150,
+    armorHp: 15,
+    armorRegenTime: 25,
+    armCooldown: 2,
+    missileCount: 2,
+    missileSpeed: 150
+  },
+  HARD: {
+    hp: 200,
+    armorHp: 20,
+    armorRegenTime: 20,
+    armCooldown: 1,
+    missileCount: 4,
+    missileSpeed: 180
+  },
+  EXPERT: {
+    hp: 350,
+    armorHp: 35,
+    armorRegenTime: 15,
+    armCooldown: 0,
+    missileCount: 6,
+    missileSpeed: 200
+  }
+};
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
