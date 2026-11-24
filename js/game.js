@@ -3167,7 +3167,7 @@ if (
 
         ctx.save();
         ctx.translate(x, y);
-        ctx.rotate(angle);
+        ctx.rotate(angle + Math.PI / 2);
 
         // 再構築中の発光
         ctx.globalAlpha = progress * 0.8;
@@ -3230,7 +3230,7 @@ if (hpRatio <= 0.25) {
 
     ctx.save();
     ctx.translate(x, y);
-    ctx.rotate(angle);
+    ctx.rotate(angle + Math.PI / 2);
 
     ctx.drawImage(
       bastionArmorImage,
