@@ -854,6 +854,16 @@ function spawnBastionArmorParticles(armor) {
   }
 }
 
+// BASTION 誘導ミサイル
+let bastionMissiles = [];
+let bastionMissileTimer = 5;
+let bastionMissilesRemaining = 0;
+let bastionMissileShotTimer = 0;
+let bastionMissileSide = -1;
+
+const BASTION_MISSILE_INTERVAL = 0.3;
+const BASTION_MISSILE_COOLDOWN = 8;
+
 // BASTION 伸縮式アーム
 let bastionArms = [];
 let bastionArmTimer = 3;
