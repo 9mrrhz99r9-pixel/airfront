@@ -1577,7 +1577,10 @@ function startGame() {
 
 // 難易度別クリアタイム上位3件
 function renderBossRecords(difficulty) {
-  const bossRecordId = selectedBoss.id === 'dreadnought' ? 'boss2' : 'boss1';
+  const bossRecordId =
+  selectedBoss.id === 'bastion' ? 'boss3' :
+  selectedBoss.id === 'dreadnought' ? 'boss2' :
+  'boss1';
   const recordKey = `sky_defender_${bossRecordId}_records_${difficulty}`;
   const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
 
