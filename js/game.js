@@ -796,6 +796,22 @@ const BASTION_ARM_WIDTH_RATIO = 0.15;
 const BASTION_ARM_EXTEND_TIME = 3;
 const BASTION_ARM_RETRACT_TIME = 2;
 
+// BASTION アーム画像の切り出し範囲
+const BASTION_ARM_SPRITES = {
+  base: {
+    x: 0, y: 0,
+    w: 512, h: 594
+  },
+  segment: {
+    x: 96, y: 594,
+    w: 320, h: 474
+  },
+  tip: {
+    x: 96, y: 1068,
+    w: 320, h: 468
+  }
+};
+
   // BASTION 回転装甲
 let bastionArmors = [];
 let bastionArmorAngle = 0;
