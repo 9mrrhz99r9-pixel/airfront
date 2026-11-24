@@ -2985,6 +2985,19 @@ if (
       continue;
     }
 
+// 装甲の残り耐久率
+const hpRatio = armor.hp / armor.maxHp;
+
+let damageStage = 0;
+
+if (hpRatio <= 0.25) {
+  damageStage = 3;
+} else if (hpRatio <= 0.50) {
+  damageStage = 2;
+} else if (hpRatio <= 0.75) {
+  damageStage = 1;
+}
+
     const angle =
       bastionArmorAngle +
       armor.index * Math.PI * 2 / BASTION_ARMOR_COUNT;
