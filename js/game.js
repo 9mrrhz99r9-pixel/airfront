@@ -3067,9 +3067,10 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
   );
 }
 
-// BASTION アームの描画
+// BASTION アーム・ミサイルの描画
 if (boss.id === 'bastion') {
   drawBastionArms();
+  drawBastionMissiles();
 }
 
 // BASTION 装甲破壊パーティクルの描画
