@@ -1217,7 +1217,38 @@ function drawPhoton() {
   const drawWidth = image.naturalWidth * scale;
   const drawHeight = image.naturalHeight * scale;
 
+      ctx.save();
+
+  // 出現時の光粒子収束演出
+  if (photonState === 'intro') {
     ctx.save();
+
+    for (let i = 0; i < 32; i++) {
+      const angle = i * Math.PI * 2 / 32 + Math.sin(i * 7.3) * 0.3;
+
+      const progress =
+        (introProgress * 3 + i / 32) % 1;
+
+      const distance =
+        W * 0.4 * (1 - progress);
+
+      const x = boss.x + Math.cos(angle) * distance;
+      const y = boss.y + Math.sin(angle) * distance;
+
+      ctx.globalAlpha =
+        Math.sin(progress * Math.PI) * 0.9;
+
+      ctx.fillStyle = '#ddf5ff';
+      ctx.shadowColor = '#66ccff';
+      ctx.shadowBlur = 10;
+
+      ctx.beginPath();
+      ctx.arc(x, y, 1.5 + progress * 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    ctx.restore();
+  }
 
   // 2秒周期の脈動
   const pulse = Math.sin(elapsed * Math.PI);
