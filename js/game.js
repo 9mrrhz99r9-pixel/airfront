@@ -1163,6 +1163,30 @@ function resetPhoton() {
   photonHitTimer = 0;
 }
 
+// PHOTON 更新処理
+function updatePhoton(dt) {
+  if (!boss || boss.id !== 'photon') return;
+
+  // 出現状態
+  if (photonState === 'intro') {
+    boss.active = false;
+    photonIntroTimer -= dt;
+
+    if (photonIntroTimer <= 0) {
+      photonIntroTimer = 0;
+      photonState = 'normal';
+      boss.active = true;
+    }
+
+    return;
+  }
+
+  // 通常戦闘状態
+  if (photonState === 'normal') {
+    boss.active = true;
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
