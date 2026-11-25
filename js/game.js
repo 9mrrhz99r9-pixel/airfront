@@ -1655,13 +1655,23 @@ bastionMissileSide = -1;
     id: selectedBoss.id,
     name: selectedBoss.name,
        x: W / 2,
-    y: selectedBoss.id === 'bastion' ? H * 0.18 : -80,
-    w: selectedBoss.id === 'bastion'
-      ? Math.min(W * 0.45, H * 0.25)
-      : 120,
-    h: selectedBoss.id === 'bastion'
-      ? Math.min(W * 0.45, H * 0.25)
-      : 120,
+        y: selectedBoss.id === 'photon'
+      ? H * 0.2
+      : selectedBoss.id === 'bastion'
+        ? H * 0.18
+        : -80,
+
+    w: selectedBoss.id === 'photon'
+      ? W * 0.2
+      : selectedBoss.id === 'bastion'
+        ? Math.min(W * 0.45, H * 0.25)
+        : 120,
+
+    h: selectedBoss.id === 'photon'
+      ? W * 0.2
+      : selectedBoss.id === 'bastion'
+        ? Math.min(W * 0.45, H * 0.25)
+        : 120,
     hp: difficultyConfig.hp,
     maxHp: difficultyConfig.hp,
     speed: CONFIG.bossSpeed,
