@@ -1646,6 +1646,11 @@ bastionMissileSide = -1;
     }
   }
   
+    // PHOTONの初期化
+  if (selectedBoss.id === 'photon') {
+    resetPhoton();
+  }
+  
   boss = {
     id: selectedBoss.id,
     name: selectedBoss.name,
