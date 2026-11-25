@@ -629,6 +629,21 @@ const BOSS_DATA = [
       'HARD',
       'EXPERT'
     ]
+    },
+  {
+    id: 'photon',
+    name: 'PHOTON',
+    description:
+      '純粋な光エネルギーで構成された異星生命体。' +
+      '3種類の結晶核を持ち、瞬間移動とともに形態を変化させる。' +
+      '形態ごとに異なる光エネルギー攻撃を繰り出す。',
+
+    difficulties: [
+      'EASY',
+      'NORMAL',
+      'HARD',
+      'EXPERT'
+    ]
   }
 ];
 let selectedBoss = null;
