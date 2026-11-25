@@ -1113,6 +1113,28 @@ photonClusterImage.src = 'assets/boss/photon_cluster.PNG';
 const photonRoughImage = new Image();
 photonRoughImage.src = 'assets/boss/photon_rough.PNG';
 
+// PHOTON 状態管理
+let photonForm = null;
+let photonState = 'intro';
+
+let photonIntroTimer = 0;
+let photonWarpTimer = 0;
+let photonWarpPhaseTimer = 0;
+
+let photonMoveAngle = 0;
+
+let photonAttack = null;
+let photonAttackTimer = 0;
+let photonAttackCooldown = 0;
+
+let photonPillars = [];
+let photonBullets = [];
+let photonOrbs = [];
+let photonParticles = [];
+
+let photonFlashTimer = 0;
+let photonHitTimer = 0;
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
