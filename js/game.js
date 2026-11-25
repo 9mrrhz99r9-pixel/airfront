@@ -1286,6 +1286,32 @@ function drawPhoton() {
   ctx.restore();
 }
 
+// PHOTON 単結晶型の移動
+function updatePhotonSingleMovement(dt) {
+  const speed = W * 0.15;
+  const radius = boss.w / 2;
+
+  const minX = W * 0.05 + radius;
+  const maxX = W * 0.95 - radius;
+  const minY = H * 0.03 + radius;
+  const maxY = Math.max(minY, H * 0.38 - radius);
+
+  boss.x += Math.cos(photonMoveAngle) * speed * dt;
+  boss.y += Math.sin(photonMoveAngle) * speed * dt;
+
+  // 左右の境界で反射
+  if (boss.x < minX || boss.x > maxX) {
+    boss.x = Math.max(minX, Math.min(maxX, boss.x));
+    photonMoveAngle = Math.PI - photonMoveAngle;
+  }
+
+  // 上下の境界で反射
+  if (boss.y < minY || boss.y > maxY) {
+    boss.y = Math.max(minY, Math.min(maxY, boss.y));
+    photonMoveAngle = -photonMoveAngle;
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
