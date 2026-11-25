@@ -3264,6 +3264,10 @@ if (gameMode === 'boss' && boss) {
 }
 if (gameMode === 'boss' && boss) {
       // ボス画像表示
+if (boss.id === 'photon') {
+  drawPhoton();
+} else {
+
 const currentBossImage =
   boss.id === 'bastion'
     ? bastionBossImage
