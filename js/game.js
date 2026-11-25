@@ -1200,7 +1200,14 @@ function drawPhoton() {
 
   if (!image.complete || image.naturalWidth === 0) return;
 
-  const maxSize = W * 0.2;
+    // 出現演出の進行度
+  const introProgress = photonState === 'intro'
+    ? Math.max(0, Math.min(1, 1 - photonIntroTimer / 3))
+    : 1;
+
+  const introScale = Math.max(0.02, introProgress);
+
+  const maxSize = W * 0.2 * introScale;
 
   const scale = Math.min(
     maxSize / image.naturalWidth,
