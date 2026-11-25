@@ -1187,6 +1187,42 @@ function updatePhoton(dt) {
   }
 }
 
+// PHOTON 結晶核の描画
+function drawPhoton() {
+  if (!boss || boss.id !== 'photon') return;
+
+  const image =
+    photonForm === 'single'
+      ? photonSingleImage
+      : photonForm === 'cluster'
+        ? photonClusterImage
+        : photonRoughImage;
+
+  if (!image.complete || image.naturalWidth === 0) return;
+
+  const maxSize = W * 0.2;
+
+  const scale = Math.min(
+    maxSize / image.naturalWidth,
+    maxSize / image.naturalHeight
+  );
+
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+
+  ctx.save();
+
+  ctx.drawImage(
+    image,
+    boss.x - drawWidth / 2,
+    boss.y - drawHeight / 2,
+    drawWidth,
+    drawHeight
+  );
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
