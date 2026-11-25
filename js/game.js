@@ -3295,8 +3295,9 @@ if (currentBossImage.complete && currentBossImage.naturalWidth > 0) {
     (W - imageWidth) / 2,
     boss.y - imageHeight / 2,
     imageWidth,
-    imageHeight
+        imageHeight
   );
+}
 }
 
 // BASTION アーム・ミサイルの描画
