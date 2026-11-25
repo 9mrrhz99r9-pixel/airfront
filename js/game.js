@@ -1103,6 +1103,16 @@ const PHOTON_DIFFICULTY = {
   }
 };
 
+// PHOTON 結晶核画像
+const photonSingleImage = new Image();
+photonSingleImage.src = 'assets/boss/photon_single.PNG';
+
+const photonClusterImage = new Image();
+photonClusterImage.src = 'assets/boss/photon_cluster.PNG';
+
+const photonRoughImage = new Image();
+photonRoughImage.src = 'assets/boss/photon_rough.PNG';
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
