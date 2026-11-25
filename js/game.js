@@ -1210,7 +1210,31 @@ function drawPhoton() {
   const drawWidth = image.naturalWidth * scale;
   const drawHeight = image.naturalHeight * scale;
 
-  ctx.save();
+    ctx.save();
+
+  // 2秒周期の脈動
+  const pulse = Math.sin(elapsed * Math.PI);
+  const glowRadius = W * 0.175 * (1 + pulse * 0.05);
+
+  // 本体周囲の発光
+  const glow = ctx.createRadialGradient(
+    boss.x, boss.y, 0,
+    boss.x, boss.y, glowRadius
+  );
+
+  glow.addColorStop(0, 'rgba(230, 250, 255, 1)');
+  glow.addColorStop(0.35, 'rgba(140, 220, 255, 0.8)');
+  glow.addColorStop(0.7, 'rgba(70, 160, 255, 0.3)');
+  glow.addColorStop(1, 'rgba(40, 100, 255, 0)');
+
+  ctx.fillStyle = glow;
+  ctx.beginPath();
+  ctx.arc(boss.x, boss.y, glowRadius, 0, Math.PI * 2);
+  ctx.fill();
+
+  // 結晶核の発光
+  ctx.shadowColor = '#aaddff';
+  ctx.shadowBlur = 20 + pulse * 5;
 
   ctx.drawImage(
     image,
