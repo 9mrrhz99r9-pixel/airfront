@@ -1042,6 +1042,7 @@ let bastionArmorParticles = [];
 
 const BASTION_ARMOR_COUNT = 6;
 const BASTION_ARMOR_ROTATION_SPEED = Math.PI * 2 / 20;
+  
   // BASTION 難易度別設定
 const BASTION_DIFFICULTY = {
   EASY: {
@@ -1075,6 +1076,30 @@ const BASTION_DIFFICULTY = {
     armCooldown: 0,
     missileCount: 6,
     missileSpeed: 200
+  }
+};
+
+// PHOTON 難易度別設定
+const PHOTON_DIFFICULTY = {
+  EASY: {
+    hp: 100,
+    attackCooldown: 6,
+    chargeTime: 3.0
+  },
+  NORMAL: {
+    hp: 150,
+    attackCooldown: 4,
+    chargeTime: 2.5
+  },
+  HARD: {
+    hp: 200,
+    attackCooldown: 2,
+    chargeTime: 2.0
+  },
+  EXPERT: {
+    hp: 350,
+    attackCooldown: 1,
+    chargeTime: 1.5
   }
 };
 
