@@ -1135,6 +1135,34 @@ let photonParticles = [];
 let photonFlashTimer = 0;
 let photonHitTimer = 0;
 
+// PHOTON 初期化
+function resetPhoton() {
+  const forms = ['single', 'cluster', 'rough'];
+
+  photonForm =
+    forms[Math.floor(Math.random() * forms.length)];
+
+  photonState = 'intro';
+
+  photonIntroTimer = 3;
+  photonWarpTimer = 15 + Math.random() * 5;
+  photonWarpPhaseTimer = 0;
+
+  photonMoveAngle = Math.random() * Math.PI * 2;
+
+  photonAttack = null;
+  photonAttackTimer = 0;
+  photonAttackCooldown = 0;
+
+  photonPillars = [];
+  photonBullets = [];
+  photonOrbs = [];
+  photonParticles = [];
+
+  photonFlashTimer = 0;
+  photonHitTimer = 0;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
