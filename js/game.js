@@ -2010,6 +2010,35 @@ function updatePhotonSpiralAttack(dt) {
   }
 }
 
+// PHOTON 波状弾幕の生成
+function spawnPhotonWaveRow() {
+  const bulletCounts = {
+    EASY: 4,
+    NORMAL: 5,
+    HARD: 6,
+    EXPERT: 8
+  };
+
+  const count = bulletCounts[selectedBossDifficulty] ?? 4;
+
+  for (let i = 0; i < count; i++) {
+    const x = W * (i + 0.5) / count;
+
+    const b = spawnPhotonBullet(
+      x,
+      0,
+      Math.PI / 2,
+      180
+    );
+
+    b.type = 'wave';
+    b.baseX = x;
+    b.waveTime = 0;
+    b.amplitude = W * 0.1;
+    b.period = 2;
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
