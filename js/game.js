@@ -3253,9 +3253,29 @@ if (bossHit) {
   enemies = enemies.filter(e => e.alive);
   guardGroups = guardGroups.filter(g => g.members.some(m => m.alive));
 
-  // 被弾判定
+  // PHOTON 収束光柱との衝突判定
+let photonPillarHit = false;
+
+if (gameMode === 'boss' && boss && boss.id === 'photon') {
+  const playerRadius = shieldHp > 0 ? 24 : 17;
+
+  for (const p of photonPillars) {
+    if (!p.damagePending) continue;
+
+    p.damagePending = false;
+
+    if (
+      Math.abs(player.x - p.x) <=
+      p.width / 2 + playerRadius
+    ) {
+      photonPillarHit = true;
+    }
+  }
+}
+
+// 被弾判定
 if (invincibleTimer <= 0 || shieldHp > 0) {
-  let damaged = false;
+  let damaged = photonPillarHit;
   
   // BASTION ミサイルとの接触判定
 if (
