@@ -1553,8 +1553,10 @@ updatePhotonBullets(dt);
       updatePhotonConvergingAttack(dt);
 
     } else if (photonAttack.type === 'moving') {
-      updatePhotonMovingAttack();
-    }
+  updatePhotonMovingAttack();
+} else if (photonAttack.type === 'fan') {
+  updatePhotonFanAttack(dt);
+}
 
     return;
   }
