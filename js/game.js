@@ -1588,6 +1588,8 @@ updatePhotonOrbs(dt);
 
     // 攻撃開始条件
   if (photonAttackCooldown <= 0) {
+  photonFlashTimer = 0.2;
+
   if (photonForm === 'single') {
     if (Math.random() < 0.5) {
       startPhotonConvergingAttack();
