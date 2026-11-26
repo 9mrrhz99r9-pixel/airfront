@@ -1895,6 +1895,20 @@ function spawnPhotonFanVolley(volleyIndex) {
   }
 }
 
+// PHOTON 扇状弾幕の開始
+function startPhotonFanAttack() {
+  photonAttack = {
+    type: 'fan',
+    volleyIndex: 1,
+    totalVolleys: 5
+  };
+
+  photonAttackTimer = 0.4;
+
+  // 1回目の弾幕を即座に発射
+  spawnPhotonFanVolley(0);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
