@@ -3015,7 +3015,12 @@ if (bossHit) {
     }
   }
 
-  boss.hp--;
+    boss.hp--;
+
+  // PHOTON 被弾演出
+  if (boss.id === 'photon') {
+    photonHitTimer = 0.15;
+  }
         b.dead = true;
 
         if (boss.hp <= 0) {
