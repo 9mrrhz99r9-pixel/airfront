@@ -1383,6 +1383,38 @@ function changePhotonForm() {
   photonMoveAngle = Math.random() * Math.PI * 2;
 }
 
+// PHOTON 瞬間移動の更新
+function updatePhotonWarp(dt) {
+  if (photonState === 'warp_pre') {
+    photonWarpPhaseTimer -= dt;
+
+    if (photonWarpPhaseTimer <= 0) {
+      photonState = 'warp_hidden';
+      photonWarpPhaseTimer = 0.5;
+      boss.active = false;
+    }
+
+  } else if (photonState === 'warp_hidden') {
+    photonWarpPhaseTimer -= dt;
+
+    if (photonWarpPhaseTimer <= 0) {
+      changePhotonForm();
+
+      photonState = 'warp_post';
+      photonWarpPhaseTimer = 1;
+      boss.active = true;
+    }
+
+  } else if (photonState === 'warp_post') {
+    photonWarpPhaseTimer -= dt;
+
+    if (photonWarpPhaseTimer <= 0) {
+      photonState = 'normal';
+      photonWarpTimer = 15 + Math.random() * 5;
+    }
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
