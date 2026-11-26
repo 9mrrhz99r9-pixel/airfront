@@ -2644,6 +2644,29 @@ function updatePhotonSingleOrbAttack() {
   }
 }
 
+// PHOTON 三連光球の開始
+function startPhotonTripleOrbAttack() {
+  const x = W * 0.5;
+  const y = H * 0.35;
+  const diameter = W * 0.2;
+
+  const angle = Math.atan2(
+    player.y - y,
+    player.x - x
+  );
+
+  const orb = spawnPhotonOrb(
+    x, y, diameter, angle
+  );
+
+  orb.isTripleSource = true;
+  orb.shotsRemaining = 3;
+
+  photonAttack = {
+    type: 'triple_orb'
+  };
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
