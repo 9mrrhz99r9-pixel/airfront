@@ -1556,6 +1556,14 @@ updatePhotonBullets(dt);
   updatePhotonMovingAttack();
 } else if (photonAttack.type === 'fan') {
   updatePhotonFanAttack(dt);
+} else if (photonAttack.type === 'spiral') {
+  updatePhotonSpiralAttack(dt);
+} else if (photonAttack.type === 'wave') {
+  updatePhotonWaveAttack(dt);
+} else if (photonAttack.type === 'split') {
+  updatePhotonSplitAttack(dt);
+} else if (photonAttack.type === 'stagnant') {
+  updatePhotonStagnantAttack();
 }
 
     return;
@@ -1578,8 +1586,20 @@ updatePhotonBullets(dt);
       startPhotonMovingAttack();
     }
   } else if (photonForm === 'cluster') {
-    startPhotonFanAttack();
-  }
+  const attacks = [
+    startPhotonFanAttack,
+    startPhotonSpiralAttack,
+    startPhotonWaveAttack,
+    startPhotonSplitAttack,
+    startPhotonStagnantAttack
+  ];
+
+  const attack = attacks[
+    Math.floor(Math.random() * attacks.length)
+  ];
+
+  attack();
+}
 }
 }
 
