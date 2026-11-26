@@ -1628,7 +1628,10 @@ function updatePhotonPillars(dt) {
     for (const p of photonPillars) {
 
     // 移動光柱の更新
-    if (p.type === 'moving') {
+        if (p.type === 'moving') {
+      p.previousX = p.x;
+      p.damageActive = p.phase === 'moving';
+
       p.timer -= dt;
 
       if (p.phase === 'extending') {
