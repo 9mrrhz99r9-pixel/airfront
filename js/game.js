@@ -1696,6 +1696,27 @@ function drawPhotonPillars() {
   ctx.restore();
 }
 
+// PHOTON 移動光柱の生成
+function spawnPhotonMovingPillar() {
+  const width = W * 0.02;
+  const x = width / 2 + Math.random() * (W - width);
+
+  const direction = x < W / 2 ? 1 : -1;
+
+  photonPillars.push({
+    type: 'moving',
+    x: x,
+    startX: x,
+    targetX: x + direction * W * 0.3,
+    width: width,
+    height: 0,
+    phase: 'extending',
+    timer: 0.8,
+    alpha: 1,
+    dead: false
+  });
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
