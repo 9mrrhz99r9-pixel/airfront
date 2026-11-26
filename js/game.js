@@ -1560,9 +1560,11 @@ function updatePhotonAttack(dt) {
   // 瞬間移動が近い場合は新しい攻撃を開始しない
   if (photonWarpTimer <= 1) return;
 
-  // 攻撃開始条件
+    // 攻撃開始条件
   if (photonAttackCooldown <= 0) {
-    // ここに各形態の攻撃開始処理を追加する
+    if (photonForm === 'single') {
+      startPhotonConvergingAttack();
+    }
   }
 }
 
