@@ -1910,9 +1910,23 @@ function drawPhotonBullets() {
   ctx.shadowBlur = 12;
 
   for (const b of photonBullets) {
-    if (b.dead) continue;
+  if (b.dead) continue;
 
-    // 光弾の外側
+  // 停滞中の発光演出
+  if (b.type === 'stagnant' && !b.released) {
+    const progress = Math.max(
+      0,
+      Math.min(1, 1 - b.waitTimer / 1.5)
+    );
+
+    ctx.shadowBlur = 5 + 25 * progress;
+    ctx.globalAlpha = 0.4 + 0.6 * progress;
+  } else {
+    ctx.shadowBlur = 12;
+    ctx.globalAlpha = 1;
+  }
+
+  // 光弾の外側
     ctx.fillStyle = '#66ccff';
     ctx.beginPath();
     ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
