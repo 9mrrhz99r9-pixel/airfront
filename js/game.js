@@ -4159,6 +4159,9 @@ if (gameMode === 'boss' && boss && boss.id === 'photon') {
 }
 
 // 被弾判定
+if (invincibleTimer <= 0 || shieldHp > 0) {
+  let damaged = photonPillarHit;
+  
 // PHOTON 光球との衝突判定
 if (
   !damaged &&
