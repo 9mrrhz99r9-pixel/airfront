@@ -1826,7 +1826,21 @@ function updatePhotonBullets(dt) {
   for (const b of [...photonBullets]) {
     if (b.dead) continue;
 
-    // 光弾の移動
+    // 停滞型光弾の処理
+if (b.type === 'stagnant' && !b.released) {
+  b.waitTimer -= dt;
+
+  if (b.waitTimer <= 0) {
+    b.waitTimer = 0;
+    b.released = true;
+    b.vx = 0;
+    b.vy = 250;
+  } else {
+    continue;
+  }
+}
+
+// 光弾の移動
 if (b.type === 'wave') {
   b.waveTime += dt;
 
