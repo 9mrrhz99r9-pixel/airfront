@@ -2093,6 +2093,33 @@ function updatePhotonWaveAttack(dt) {
   }
 }
 
+// PHOTON 分裂型弾幕の生成
+function spawnPhotonSplitBullet() {
+  const splitCounts = {
+    EASY: 1,
+    NORMAL: 2,
+    HARD: 3,
+    EXPERT: 4
+  };
+
+  const angle =
+    Math.PI / 2 +
+    (Math.random() - 0.5) * Math.PI / 3;
+
+  const b = spawnPhotonBullet(
+    boss.x,
+    boss.y,
+    angle,
+    140
+  );
+
+  b.type = 'split';
+  b.angle = angle;
+  b.splitRemaining =
+    splitCounts[selectedBossDifficulty] ?? 1;
+  b.splitTimer = 0.5;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
