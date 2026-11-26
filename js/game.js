@@ -1813,6 +1813,29 @@ function spawnPhotonBullet(x, y, angle, speed) {
   return bullet;
 }
 
+// PHOTON 光弾の更新
+function updatePhotonBullets(dt) {
+  for (const b of photonBullets) {
+    if (b.dead) continue;
+
+    // 光弾の移動
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+
+    // 画面外に出た光弾を削除
+    if (
+      b.x < -b.r ||
+      b.x > W + b.r ||
+      b.y < -b.r ||
+      b.y > H + b.r
+    ) {
+      b.dead = true;
+    }
+  }
+
+  photonBullets = photonBullets.filter(b => !b.dead);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
