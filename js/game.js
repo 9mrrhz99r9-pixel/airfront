@@ -3308,7 +3308,7 @@ function renderBossRecords(difficulty) {
   selectedBoss.id === 'dreadnought' ? 'boss2' :
   'boss1';
   const recordKey = `sky_defender_${bossRecordId}_records_${difficulty}`;
-  const records = JSON.parse(localStorage.getItem(recordKey) || '[]');
+  const records = loadBossRecords(recordKey);
 
   records.sort((a, b) => a - b);
 
