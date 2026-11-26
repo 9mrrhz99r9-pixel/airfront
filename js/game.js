@@ -1083,22 +1083,22 @@ const BASTION_DIFFICULTY = {
 const PHOTON_DIFFICULTY = {
   EASY: {
     hp: 100,
-    attackCooldown: 6,
+    attackCooldown: 3,
     chargeTime: 3.0
   },
   NORMAL: {
     hp: 150,
-    attackCooldown: 4,
+    attackCooldown: 2,
     chargeTime: 2.5
   },
   HARD: {
     hp: 200,
-    attackCooldown: 2,
+    attackCooldown: 1,
     chargeTime: 2.0
   },
   EXPERT: {
     hp: 350,
-    attackCooldown: 1,
+    attackCooldown: 0.3,
     chargeTime: 1.5
   }
 };
