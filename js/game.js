@@ -2430,6 +2430,27 @@ function updatePhotonOrbParticles(orb, dt) {
   orb.particles = orb.particles.filter(p => !p.dead);
 }
 
+// PHOTON 光球の集束粒子描画
+function drawPhotonOrbParticles(orb) {
+  ctx.save();
+
+  ctx.fillStyle = '#ddf5ff';
+  ctx.shadowColor = '#66ccff';
+  ctx.shadowBlur = 8;
+  ctx.globalAlpha = 0.9;
+
+  for (const p of orb.particles) {
+    ctx.beginPath();
+    ctx.arc(
+      p.x, p.y, p.size,
+      0, Math.PI * 2
+    );
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
