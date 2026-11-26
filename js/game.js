@@ -1942,6 +1942,30 @@ function updatePhotonFanAttack(dt) {
   }
 }
 
+// PHOTON 螺旋状弾幕の生成
+function spawnPhotonSpiralVolley(angle) {
+  const armCounts = {
+    EASY: 2,
+    NORMAL: 3,
+    HARD: 4,
+    EXPERT: 5
+  };
+
+  const count = armCounts[selectedBossDifficulty] ?? 2;
+
+  for (let i = 0; i < count; i++) {
+    const bulletAngle =
+      angle + Math.PI * 2 * i / count;
+
+    spawnPhotonBullet(
+      boss.x,
+      boss.y,
+      bulletAngle,
+      160
+    );
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
