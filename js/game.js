@@ -1539,8 +1539,16 @@ function finishPhotonAttack() {
 
 // PHOTON 攻撃管理
 function updatePhotonAttack(dt) {
-  // 攻撃中は待機時間を進めない
+    // 光柱の状態更新
+  updatePhotonPillars(dt);
+
+  // 攻撃中の処理
   if (photonAttack !== null) {
+
+    if (photonAttack.type === 'converging') {
+      updatePhotonConvergingAttack(dt);
+    }
+
     return;
   }
 
