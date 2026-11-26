@@ -1567,6 +1567,12 @@ updatePhotonOrbs(dt);
   updatePhotonSplitAttack(dt);
 } else if (photonAttack.type === 'stagnant') {
   updatePhotonStagnantAttack();
+} else if (photonAttack.type === 'falling') {
+  updatePhotonFallingAttack();
+} else if (photonAttack.type === 'single_orb') {
+  updatePhotonSingleOrbAttack();
+} else if (photonAttack.type === 'triple_orb') {
+  updatePhotonTripleOrbAttack();
 }
 
     return;
