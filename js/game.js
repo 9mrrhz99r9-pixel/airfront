@@ -2703,6 +2703,16 @@ function releasePhotonTripleOrb(orb) {
   );
 }
 
+// PHOTON 三連光球の更新
+function updatePhotonTripleOrbAttack() {
+  if (photonAttack?.type !== 'triple_orb') return;
+
+  // 全ての光球が消滅したら攻撃終了
+  if (photonOrbs.length === 0) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
