@@ -1477,6 +1477,23 @@ function updatePhotonWarp(dt) {
   }
 }
 
+// PHOTON 被弾時の光粒子生成
+function spawnPhotonHitParticles(x, y) {
+  for (let i = 0; i < 12; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 40 + Math.random() * 100;
+
+    photonParticles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      size: 1 + Math.random() * 2,
+      life: 0.3 + Math.random() * 0.3
+    });
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
