@@ -3473,6 +3473,31 @@ if (gameMode === 'boss' && boss && boss.id === 'photon') {
 // 被弾判定
 if (invincibleTimer <= 0 || shieldHp > 0) {
   let damaged = photonPillarHit;
+
+  // PHOTON 光弾との衝突判定
+  if (
+    !damaged &&
+    gameMode === 'boss' &&
+    boss &&
+    boss.id === 'photon'
+  ) {
+    const playerRadius = shieldHp > 0 ? 24 : 17;
+
+    for (const b of photonBullets) {
+      if (b.dead) continue;
+
+      if (
+        hit(
+          b.x, b.y, b.r,
+          player.x, player.y, playerRadius
+        )
+      ) {
+        b.dead = true;
+        damaged = true;
+        break;
+      }
+    }
+  }
   
   // BASTION ミサイルとの接触判定
 if (
