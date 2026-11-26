@@ -1574,6 +1574,21 @@ function spawnPhotonConvergingPillar() {
   });
 }
 
+// PHOTON 収束光柱の攻撃開始
+function startPhotonConvergingAttack() {
+  const count = 1 + Math.floor(Math.random() * 3);
+
+  photonAttack = {
+    type: 'converging',
+    remaining: count - 1
+  };
+
+  photonAttackTimer = 1;
+
+  // 最初の光柱を即座に生成
+  spawnPhotonConvergingPillar();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
