@@ -4054,6 +4054,7 @@ if (gameMode === 'boss' && boss) {
 if (boss.id === 'photon') {
   drawPhoton();
   drawPhotonPillars();
+  drawPhotonBullets();
 } else {
 
 const currentBossImage =
