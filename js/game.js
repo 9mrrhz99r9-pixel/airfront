@@ -1181,9 +1181,28 @@ function updatePhoton(dt) {
     return;
   }
 
-    // 通常戦闘状態
+      // 瞬間移動中
+  if (
+    photonState === 'warp_pre' ||
+    photonState === 'warp_hidden' ||
+    photonState === 'warp_post'
+  ) {
+    updatePhotonWarp(dt);
+    return;
+  }
+
+  // 通常戦闘状態
   if (photonState === 'normal') {
     boss.active = true;
+
+    photonWarpTimer -= dt;
+
+    // 攻撃終了後に瞬間移動を開始
+    if (photonWarpTimer <= 1 && photonAttack === null) {
+      photonState = 'warp_pre';
+      photonWarpPhaseTimer = 1;
+      return;
+    }
 
         if (photonForm === 'single') {
       updatePhotonSingleMovement(dt);
