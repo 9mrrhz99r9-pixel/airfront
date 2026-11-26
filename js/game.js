@@ -3356,6 +3356,7 @@ if (
     );
   }
   const bossRecordId =
+  boss.id === 'photon' ? 'boss4' :
   boss.id === 'bastion' ? 'boss3' :
   boss.id === 'dreadnought' ? 'boss2' :
   'boss1';
