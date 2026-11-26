@@ -1966,6 +1966,21 @@ function spawnPhotonSpiralVolley(angle) {
   }
 }
 
+// PHOTON 螺旋状弾幕の開始
+function startPhotonSpiralAttack() {
+  photonAttack = {
+    type: 'spiral',
+    elapsed: 0,
+    duration: 4,
+    angle: 0
+  };
+
+  photonAttackTimer = 0.15;
+
+  // 最初の光弾を発射
+  spawnPhotonSpiralVolley(photonAttack.angle);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
