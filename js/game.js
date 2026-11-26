@@ -1981,6 +1981,35 @@ function startPhotonSpiralAttack() {
   spawnPhotonSpiralVolley(photonAttack.angle);
 }
 
+// PHOTON 螺旋状弾幕の更新
+function updatePhotonSpiralAttack(dt) {
+  if (photonAttack?.type !== 'spiral') return;
+
+  photonAttack.elapsed += dt;
+
+  // 4秒間の連続発射
+  if (photonAttack.elapsed < photonAttack.duration) {
+    photonAttackTimer -= dt;
+
+    while (photonAttackTimer <= 0) {
+      // 発射角度を27度ずつ回転
+      photonAttack.angle += Math.PI * 0.15;
+
+      spawnPhotonSpiralVolley(photonAttack.angle);
+
+      photonAttackTimer += 0.15;
+    }
+  }
+
+  // 全ての光弾が消滅したら攻撃終了
+  if (
+    photonAttack.elapsed >= photonAttack.duration &&
+    photonBullets.length === 0
+  ) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
