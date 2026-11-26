@@ -1571,14 +1571,16 @@ updatePhotonBullets(dt);
 
     // 攻撃開始条件
   if (photonAttackCooldown <= 0) {
-        if (photonForm === 'single') {
-      if (Math.random() < 0.5) {
-        startPhotonConvergingAttack();
-      } else {
-        startPhotonMovingAttack();
-      }
+  if (photonForm === 'single') {
+    if (Math.random() < 0.5) {
+      startPhotonConvergingAttack();
+    } else {
+      startPhotonMovingAttack();
     }
+  } else if (photonForm === 'cluster') {
+    startPhotonFanAttack();
   }
+}
 }
 
 // PHOTON 収束光柱の生成
