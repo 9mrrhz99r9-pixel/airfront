@@ -1221,12 +1221,15 @@ function updatePhoton(dt) {
       return;
     }
 
-        if (photonForm === 'single') {
+            if (photonForm === 'single') {
       updatePhotonSingleMovement(dt);
 
     } else if (photonForm === 'rough') {
       updatePhotonRoughMovement(dt);
     }
+
+    // 攻撃状態の更新
+    updatePhotonAttack(dt);
   }
 }
 
