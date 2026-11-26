@@ -664,6 +664,34 @@ const BOSS_DATA = [
 let selectedBoss = null;
 let selectedBossDifficulty = null;
 
+// PRISM 難易度別設定
+const PRISM_DIFFICULTY = {
+  EASY: {
+    hp: 100,
+    attackCooldown: 3,
+    fanVolleys: 3,
+    crossingCount: 2
+  },
+  NORMAL: {
+    hp: 150,
+    attackCooldown: 2,
+    fanVolleys: 4,
+    crossingCount: 3
+  },
+  HARD: {
+    hp: 200,
+    attackCooldown: 1,
+    fanVolleys: 5,
+    crossingCount: 4
+  },
+  EXPERT: {
+    hp: 350,
+    attackCooldown: 0.3,
+    fanVolleys: 6,
+    crossingCount: 5
+  }
+};
+
 // TAINT 難易度別設定
 const TAINT_DIFFICULTY = {
   EASY: {
