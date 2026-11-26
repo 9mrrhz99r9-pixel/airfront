@@ -1316,6 +1316,28 @@ function updatePhotonSingleMovement(dt) {
   }
 }
 
+// PHOTON 原石型の移動
+function updatePhotonRoughMovement(dt) {
+  const speed = W * 0.1;
+  const radius = boss.w / 2;
+
+  const minX = W * 0.05 + radius;
+  const maxX = W * 0.95 - radius;
+
+  // 高さを固定
+  boss.y = H * 0.2;
+
+  // プレイヤーから離れる方向へ移動
+  if (player.x < boss.x) {
+    boss.x += speed * dt;
+  } else if (player.x > boss.x) {
+    boss.x -= speed * dt;
+  }
+
+  // 移動範囲を制限
+  boss.x = Math.max(minX, Math.min(maxX, boss.x));
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
