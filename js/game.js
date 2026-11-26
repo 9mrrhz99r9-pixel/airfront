@@ -1534,6 +1534,27 @@ function finishPhotonAttack() {
   photonAttackCooldown = config.attackCooldown;
 }
 
+// PHOTON 攻撃管理
+function updatePhotonAttack(dt) {
+  // 攻撃中は待機時間を進めない
+  if (photonAttack !== null) {
+    return;
+  }
+
+  // 攻撃間隔のカウントダウン
+  photonAttackCooldown = Math.max(
+    0, photonAttackCooldown - dt
+  );
+
+  // 瞬間移動が近い場合は新しい攻撃を開始しない
+  if (photonWarpTimer <= 1) return;
+
+  // 攻撃開始条件
+  if (photonAttackCooldown <= 0) {
+    // ここに各形態の攻撃開始処理を追加する
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
