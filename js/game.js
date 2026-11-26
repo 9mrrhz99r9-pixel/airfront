@@ -1167,10 +1167,22 @@ function resetPhoton() {
 function updatePhoton(dt) {
   if (!boss || boss.id !== 'photon') return;
 
-  // 被弾演出タイマーの更新
+    // 被弾演出タイマーの更新
   if (photonHitTimer > 0) {
     photonHitTimer = Math.max(0, photonHitTimer - dt);
   }
+
+  // 光粒子の移動と寿命の更新
+  for (const p of photonParticles) {
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.life -= dt;
+  }
+
+  // 寿命が尽きた光粒子を削除
+  photonParticles = photonParticles.filter(
+    p => p.life > 0
+  );
 
   // 出現状態
   if (photonState === 'intro') {
