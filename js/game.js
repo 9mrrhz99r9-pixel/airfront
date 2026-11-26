@@ -3043,9 +3043,10 @@ if (bossHit) {
 
     boss.hp--;
 
-  // PHOTON 被弾演出
+    // PHOTON 被弾演出
   if (boss.id === 'photon') {
     photonHitTimer = 0.15;
+    spawnPhotonHitParticles(b.x, b.y);
   }
         b.dead = true;
 
