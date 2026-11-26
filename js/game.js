@@ -2625,6 +2625,25 @@ function spawnPhotonSingleOrb() {
   spawnPhotonOrb(x, y, diameter, angle);
 }
 
+// PHOTON 単発光球の開始
+function startPhotonSingleOrbAttack() {
+  photonAttack = {
+    type: 'single_orb'
+  };
+
+  spawnPhotonSingleOrb();
+}
+
+// PHOTON 単発光球の更新
+function updatePhotonSingleOrbAttack() {
+  if (photonAttack?.type !== 'single_orb') return;
+
+  // 光球が消滅したら攻撃終了
+  if (photonOrbs.length === 0) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
