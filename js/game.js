@@ -1341,6 +1341,48 @@ function updatePhotonRoughMovement(dt) {
   boss.x = Math.max(minX, Math.min(maxX, boss.x));
 }
 
+// PHOTON 瞬間移動先と形態の決定
+function changePhotonForm() {
+  const forms = ['single', 'cluster', 'rough']
+    .filter(form => form !== photonForm);
+
+  photonForm =
+    forms[Math.floor(Math.random() * forms.length)];
+
+  const radius = boss.w / 2;
+
+  const minX = W * 0.05 + radius;
+  const maxX = W * 0.95 - radius;
+  const minY = H * 0.03 + radius;
+  const maxY = Math.max(minY, H * 0.38 - radius);
+
+  if (photonForm === 'cluster') {
+    boss.x = W / 2;
+    boss.y = H * 0.2;
+
+  } else {
+    const oldX = boss.x;
+    const oldY = boss.y;
+
+    for (let i = 0; i < 20; i++) {
+      boss.x = minX + Math.random() * (maxX - minX);
+
+      boss.y = photonForm === 'single'
+        ? minY + Math.random() * (maxY - minY)
+        : H * 0.2;
+
+      const distance = Math.hypot(
+        boss.x - oldX,
+        boss.y - oldY
+      );
+
+      if (distance >= W * 0.25) break;
+    }
+  }
+
+  photonMoveAngle = Math.random() * Math.PI * 2;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
