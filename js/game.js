@@ -2350,6 +2350,45 @@ function updatePhotonOrbs(dt) {
   photonOrbs = photonOrbs.filter(orb => !orb.dead);
 }
 
+// PHOTON 光球の描画
+function drawPhotonOrbs() {
+  ctx.save();
+
+  for (const orb of photonOrbs) {
+    if (orb.dead) continue;
+
+    const progress = orb.phase === 'charging'
+      ? Math.max(0, Math.min(
+          1, 1 - orb.chargeTimer / orb.chargeTime
+        ))
+      : 1;
+
+    const gradient = ctx.createRadialGradient(
+      orb.x, orb.y, 0,
+      orb.x, orb.y, orb.r
+    );
+
+    gradient.addColorStop(0, '#ffffff');
+    gradient.addColorStop(0.5, '#ddf5ff');
+    gradient.addColorStop(0.8, '#66ccff');
+    gradient.addColorStop(1, 'rgba(40,160,255,0.2)');
+
+    ctx.globalAlpha = 0.3 + progress * 0.7;
+    ctx.shadowColor = '#66ccff';
+    ctx.shadowBlur = 10 + progress * 30;
+    ctx.fillStyle = gradient;
+
+    ctx.beginPath();
+    ctx.arc(
+      orb.x, orb.y, orb.r,
+      0, Math.PI * 2
+    );
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
