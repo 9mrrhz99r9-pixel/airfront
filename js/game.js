@@ -2283,6 +2283,33 @@ function updatePhotonStagnantAttack() {
   }
 }
 
+// PHOTON 光球の生成
+function spawnPhotonOrb(x, y, diameter, angle) {
+  const config =
+    PHOTON_DIFFICULTY[selectedBossDifficulty] ||
+    PHOTON_DIFFICULTY.EASY;
+
+  const orb = {
+    x: x,
+    y: y,
+    r: diameter / 2,
+    angle: angle,
+    speed: 600,
+    vx: 0,
+    vy: 0,
+    phase: 'charging',
+    chargeTime: config.chargeTime,
+    chargeTimer: config.chargeTime,
+    particles: [],
+    trail: [],
+    dead: false
+  };
+
+  photonOrbs.push(orb);
+
+  return orb;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
