@@ -1607,8 +1607,20 @@ updatePhotonOrbs(dt);
     Math.floor(Math.random() * attacks.length)
   ];
 
-  attack();
-}
+      attack();
+  } else if (photonForm === 'rough') {
+    const attacks = [
+      startPhotonFallingAttack,
+      startPhotonSingleOrbAttack,
+      startPhotonTripleOrbAttack
+    ];
+
+    const attack = attacks[
+      Math.floor(Math.random() * attacks.length)
+    ];
+
+    attack();
+  }
 }
 }
 
