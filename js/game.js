@@ -3343,7 +3343,28 @@ let photonPillarHit = false;
 if (gameMode === 'boss' && boss && boss.id === 'photon') {
   const playerRadius = shieldHp > 0 ? 24 : 17;
 
-  for (const p of photonPillars) {
+    for (const p of photonPillars) {
+
+    // 移動光柱との衝突判定
+    if (p.type === 'moving') {
+      if (p.damageActive) {
+        const left =
+          Math.min(p.previousX, p.x) - p.width / 2;
+
+        const right =
+          Math.max(p.previousX, p.x) + p.width / 2;
+
+        if (
+          player.x + playerRadius >= left &&
+          player.x - playerRadius <= right
+        ) {
+          photonPillarHit = true;
+        }
+      }
+
+      continue;
+    }
+
     if (!p.damagePending) continue;
 
     p.damagePending = false;
