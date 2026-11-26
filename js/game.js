@@ -1361,8 +1361,25 @@ function drawPhoton() {
     boss.x - drawWidth / 2,
     boss.y - drawHeight / 2,
     drawWidth,
-    drawHeight
+        drawHeight
   );
+
+  ctx.restore();
+
+  // 被弾時の光粒子の描画
+  ctx.save();
+
+  ctx.fillStyle = '#ddf5ff';
+  ctx.shadowColor = '#66ccff';
+  ctx.shadowBlur = 8;
+
+  for (const p of photonParticles) {
+    ctx.globalAlpha = Math.min(1, p.life / 0.3);
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+  }
 
   ctx.restore();
 }
