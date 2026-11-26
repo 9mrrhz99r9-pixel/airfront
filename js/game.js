@@ -1558,6 +1558,22 @@ function updatePhotonAttack(dt) {
   }
 }
 
+// PHOTON 収束光柱の生成
+function spawnPhotonConvergingPillar() {
+  photonPillars.push({
+    type: 'converging',
+    x: player.x,
+    width: W * 0.3,
+    startWidth: W * 0.3,
+    endWidth: W * 0.05,
+    phase: 'converging',
+    timer: 1.5,
+    alpha: 0.2,
+    damagePending: false,
+    dead: false
+  });
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
