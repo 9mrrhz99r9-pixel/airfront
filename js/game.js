@@ -1862,6 +1862,39 @@ function drawPhotonBullets() {
   ctx.restore();
 }
 
+// PHOTON 扇状弾幕の生成
+function spawnPhotonFanVolley(volleyIndex) {
+  const bulletCounts = {
+    EASY: 5,
+    NORMAL: 7,
+    HARD: 9,
+    EXPERT: 13
+  };
+
+  const count = bulletCounts[selectedBossDifficulty] ?? 5;
+
+  const spread = Math.PI * 2 / 3;
+  const spacing = spread / (count - 1);
+
+  // 交互に発射角度を半間隔ずらす
+  const offset = volleyIndex % 2 === 0
+    ? 0
+    : spacing / 2;
+
+  for (let i = 0; i < count; i++) {
+    const angle =
+      Math.PI / 2 - spread / 2 +
+      spacing * i + offset;
+
+    spawnPhotonBullet(
+      boss.x,
+      boss.y,
+      angle,
+      200
+    );
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
