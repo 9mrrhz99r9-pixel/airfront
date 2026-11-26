@@ -1796,6 +1796,23 @@ function updatePhotonMovingAttack() {
   }
 }
 
+// PHOTON 光弾の生成
+function spawnPhotonBullet(x, y, angle, speed) {
+  const bullet = {
+    x: x,
+    y: y,
+    vx: Math.cos(angle) * speed,
+    vy: Math.sin(angle) * speed,
+    r: 5,
+    type: 'normal',
+    dead: false
+  };
+
+  photonBullets.push(bullet);
+
+  return bullet;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
