@@ -4491,7 +4491,12 @@ if (
   }
 }
         // ボスの触手との衝突
-if (!damaged && gameMode === 'boss') {
+if (
+  !damaged &&
+  gameMode === 'boss' &&
+  boss &&
+  boss.id === 'taint'
+) {
   for (const t of bossTentacles) {
     if (
       Math.abs(player.x - t.x) < (shieldHp > 0 ? 21 : 14) &&
@@ -4504,7 +4509,12 @@ if (!damaged && gameMode === 'boss') {
   }
 }
         // ボスビームとの衝突
-    if (!damaged && gameMode === 'boss') {
+    if (
+  !damaged &&
+  gameMode === 'boss' &&
+  boss &&
+  boss.id === 'taint'
+) {
       for (const b of bossBeams) {
         const length = Math.hypot(b.vx, b.vy);
         const dx = b.vx / length;
