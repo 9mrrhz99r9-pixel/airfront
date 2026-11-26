@@ -2324,6 +2324,7 @@ if (orb.phase === 'charging') {
       if (orb.chargeTimer <= 0) {
         orb.chargeTimer = 0;
         orb.phase = 'flying';
+        orb.particles = [];
 
         orb.vx = Math.cos(orb.angle) * orb.speed;
         orb.vy = Math.sin(orb.angle) * orb.speed;
