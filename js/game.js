@@ -2184,6 +2184,38 @@ function updatePhotonSplitAttack(dt) {
   }
 }
 
+// PHOTON 停滞型弾幕の生成
+function spawnPhotonStagnantBullets() {
+  const bulletCounts = {
+    EASY: 12,
+    NORMAL: 18,
+    HARD: 24,
+    EXPERT: 36
+  };
+
+  const count = bulletCounts[selectedBossDifficulty] ?? 12;
+
+  // 回避可能な安全地帯を設定
+  const safeX = W * (0.2 + Math.random() * 0.6);
+  const safeRadius = 35;
+
+  for (let i = 0; i < count; i++) {
+    let x;
+
+    do {
+      x = W * (0.05 + Math.random() * 0.9);
+    } while (Math.abs(x - safeX) < safeRadius);
+
+    const y = H * (0.1 + Math.random() * 0.3);
+
+    const b = spawnPhotonBullet(x, y, Math.PI / 2, 0);
+
+    b.type = 'stagnant';
+    b.waitTimer = 1.5;
+    b.released = false;
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
