@@ -1823,7 +1823,7 @@ function spawnPhotonBullet(x, y, angle, speed) {
 
 // PHOTON 光弾の更新
 function updatePhotonBullets(dt) {
-  for (const b of photonBullets) {
+  for (const b of [...photonBullets]) {
     if (b.dead) continue;
 
     // 光弾の移動
