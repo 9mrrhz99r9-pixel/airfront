@@ -2302,6 +2302,7 @@ function spawnPhotonOrb(x, y, diameter, angle) {
     chargeTimer: config.chargeTime,
     particles: [],
     trail: [],
+    flashTimer: 0,
     dead: false
   };
 
