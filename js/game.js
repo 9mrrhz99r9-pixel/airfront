@@ -2360,8 +2360,9 @@ function drawPhotonOrbs() {
   for (const orb of photonOrbs) {
     if (orb.dead) continue;
 
-// 集束粒子の描画
+// チャージ中の演出
 if (orb.phase === 'charging') {
+  drawPhotonOrbWarning(orb);
   drawPhotonOrbParticles(orb);
 }
 
