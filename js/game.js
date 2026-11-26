@@ -2360,6 +2360,11 @@ function drawPhotonOrbs() {
   for (const orb of photonOrbs) {
     if (orb.dead) continue;
 
+// 集束粒子の描画
+if (orb.phase === 'charging') {
+  drawPhotonOrbParticles(orb);
+}
+
     const progress = orb.phase === 'charging'
       ? Math.max(0, Math.min(
           1, 1 - orb.chargeTimer / orb.chargeTime
