@@ -1234,7 +1234,24 @@ function drawPhoton() {
     ? Math.max(0, Math.min(1, 1 - photonIntroTimer / 3))
     : 1;
 
-  const introScale = Math.max(0.02, introProgress);
+    let introScale = Math.max(0.02, introProgress);
+  let warpGlow = 1;
+
+  // 瞬間移動直前の演出
+  if (photonState === 'warp_pre') {
+    const progress = Math.max(
+      0, Math.min(1, 1 - photonWarpPhaseTimer)
+    );
+
+    if (progress < 0.8) {
+      warpGlow = 1 + progress / 0.8 * 0.5;
+    } else {
+      const collapse = (progress - 0.8) / 0.2;
+
+      introScale = Math.max(0.02, 1 - collapse);
+      warpGlow = 1.5;
+    }
+  }
 
   const maxSize = W * 0.2 * introScale;
 
