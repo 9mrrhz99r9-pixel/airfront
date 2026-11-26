@@ -2516,6 +2516,35 @@ function drawPhotonOrbWarning(orb) {
   ctx.restore();
 }
 
+// PHOTON 光球の残光描画
+function drawPhotonOrbTrail(orb) {
+  ctx.save();
+
+  ctx.fillStyle = '#66ccff';
+  ctx.shadowColor = '#66ccff';
+  ctx.shadowBlur = 15;
+
+  for (const t of orb.trail) {
+    const progress = Math.max(
+      0, Math.min(1, t.life / 0.2)
+    );
+
+    ctx.globalAlpha = progress * 0.25;
+
+    ctx.beginPath();
+    ctx.arc(
+      t.x,
+      t.y,
+      orb.r * progress,
+      0,
+      Math.PI * 2
+    );
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
