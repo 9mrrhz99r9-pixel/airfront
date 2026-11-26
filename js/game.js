@@ -1589,6 +1589,30 @@ function startPhotonConvergingAttack() {
   spawnPhotonConvergingPillar();
 }
 
+// PHOTON 収束光柱の攻撃更新
+function updatePhotonConvergingAttack(dt) {
+  if (photonAttack?.type !== 'converging') return;
+
+  if (photonAttack.remaining > 0) {
+    photonAttackTimer -= dt;
+
+    if (photonAttackTimer <= 0) {
+      spawnPhotonConvergingPillar();
+
+      photonAttack.remaining--;
+      photonAttackTimer += 1;
+    }
+  }
+
+  // 全光柱が消滅したら攻撃終了
+  if (
+    photonAttack.remaining === 0 &&
+    photonPillars.length === 0
+  ) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
