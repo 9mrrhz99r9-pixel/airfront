@@ -2610,6 +2610,21 @@ function updatePhotonFallingAttack() {
   }
 }
 
+// PHOTON 単発光球の生成
+function spawnPhotonSingleOrb() {
+  const x = W * 0.5;
+  const y = H * 0.35;
+  const diameter = W * 0.4;
+
+  // チャージ開始時のプレイヤー位置を狙う
+  const angle = Math.atan2(
+    player.y - y,
+    player.x - x
+  );
+
+  spawnPhotonOrb(x, y, diameter, angle);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
