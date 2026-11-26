@@ -3765,6 +3765,7 @@ if (gameMode === 'boss' && boss) {
       // ボス画像表示
 if (boss.id === 'photon') {
   drawPhoton();
+  drawPhotonPillars();
 } else {
 
 const currentBossImage =
