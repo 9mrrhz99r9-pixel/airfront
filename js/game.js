@@ -2146,7 +2146,7 @@ function spawnPhotonWaveRow() {
     EASY: 4,
     NORMAL: 5,
     HARD: 6,
-    EXPERT: 8
+    EXPERT: 6
   };
 
   const count = bulletCounts[selectedBossDifficulty] ?? 4;
