@@ -1217,6 +1217,9 @@ function updatePhoton(dt) {
 function drawPhoton() {
   if (!boss || boss.id !== 'photon') return;
 
+  // 瞬間移動中の完全消失
+  if (photonState === 'warp_hidden') return;
+  
   const image =
     photonForm === 'single'
       ? photonSingleImage
