@@ -2147,6 +2147,43 @@ function spawnPhotonSplitBullet() {
   b.splitTimer = 0.5;
 }
 
+// PHOTON 分裂型弾幕の開始
+function startPhotonSplitAttack() {
+  photonAttack = {
+    type: 'split',
+    shotsFired: 1,
+    totalShots: 3
+  };
+
+  photonAttackTimer = 0.8;
+
+  spawnPhotonSplitBullet();
+}
+
+// PHOTON 分裂型弾幕の更新
+function updatePhotonSplitAttack(dt) {
+  if (photonAttack?.type !== 'split') return;
+
+  if (photonAttack.shotsFired < photonAttack.totalShots) {
+    photonAttackTimer -= dt;
+
+    if (photonAttackTimer <= 0) {
+      spawnPhotonSplitBullet();
+
+      photonAttack.shotsFired++;
+      photonAttackTimer += 0.8;
+    }
+  }
+
+  // 全ての光弾が消滅したら攻撃終了
+  if (
+    photonAttack.shotsFired >= photonAttack.totalShots &&
+    photonBullets.length === 0
+  ) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
