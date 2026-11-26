@@ -4159,8 +4159,30 @@ if (gameMode === 'boss' && boss && boss.id === 'photon') {
 }
 
 // 被弾判定
-if (invincibleTimer <= 0 || shieldHp > 0) {
-  let damaged = photonPillarHit;
+// PHOTON 光球との衝突判定
+if (
+  !damaged &&
+  gameMode === 'boss' &&
+  boss &&
+  boss.id === 'photon'
+) {
+  const playerRadius = shieldHp > 0 ? 24 : 17;
+
+  for (const orb of photonOrbs) {
+    if (orb.dead || orb.phase !== 'flying') continue;
+
+    if (
+      hit(
+        orb.x, orb.y, orb.r,
+        player.x, player.y, playerRadius
+      )
+    ) {
+      orb.dead = true;
+      damaged = true;
+      break;
+    }
+  }
+}
 
   // PHOTON 光弾との衝突判定
   if (
