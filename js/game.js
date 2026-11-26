@@ -1836,6 +1836,32 @@ function updatePhotonBullets(dt) {
   photonBullets = photonBullets.filter(b => !b.dead);
 }
 
+// PHOTON 光弾の描画
+function drawPhotonBullets() {
+  ctx.save();
+
+  ctx.shadowColor = '#66ccff';
+  ctx.shadowBlur = 12;
+
+  for (const b of photonBullets) {
+    if (b.dead) continue;
+
+    // 光弾の外側
+    ctx.fillStyle = '#66ccff';
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+    ctx.fill();
+
+    // 光弾の中心
+    ctx.fillStyle = '#ffffff';
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r * 0.6, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
