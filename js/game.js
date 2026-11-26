@@ -2343,8 +2343,24 @@ orb.flashTimer = Math.max(
   0,
   orb.flashTimer - dt
 );
-      orb.x += orb.vx * dt;
-      orb.y += orb.vy * dt;
+      // 移動前の位置を残光として記録
+orb.trail.push({
+  x: orb.x,
+  y: orb.y,
+  life: 0.2
+});
+
+// 光球の移動
+orb.x += orb.vx * dt;
+orb.y += orb.vy * dt;
+
+// 残光の寿命を更新
+for (const t of orb.trail) {
+  t.life -= dt;
+}
+
+// 消滅した残光を削除
+orb.trail = orb.trail.filter(t => t.life > 0);
 
       // 画面外に出た光球を削除
       if (
