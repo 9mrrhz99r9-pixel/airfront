@@ -2667,6 +2667,35 @@ function startPhotonTripleOrbAttack() {
   };
 }
 
+// PHOTON 三連光球の複製発射
+function releasePhotonTripleOrb(orb) {
+  const shot = spawnPhotonOrb(
+    orb.x,
+    orb.y,
+    orb.r * 2,
+    orb.angle
+  );
+
+  // 複製した光球を即座に発射
+  shot.phase = 'flying';
+  shot.chargeTimer = 0;
+  shot.flashTimer = 0.15;
+
+  shot.vx = Math.cos(shot.angle) * shot.speed;
+  shot.vy = Math.sin(shot.angle) * shot.speed;
+
+  // 元の光球を再チャージ
+  orb.shotsRemaining--;
+  orb.chargeTimer = orb.chargeTime;
+  orb.particles = [];
+
+  // 次の発射方向を決定
+  orb.angle = Math.atan2(
+    player.y - orb.y,
+    player.x - orb.x
+  );
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
