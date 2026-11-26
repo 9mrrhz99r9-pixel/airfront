@@ -1181,9 +1181,13 @@ function updatePhoton(dt) {
     return;
   }
 
-  // 通常戦闘状態
+    // 通常戦闘状態
   if (photonState === 'normal') {
     boss.active = true;
+
+    if (photonForm === 'single') {
+      updatePhotonSingleMovement(dt);
+    }
   }
 }
 
