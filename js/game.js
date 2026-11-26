@@ -2316,8 +2316,10 @@ function updatePhotonOrbs(dt) {
     if (orb.dead) continue;
 
     // チャージ中
-    if (orb.phase === 'charging') {
-      orb.chargeTimer -= dt;
+if (orb.phase === 'charging') {
+  updatePhotonOrbParticles(orb, dt);
+
+  orb.chargeTimer -= dt;
 
       if (orb.chargeTimer <= 0) {
         orb.chargeTimer = 0;
