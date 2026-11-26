@@ -2383,6 +2383,11 @@ function drawPhotonOrbs() {
 
   for (const orb of photonOrbs) {
     if (orb.dead) continue;
+    
+    // 発射後の残光描画
+if (orb.phase === 'flying') {
+  drawPhotonOrbTrail(orb);
+}
 
 // チャージ中の演出
 if (orb.phase === 'charging') {
