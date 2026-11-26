@@ -2244,6 +2244,25 @@ function spawnPhotonStagnantBullets() {
   }
 }
 
+// PHOTON 停滞型弾幕の開始
+function startPhotonStagnantAttack() {
+  photonAttack = {
+    type: 'stagnant'
+  };
+
+  spawnPhotonStagnantBullets();
+}
+
+// PHOTON 停滞型弾幕の更新
+function updatePhotonStagnantAttack() {
+  if (photonAttack?.type !== 'stagnant') return;
+
+  // 全ての光弾が消滅したら攻撃終了
+  if (photonBullets.length === 0) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
