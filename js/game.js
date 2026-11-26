@@ -1317,8 +1317,12 @@ function drawPhoton() {
 
   // 2秒周期の脈動
   const pulse = Math.sin(elapsed * Math.PI);
-      const glowRadius =
-    W * 0.175 * (1 + pulse * 0.05) * introScale * warpGlow;
+        // 被弾時の発光減衰
+  const hitGlow = 1 - (photonHitTimer / 0.15) * 0.6;
+
+  const glowRadius =
+    W * 0.175 * (1 + pulse * 0.05)
+    * introScale * warpGlow * hitGlow;
 
   // 本体周囲の発光
   const glow = ctx.createRadialGradient(
