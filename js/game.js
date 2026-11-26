@@ -1342,7 +1342,7 @@ function drawPhoton() {
 
   // 結晶核の発光
   ctx.shadowColor = '#aaddff';
-  ctx.shadowBlur = 20 + pulse * 5;
+    ctx.shadowBlur = (20 + pulse * 5) * hitGlow;
 
   ctx.drawImage(
     image,
