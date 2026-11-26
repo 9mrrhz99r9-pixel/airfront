@@ -1625,7 +1625,50 @@ function updatePhotonConvergingAttack(dt) {
 
 // PHOTON 光柱の更新
 function updatePhotonPillars(dt) {
-  for (const p of photonPillars) {
+    for (const p of photonPillars) {
+
+    // 移動光柱の更新
+    if (p.type === 'moving') {
+      p.timer -= dt;
+
+      if (p.phase === 'extending') {
+        const progress = Math.max(
+          0, Math.min(1, 1 - p.timer / 0.8)
+        );
+
+        p.height = H * progress;
+
+        if (p.timer <= 0) {
+          p.height = H;
+          p.phase = 'moving';
+          p.timer = 0.4;
+        }
+
+      } else if (p.phase === 'moving') {
+        const progress = Math.max(
+          0, Math.min(1, 1 - p.timer / 0.4)
+        );
+
+        p.x = p.startX +
+          (p.targetX - p.startX) * progress;
+
+        if (p.timer <= 0) {
+          p.x = p.targetX;
+          p.phase = 'fade';
+          p.timer = 0.3;
+        }
+
+      } else if (p.phase === 'fade') {
+        p.alpha = Math.max(0, p.timer / 0.3);
+
+        if (p.timer <= 0) {
+          p.dead = true;
+        }
+      }
+
+      continue;
+    }
+
     if (p.type !== 'converging') continue;
 
     p.timer -= dt;
