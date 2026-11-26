@@ -2389,6 +2389,19 @@ function drawPhotonOrbs() {
   ctx.restore();
 }
 
+// PHOTON 光球の集束粒子生成
+function spawnPhotonOrbParticle(orb) {
+  const angle = Math.random() * Math.PI * 2;
+  const distance = orb.r * (1.3 + Math.random() * 0.7);
+
+  orb.particles.push({
+    x: orb.x + Math.cos(angle) * distance,
+    y: orb.y + Math.sin(angle) * distance,
+    speed: orb.r * (1.5 + Math.random()),
+    size: 1 + Math.random() * 2
+  });
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
