@@ -1770,6 +1770,25 @@ function spawnPhotonMovingPillar() {
   });
 }
 
+// PHOTON 移動光柱の攻撃開始
+function startPhotonMovingAttack() {
+  photonAttack = {
+    type: 'moving'
+  };
+
+  spawnPhotonMovingPillar();
+}
+
+// PHOTON 移動光柱の攻撃更新
+function updatePhotonMovingAttack() {
+  if (photonAttack?.type !== 'moving') return;
+
+  // 光柱が完全に消滅したら攻撃終了
+  if (photonPillars.length === 0) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
