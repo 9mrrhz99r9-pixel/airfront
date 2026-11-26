@@ -692,6 +692,51 @@ const PRISM_DIFFICULTY = {
   }
 };
 
+// PRISM 共通設定
+const PRISM_CONFIG = {
+  introDuration: 3,
+  hitRadius: 20,
+  hitFlashDuration: 0.15,
+
+  // 通常移動
+  orbitCenterY: 0.25,
+  orbitRadiusX: 0.4,
+  orbitRadiusY: 0.15,
+  orbitPeriod: 3,
+
+  // 位置調整・軌道復帰
+  transitionSpeed: 0.8,
+
+  // 共通弾設定
+  bulletRadius: 4,
+  bulletColor: '#ff3333',
+
+  // 扇状弾幕
+  fanBulletCount: 5,
+  fanBulletSpeed: 600,
+  fanInterval: 0.4,
+  fanSpread: Math.PI / 2,
+  fanSwing: Math.PI / 6,
+  fanMoveSpeed: 0.4,
+
+  // 回転連射弾幕
+  sweepDuration: 3,
+  sweepAngle: Math.PI * 5 / 6,
+  sweepBulletSpeed: 300,
+  sweepInterval: 0.1,
+  sweepPositionX: 0.25,
+
+  // 交差移動弾幕
+  crossingMoveSpeed: 0.8,
+  crossingBulletSpeed: 250,
+  crossingInterval: 0.1,
+
+  // 攻撃時の移動範囲
+  attackY: 0.2,
+  minX: 0.1,
+  maxX: 0.9
+};
+
 // TAINT 難易度別設定
 const TAINT_DIFFICULTY = {
   EASY: {
