@@ -1167,6 +1167,14 @@ function resetPhoton() {
 function updatePhoton(dt) {
   if (!boss || boss.id !== 'photon') return;
 
+// 攻撃開始時の閃光タイマー
+if (photonFlashTimer > 0) {
+  photonFlashTimer = Math.max(
+    0,
+    photonFlashTimer - dt
+  );
+}
+
     // 被弾演出タイマーの更新
   if (photonHitTimer > 0) {
     photonHitTimer = Math.max(0, photonHitTimer - dt);
