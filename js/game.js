@@ -1565,8 +1565,12 @@ function updatePhotonAttack(dt) {
 
     // 攻撃開始条件
   if (photonAttackCooldown <= 0) {
-    if (photonForm === 'single') {
-      startPhotonConvergingAttack();
+        if (photonForm === 'single') {
+      if (Math.random() < 0.5) {
+        startPhotonConvergingAttack();
+      } else {
+        startPhotonMovingAttack();
+      }
     }
   }
 }
