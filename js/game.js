@@ -1711,8 +1711,11 @@ function updatePhotonPillars(dt) {
 function drawPhotonPillars() {
   ctx.save();
 
-  for (const p of photonPillars) {
-    if (p.type !== 'converging') continue;
+    for (const p of photonPillars) {
+    if (
+      p.type !== 'converging' &&
+      p.type !== 'moving'
+    ) continue;
 
     const left = p.x - p.width / 2;
 
