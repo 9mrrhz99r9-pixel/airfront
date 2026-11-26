@@ -1546,6 +1546,9 @@ function updatePhotonAttack(dt) {
   // 光弾の状態更新
 updatePhotonBullets(dt);
 
+ // 光球の状態更新
+updatePhotonOrbs(dt);
+
   // 攻撃中の処理
   if (photonAttack !== null) {
 
