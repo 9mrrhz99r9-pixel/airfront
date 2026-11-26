@@ -2056,6 +2056,43 @@ function spawnPhotonWaveRow() {
   }
 }
 
+// PHOTON 波状弾幕の開始
+function startPhotonWaveAttack() {
+  photonAttack = {
+    type: 'wave',
+    rowsFired: 1,
+    totalRows: 6
+  };
+
+  photonAttackTimer = 0.5;
+
+  spawnPhotonWaveRow();
+}
+
+// PHOTON 波状弾幕の更新
+function updatePhotonWaveAttack(dt) {
+  if (photonAttack?.type !== 'wave') return;
+
+  if (photonAttack.rowsFired < photonAttack.totalRows) {
+    photonAttackTimer -= dt;
+
+    if (photonAttackTimer <= 0) {
+      spawnPhotonWaveRow();
+
+      photonAttack.rowsFired++;
+      photonAttackTimer += 0.5;
+    }
+  }
+
+  // 全ての光弾が消滅したら攻撃終了
+  if (
+    photonAttack.rowsFired >= photonAttack.totalRows &&
+    photonBullets.length === 0
+  ) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
