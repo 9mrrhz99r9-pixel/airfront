@@ -1847,6 +1847,33 @@ if (b.type === 'wave') {
 b.x += b.vx * dt;
 b.y += b.vy * dt;
 
+// 分裂型光弾の処理
+if (b.type === 'split' && b.splitRemaining > 0) {
+  b.splitTimer -= dt;
+
+  if (b.splitTimer <= 0) {
+    for (const direction of [-1, 1]) {
+      const angle =
+        b.angle + direction * Math.PI / 6;
+
+      const child = spawnPhotonBullet(
+        b.x,
+        b.y,
+        angle,
+        140
+      );
+
+      child.type = 'split';
+      child.angle = angle;
+      child.splitRemaining = b.splitRemaining - 1;
+      child.splitTimer = 0.5;
+    }
+
+    b.dead = true;
+    continue;
+  }
+}
+
     // 画面外に出た光弾を削除
     if (
       b.x < -b.r ||
