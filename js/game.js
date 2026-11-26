@@ -1545,8 +1545,11 @@ function updatePhotonAttack(dt) {
   // 攻撃中の処理
   if (photonAttack !== null) {
 
-    if (photonAttack.type === 'converging') {
+        if (photonAttack.type === 'converging') {
       updatePhotonConvergingAttack(dt);
+
+    } else if (photonAttack.type === 'moving') {
+      updatePhotonMovingAttack();
     }
 
     return;
