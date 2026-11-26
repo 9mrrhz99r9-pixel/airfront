@@ -2326,6 +2326,7 @@ if (orb.phase === 'charging') {
         orb.chargeTimer = 0;
         orb.phase = 'flying';
         orb.particles = [];
+        orb.flashTimer = 0.15;
 
         orb.vx = Math.cos(orb.angle) * orb.speed;
         orb.vy = Math.sin(orb.angle) * orb.speed;
@@ -2336,6 +2337,12 @@ if (orb.phase === 'charging') {
 
     // 発射後の移動
     if (orb.phase === 'flying') {
+      
+      // 発射時の閃光タイマー
+orb.flashTimer = Math.max(
+  0,
+  orb.flashTimer - dt
+);
       orb.x += orb.vx * dt;
       orb.y += orb.vy * dt;
 
