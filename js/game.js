@@ -2402,6 +2402,34 @@ function spawnPhotonOrbParticle(orb) {
   });
 }
 
+// PHOTON 光球の集束粒子更新
+function updatePhotonOrbParticles(orb, dt) {
+  // チャージ中に粒子を生成
+  if (orb.phase === 'charging') {
+    if (Math.random() < dt * 40) {
+      spawnPhotonOrbParticle(orb);
+    }
+  }
+
+  for (const p of orb.particles) {
+    const dx = orb.x - p.x;
+    const dy = orb.y - p.y;
+    const distance = Math.hypot(dx, dy);
+
+    const move = p.speed * dt;
+
+    if (distance <= orb.r * 0.2 + move) {
+      p.dead = true;
+      continue;
+    }
+
+    p.x += dx / distance * move;
+    p.y += dy / distance * move;
+  }
+
+  orb.particles = orb.particles.filter(p => !p.dead);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
