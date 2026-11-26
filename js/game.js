@@ -4858,6 +4858,7 @@ if (boss.id === 'photon') {
   drawPhoton();
   drawPhotonPillars();
   drawPhotonBullets();
+  drawPhotonOrbs();
 } else {
 
 const currentBossImage =
