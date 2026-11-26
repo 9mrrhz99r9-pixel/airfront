@@ -1654,6 +1654,38 @@ function updatePhotonPillars(dt) {
   photonPillars = photonPillars.filter(p => !p.dead);
 }
 
+// PHOTON 光柱の描画
+function drawPhotonPillars() {
+  ctx.save();
+
+  for (const p of photonPillars) {
+    if (p.type !== 'converging') continue;
+
+    const left = p.x - p.width / 2;
+
+    const gradient = ctx.createLinearGradient(
+      left, 0,
+      left + p.width, 0
+    );
+
+    gradient.addColorStop(0, 'rgba(70, 170, 255, 0)');
+    gradient.addColorStop(0.2, 'rgba(100, 210, 255, 0.7)');
+    gradient.addColorStop(0.5, '#ffffff');
+    gradient.addColorStop(0.8, 'rgba(100, 210, 255, 0.7)');
+    gradient.addColorStop(1, 'rgba(70, 170, 255, 0)');
+
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle = gradient;
+
+    ctx.shadowColor = '#88ddff';
+    ctx.shadowBlur = 15;
+
+    ctx.fillRect(left, 0, p.width, H);
+  }
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
