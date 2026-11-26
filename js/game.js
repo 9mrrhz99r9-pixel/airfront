@@ -1613,6 +1613,47 @@ function updatePhotonConvergingAttack(dt) {
   }
 }
 
+// PHOTON 光柱の更新
+function updatePhotonPillars(dt) {
+  for (const p of photonPillars) {
+    if (p.type !== 'converging') continue;
+
+    p.timer -= dt;
+
+    if (p.phase === 'converging') {
+      const progress = Math.max(
+        0, Math.min(1, 1 - p.timer / 1.5)
+      );
+
+      // 光柱の幅を縮小
+      p.width =
+        p.startWidth +
+        (p.endWidth - p.startWidth) * progress;
+
+      // 徐々に不透明にする
+      p.alpha = 0.2 + 0.8 * progress;
+
+      // 収束完了
+      if (p.timer <= 0) {
+        p.width = p.endWidth;
+        p.alpha = 1;
+        p.damagePending = true;
+        p.phase = 'fade';
+        p.timer = 0.3;
+      }
+
+    } else if (p.phase === 'fade') {
+      p.alpha = Math.max(0, p.timer / 0.3);
+
+      if (p.timer <= 0) {
+        p.dead = true;
+      }
+    }
+  }
+
+  photonPillars = photonPillars.filter(p => !p.dead);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
