@@ -3279,6 +3279,27 @@ function startGame() {
   requestAnimationFrame(loop);
 }
 
+// ボス記録の安全な読み込み
+function loadBossRecords(recordKey) {
+  try {
+    const records = JSON.parse(
+      localStorage.getItem(recordKey) || '[]'
+    );
+
+    if (!Array.isArray(records)) {
+      return [];
+    }
+
+    return records.filter(
+      time => Number.isFinite(time) && time >= 0
+    );
+
+  } catch (error) {
+    console.warn('ボス記録の読み込みに失敗', error);
+    return [];
+  }
+}
+
 // 難易度別クリアタイム上位3件
 function renderBossRecords(difficulty) {
   const bossRecordId =
