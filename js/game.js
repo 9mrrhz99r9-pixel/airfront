@@ -643,6 +643,21 @@ const BOSS_DATA = [
       'NORMAL',
       'HARD',
       'EXPERT'
+        ]
+  },
+  {
+    id: 'prism',
+    name: 'PRISM',
+    description:
+      '異星文明によって生み出された一対の無人戦闘機。' +
+      '完全に同期した動きと左右対称の弾幕を特徴とする。' +
+      '2機は連動し、まるで一つの生命体のように行動する。',
+
+    difficulties: [
+      'EASY',
+      'NORMAL',
+      'HARD',
+      'EXPERT'
     ]
   }
 ];
