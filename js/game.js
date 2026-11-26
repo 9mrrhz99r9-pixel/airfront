@@ -1827,8 +1827,25 @@ function updatePhotonBullets(dt) {
     if (b.dead) continue;
 
     // 光弾の移動
-    b.x += b.vx * dt;
-    b.y += b.vy * dt;
+if (b.type === 'wave') {
+  b.waveTime += dt;
+
+  b.x = b.baseX + Math.sin(
+    b.waveTime * Math.PI * 2 / b.period
+  ) * b.amplitude;
+
+  b.y += b.vy * dt;
+
+  // 波状弾は画面下に出たときのみ削除
+  if (b.y > H + b.r) {
+    b.dead = true;
+  }
+
+  continue;
+}
+
+b.x += b.vx * dt;
+b.y += b.vy * dt;
 
     // 画面外に出た光弾を削除
     if (
