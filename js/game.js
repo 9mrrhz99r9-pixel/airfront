@@ -2436,7 +2436,6 @@ if (orb.phase === 'flying') {
 
 // チャージ中の演出
 if (orb.phase === 'charging') {
-  drawPhotonOrbWarning(orb);
   drawPhotonOrbParticles(orb);
 }
 
