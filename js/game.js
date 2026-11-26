@@ -1523,6 +1523,17 @@ function spawnPhotonHitParticles(x, y) {
   }
 }
 
+// PHOTON 攻撃終了処理
+function finishPhotonAttack() {
+  const config =
+    PHOTON_DIFFICULTY[selectedBossDifficulty]
+    || PHOTON_DIFFICULTY.EASY;
+
+  photonAttack = null;
+  photonAttackTimer = 0;
+  photonAttackCooldown = config.attackCooldown;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
