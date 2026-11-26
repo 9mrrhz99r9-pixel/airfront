@@ -2310,6 +2310,46 @@ function spawnPhotonOrb(x, y, diameter, angle) {
   return orb;
 }
 
+// PHOTON 光球の更新
+function updatePhotonOrbs(dt) {
+  for (const orb of photonOrbs) {
+    if (orb.dead) continue;
+
+    // チャージ中
+    if (orb.phase === 'charging') {
+      orb.chargeTimer -= dt;
+
+      if (orb.chargeTimer <= 0) {
+        orb.chargeTimer = 0;
+        orb.phase = 'flying';
+
+        orb.vx = Math.cos(orb.angle) * orb.speed;
+        orb.vy = Math.sin(orb.angle) * orb.speed;
+      }
+
+      continue;
+    }
+
+    // 発射後の移動
+    if (orb.phase === 'flying') {
+      orb.x += orb.vx * dt;
+      orb.y += orb.vy * dt;
+
+      // 画面外に出た光球を削除
+      if (
+        orb.x < -orb.r ||
+        orb.x > W + orb.r ||
+        orb.y < -orb.r ||
+        orb.y > H + orb.r
+      ) {
+        orb.dead = true;
+      }
+    }
+  }
+
+  photonOrbs = photonOrbs.filter(orb => !orb.dead);
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
