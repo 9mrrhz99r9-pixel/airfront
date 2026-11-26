@@ -1167,6 +1167,11 @@ function resetPhoton() {
 function updatePhoton(dt) {
   if (!boss || boss.id !== 'photon') return;
 
+  // 被弾演出タイマーの更新
+  if (photonHitTimer > 0) {
+    photonHitTimer = Math.max(0, photonHitTimer - dt);
+  }
+
   // 出現状態
   if (photonState === 'intro') {
     boss.active = false;
