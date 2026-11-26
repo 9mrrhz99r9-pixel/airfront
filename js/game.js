@@ -1736,7 +1736,11 @@ function drawPhotonPillars() {
     ctx.shadowColor = '#88ddff';
     ctx.shadowBlur = 15;
 
-    ctx.fillRect(left, 0, p.width, H);
+        const height = p.type === 'moving'
+      ? p.height
+      : H;
+
+    ctx.fillRect(left, 0, p.width, height);
   }
 
   ctx.restore();
