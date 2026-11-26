@@ -1539,8 +1539,12 @@ function finishPhotonAttack() {
 
 // PHOTON 攻撃管理
 function updatePhotonAttack(dt) {
+  
     // 光柱の状態更新
   updatePhotonPillars(dt);
+  
+  // 光弾の状態更新
+updatePhotonBullets(dt);
 
   // 攻撃中の処理
   if (photonAttack !== null) {
