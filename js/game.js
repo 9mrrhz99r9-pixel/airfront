@@ -1909,6 +1909,31 @@ function startPhotonFanAttack() {
   spawnPhotonFanVolley(0);
 }
 
+// PHOTON 扇状弾幕の更新
+function updatePhotonFanAttack(dt) {
+  if (photonAttack?.type !== 'fan') return;
+
+  // 残りの弾幕を発射
+  if (photonAttack.volleyIndex < photonAttack.totalVolleys) {
+    photonAttackTimer -= dt;
+
+    if (photonAttackTimer <= 0) {
+      spawnPhotonFanVolley(photonAttack.volleyIndex);
+
+      photonAttack.volleyIndex++;
+      photonAttackTimer += 0.4;
+    }
+  }
+
+  // 全ての光弾が消滅したら攻撃終了
+  if (
+    photonAttack.volleyIndex >= photonAttack.totalVolleys &&
+    photonBullets.length === 0
+  ) {
+    finishPhotonAttack();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
