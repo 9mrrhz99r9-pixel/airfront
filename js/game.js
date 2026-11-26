@@ -1329,6 +1329,13 @@ function drawPhoton() {
       ctx.fillStyle = '#ddf5ff';
       ctx.shadowColor = '#66ccff';
       ctx.shadowBlur = 10;
+      
+      // 攻撃開始時の閃光
+if (photonFlashTimer > 0) {
+  const flash = photonFlashTimer / 0.2;
+
+  ctx.shadowBlur += 35 * flash;
+}
 
       ctx.beginPath();
       ctx.arc(x, y, 1.5 + progress * 1.5, 0, Math.PI * 2);
