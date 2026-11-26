@@ -3387,7 +3387,14 @@ const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty
   records.sort((a, b) => a - b);
 
   const topRecords = records.slice(0, 3);
-  localStorage.setItem(recordKey, JSON.stringify(topRecords));
+  try {
+  localStorage.setItem(
+    recordKey,
+    JSON.stringify(topRecords)
+  );
+} catch (error) {
+  console.warn('ボス記録の保存に失敗', error);
+}
 
     // 獲得アタッチメントの表示情報
   let dropHtml = '';
