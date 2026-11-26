@@ -2313,8 +2313,8 @@ function spawnPhotonOrb(x, y, diameter, angle) {
 
 // PHOTON 光球の更新
 function updatePhotonOrbs(dt) {
-  for (const orb of photonOrbs) {
-    if (orb.dead) continue;
+  for (const orb of [...photonOrbs]) {
+  if (orb.dead) continue;
 
     // チャージ中
 if (orb.phase === 'charging') {
