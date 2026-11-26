@@ -1249,7 +1249,21 @@ function drawPhoton() {
       const collapse = (progress - 0.8) / 0.2;
 
       introScale = Math.max(0.02, 1 - collapse);
+            warpGlow = 1.5;
+    }
+
+  // 瞬間移動後の再出現演出
+  } else if (photonState === 'warp_post') {
+    const progress = Math.max(
+      0, Math.min(1, 1 - photonWarpPhaseTimer)
+    );
+
+    if (progress < 0.2) {
+      introScale = Math.max(0.02, progress / 0.2);
       warpGlow = 1.5;
+    } else {
+      introScale = 1;
+      warpGlow = 1.5 - (progress - 0.2) / 0.8 * 0.5;
     }
   }
 
