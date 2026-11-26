@@ -2459,6 +2459,30 @@ function drawPhotonOrbParticles(orb) {
   ctx.restore();
 }
 
+// PHOTON 光球の発射予告線
+function drawPhotonOrbWarning(orb) {
+  if (orb.phase !== 'charging') return;
+
+  const length = Math.hypot(W, H) * 2;
+
+  ctx.save();
+
+  ctx.strokeStyle = '#66ccff';
+  ctx.globalAlpha = 0.5;
+  ctx.lineWidth = 2;
+  ctx.setLineDash([8, 8]);
+
+  ctx.beginPath();
+  ctx.moveTo(orb.x, orb.y);
+  ctx.lineTo(
+    orb.x + Math.cos(orb.angle) * length,
+    orb.y + Math.sin(orb.angle) * length
+  );
+  ctx.stroke();
+
+  ctx.restore();
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
