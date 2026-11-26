@@ -2323,7 +2323,14 @@ if (orb.phase === 'charging') {
   orb.chargeTimer -= dt;
 
       if (orb.chargeTimer <= 0) {
-        orb.chargeTimer = 0;
+
+  // 三連光球の1・2回目の発射
+  if (orb.isTripleSource && orb.shotsRemaining > 1) {
+    releasePhotonTripleOrb(orb);
+    continue;
+  }
+
+  orb.chargeTimer = 0;
         orb.phase = 'flying';
         orb.particles = [];
         orb.flashTimer = 0.15;
