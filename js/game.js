@@ -2393,7 +2393,15 @@ if (orb.phase === 'charging') {
     ctx.globalAlpha = 0.3 + progress * 0.7;
     ctx.shadowColor = '#66ccff';
     ctx.shadowBlur = 10 + progress * 30;
-    ctx.fillStyle = gradient;
+
+// 発射直後の閃光演出
+if (orb.flashTimer > 0) {
+  const flash = orb.flashTimer / 0.15;
+
+  ctx.shadowBlur += 40 * flash;
+}
+
+ctx.fillStyle = gradient;
 
     ctx.beginPath();
     ctx.arc(
