@@ -2550,6 +2550,47 @@ function drawPhotonOrbTrail(orb) {
   ctx.restore();
 }
 
+// PHOTON 落下光球の生成
+function spawnPhotonFallingOrbs() {
+  const diameter = W * 0.3;
+  const y = H * 0.2;
+
+  const safePositions = [0.1, 0.5, 0.9];
+
+  const safeX = W * safePositions[
+    Math.floor(Math.random() * safePositions.length)
+  ];
+
+  const safeDistance = diameter / 2 + 29;
+
+  const positions = [];
+
+  for (let side = 0; side < 2; side++) {
+    const minX = W * (side === 0 ? 0.15 : 0.5);
+    const maxX = W * (side === 0 ? 0.5 : 0.85);
+
+    const candidates = [];
+
+    for (let i = 0; i <= 100; i++) {
+      const x = minX + (maxX - minX) * i / 100;
+
+      if (Math.abs(x - safeX) >= safeDistance) {
+        candidates.push(x);
+      }
+    }
+
+    if (candidates.length === 0) return;
+
+    positions.push(candidates[
+      Math.floor(Math.random() * candidates.length)
+    ]);
+  }
+
+  for (const x of positions) {
+    spawnPhotonOrb(x, y, diameter, Math.PI / 2);
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
