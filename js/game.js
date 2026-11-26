@@ -1185,8 +1185,11 @@ function updatePhoton(dt) {
   if (photonState === 'normal') {
     boss.active = true;
 
-    if (photonForm === 'single') {
+        if (photonForm === 'single') {
       updatePhotonSingleMovement(dt);
+
+    } else if (photonForm === 'rough') {
+      updatePhotonRoughMovement(dt);
     }
   }
 }
