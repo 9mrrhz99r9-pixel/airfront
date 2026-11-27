@@ -2926,9 +2926,7 @@ function getPrismOrbitPosition(angle) {
   };
 }
 
-// PRISM 登場演出
-function updatePrismIntro(dt) {
-  // PRISM 通常移動
+// PRISM 通常移動
 function updatePrismOrbit(dt) {
   prismOrbitAngle +=
     Math.PI * 2 / PRISM_CONFIG.orbitPeriod * dt;
@@ -2940,6 +2938,9 @@ function updatePrismOrbit(dt) {
 
   setPrismPosition(position.x, position.y);
 }
+
+// PRISM 登場演出
+function updatePrismIntro(dt) {
   prismIntroTimer = Math.max(
     0,
     prismIntroTimer - dt
