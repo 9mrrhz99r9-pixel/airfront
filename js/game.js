@@ -4443,6 +4443,7 @@ function stopPointer(e) {
 
   movePointerId = null;
   moveDeltaX = 0;
+  firing = false;
 }
 
 canvas.addEventListener('pointerup', stopPointer);
