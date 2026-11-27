@@ -3080,6 +3080,31 @@ function startPrismAttack() {
   }
 }
 
+// PRISM 最も近い軌道位置の計算
+function findPrismNearestOrbitAngle() {
+  const unit = prismUnits[0];
+
+  let nearestAngle = 0;
+  let nearestDistance = Infinity;
+
+  for (let i = 0; i < 360; i++) {
+    const angle = i * Math.PI / 180;
+    const position = getPrismOrbitPosition(angle);
+
+    const distance = Math.hypot(
+      position.x - unit.x,
+      position.y - unit.y
+    );
+
+    if (distance < nearestDistance) {
+      nearestDistance = distance;
+      nearestAngle = angle;
+    }
+  }
+
+  return nearestAngle;
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
