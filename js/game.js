@@ -4697,6 +4697,8 @@ if (bossHit) {
 if (boss.id === 'prism' && prismHitUnit) {
   prismHitUnit.hitTimer =
     PRISM_CONFIG.hitFlashDuration;
+
+  spawnPrismHitParticles(b.x, b.y);
 }
 
 // PHOTON 被弾演出
