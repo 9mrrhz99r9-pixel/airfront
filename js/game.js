@@ -2928,6 +2928,18 @@ function getPrismOrbitPosition(angle) {
 
 // PRISM 登場演出
 function updatePrismIntro(dt) {
+  // PRISM 通常移動
+function updatePrismOrbit(dt) {
+  prismOrbitAngle +=
+    Math.PI * 2 / PRISM_CONFIG.orbitPeriod * dt;
+
+  prismOrbitAngle %= Math.PI * 2;
+
+  const position =
+    getPrismOrbitPosition(prismOrbitAngle);
+
+  setPrismPosition(position.x, position.y);
+}
   prismIntroTimer = Math.max(
     0,
     prismIntroTimer - dt
