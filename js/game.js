@@ -4565,7 +4565,20 @@ bossTentacles = bossTentacles.filter(t => t.alive);
     
          // ボスとの衝突
     if (!b.dead && gameMode === 'boss' && boss && boss.active) {
-      const bossHit = boss.id === 'dreadnought'
+
+  const prismHitUnit = boss.id === 'prism'
+    ? prismUnits.find(unit =>
+        hit(
+          b.x, b.y, 5,
+          unit.x, unit.y,
+          PRISM_CONFIG.hitRadius
+        )
+      )
+    : null;
+
+  const bossHit = boss.id === 'prism'
+    ? Boolean(prismHitUnit)
+    : boss.id === 'dreadnought'
   ? (() => {
       const isSide = Math.abs(b.x - boss.x) > boss.w / 2;
       const hitboxY = boss.y - (isSide ? 25 : 0);
