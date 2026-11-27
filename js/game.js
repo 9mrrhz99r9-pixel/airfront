@@ -3391,11 +3391,16 @@ bastionMissileSide = -1;
   }
   
     // PHOTONの初期化
-  if (selectedBoss.id === 'photon') {
-    resetPhoton();
-  }
-  
-  boss = {
+if (selectedBoss.id === 'photon') {
+  resetPhoton();
+}
+
+// PRISMの初期化
+if (selectedBoss.id === 'prism') {
+  resetPrism();
+}
+
+boss = {
     id: selectedBoss.id,
     name: selectedBoss.name,
        x: W / 2,
