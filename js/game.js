@@ -4626,7 +4626,13 @@ if (bossHit) {
 
     boss.hp--;
 
-    // PHOTON 被弾演出
+// PRISM 被弾演出
+if (boss.id === 'prism' && prismHitUnit) {
+  prismHitUnit.hitTimer =
+    PRISM_CONFIG.hitFlashDuration;
+}
+
+// PHOTON 被弾演出
   if (boss.id === 'photon') {
     photonHitTimer = 0.15;
     spawnPhotonHitParticles(b.x, b.y);
