@@ -3155,6 +3155,19 @@ function updatePrismReturn(dt) {
   }
 }
 
+// PRISM 攻撃開始位置への移動
+function updatePrismPositioning(dt) {
+  const arrived = movePrismTo(
+    prismTransition.x,
+    prismTransition.y,
+    dt
+  );
+
+  if (arrived) {
+    startPrismAttack();
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
