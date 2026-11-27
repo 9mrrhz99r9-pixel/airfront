@@ -2918,6 +2918,17 @@ function setPrismPosition(x, y, angle = 0) {
   prismUnits[1].angle = -angle;
 }
 
+// PRISM 楕円軌道の座標計算
+function getPrismOrbitPosition(angle) {
+  return {
+    x: W / 2 +
+      Math.cos(angle) * W * PRISM_CONFIG.orbitRadiusX,
+
+    y: H * PRISM_CONFIG.orbitCenterY +
+      Math.sin(angle) * H * PRISM_CONFIG.orbitRadiusY
+  };
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
