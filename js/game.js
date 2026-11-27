@@ -5368,6 +5368,7 @@ if (gameMode === 'boss' && boss) {
 if (boss.id === 'prism') {
   drawPrism();
   drawPrismParticles();
+  drawPrismBullets();
 } else if (boss.id === 'photon') {
   drawPhoton();
   drawPhotonPillars();
