@@ -4829,6 +4829,31 @@ if (gameMode === 'boss' && boss && boss.id === 'photon') {
 if (invincibleTimer <= 0 || shieldHp > 0) {
   let damaged = photonPillarHit;
   
+  // PRISM 弾幕との衝突判定
+if (
+  !damaged &&
+  gameMode === 'boss' &&
+  boss &&
+  boss.id === 'prism'
+) {
+  const playerRadius = shieldHp > 0 ? 24 : 17;
+
+  for (const b of prismBullets) {
+    if (b.dead) continue;
+
+    if (
+      hit(
+        b.x, b.y, b.r,
+        player.x, player.y, playerRadius
+      )
+    ) {
+      b.dead = true;
+      damaged = true;
+      break;
+    }
+  }
+}
+
 // PHOTON 光球との衝突判定
 if (
   !damaged &&
