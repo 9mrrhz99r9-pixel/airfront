@@ -3331,13 +3331,15 @@ shieldParticles = [];
 
 if (gameMode === 'boss') {
     const difficultyTable =
-    selectedBoss.id === 'photon'
-      ? PHOTON_DIFFICULTY
-      : selectedBoss.id === 'bastion'
-        ? BASTION_DIFFICULTY
-        : selectedBoss.id === 'dreadnought'
-          ? DREADNOUGHT_DIFFICULTY
-          : TAINT_DIFFICULTY;
+    selectedBoss.id === 'prism'
+      ? PRISM_DIFFICULTY
+      : selectedBoss.id === 'photon'
+        ? PHOTON_DIFFICULTY
+        : selectedBoss.id === 'bastion'
+          ? BASTION_DIFFICULTY
+          : selectedBoss.id === 'dreadnought'
+            ? DREADNOUGHT_DIFFICULTY
+            : TAINT_DIFFICULTY;
 
   const difficultyConfig =
     difficultyTable[selectedBossDifficulty] || difficultyTable.EASY;
