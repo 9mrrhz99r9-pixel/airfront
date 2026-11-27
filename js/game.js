@@ -3053,6 +3053,33 @@ function preparePrismAttack() {
   prismState = 'positioning';
 }
 
+// PRISM 攻撃開始
+function startPrismAttack() {
+  prismState = 'attack';
+
+  prismAttackTimer = 0;
+  prismFireTimer = 0;
+  prismVolleyCount = 0;
+  prismCrossingCount = 0;
+
+  prismTransition = null;
+
+  if (prismAttack === 'fan') {
+    prismMoveDirection =
+      prismUnits[0].x < W / 2 ? 1 : -1;
+
+  } else if (prismAttack === 'sweep') {
+    setPrismPosition(
+      prismUnits[0].x,
+      prismUnits[0].y,
+      -PRISM_CONFIG.sweepAngle / 2
+    );
+
+  } else if (prismAttack === 'crossing') {
+    prismMoveDirection = 1;
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
