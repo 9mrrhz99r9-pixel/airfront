@@ -2838,6 +2838,27 @@ function updatePhotonTripleOrbAttack() {
   }
 }
 
+// PRISM 状態管理
+let prismUnits = [];
+let prismState = 'intro';
+let prismIntroTimer = 0;
+let prismOrbitAngle = 0;
+
+let prismAttack = null;
+let prismLastAttack = null;
+let prismAttackTimer = 0;
+let prismAttackCooldown = 0;
+
+let prismMoveDirection = 1;
+let prismTransition = null;
+
+let prismVolleyCount = 0;
+let prismCrossingCount = 0;
+let prismFireTimer = 0;
+
+let prismBullets = [];
+let prismParticles = [];
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
