@@ -3010,10 +3010,18 @@ function drawPrism() {
     ctx.rotate(unit.angle);
 
     if (unit.mirrored) {
-      ctx.scale(-1, 1);
-    }
+  ctx.scale(-1, 1);
+}
 
-    ctx.drawImage(
+// 被弾時の白色点滅
+if (
+  unit.hitTimer > 0 &&
+  Math.floor(unit.hitTimer * 40) % 2 === 0
+) {
+  ctx.filter = 'brightness(0) invert(1)';
+}
+
+ctx.drawImage(
       prismImage,
       -width / 2,
       -height / 2,
