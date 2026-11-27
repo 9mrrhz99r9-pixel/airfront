@@ -3066,10 +3066,15 @@ function startPrismAttack() {
   prismTransition = null;
 
   if (prismAttack === 'fan') {
-    prismMoveDirection =
-      prismUnits[0].x < W / 2 ? 1 : -1;
+  prismMoveDirection =
+    prismUnits[0].x < W / 2 ? 1 : -1;
 
-  } else if (prismAttack === 'sweep') {
+  prismFanStartSide =
+    prismUnits[0].x < W / 2 ? 1 : -1;
+
+  updatePrismFanAngle(0);
+
+} else if (prismAttack === 'sweep') {
     setPrismPosition(
       prismUnits[0].x,
       prismUnits[0].y,
