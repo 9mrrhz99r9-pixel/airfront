@@ -2854,6 +2854,7 @@ let prismAttackTimer = 0;
 let prismAttackCooldown = 0;
 
 let prismMoveDirection = 1;
+let prismFanStartSide = 1;
 let prismTransition = null;
 
 let prismVolleyCount = 0;
