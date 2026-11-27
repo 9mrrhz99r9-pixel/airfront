@@ -4099,20 +4099,7 @@ if (
   boss.id === 'dreadnought' ? 'boss2' :
   'boss1';
 const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty}`;
-  const records = loadBossRecords(recordKey);
-
-  records.push(elapsed);
-  records.sort((a, b) => a - b);
-
-  const topRecords = records.slice(0, 3);
-  try {
-  localStorage.setItem(
-    recordKey,
-    JSON.stringify(topRecords)
-  );
-} catch (error) {
-  console.warn('ボス記録の保存に失敗', error);
-}
+  const topRecords = saveBossRecords(recordKey, elapsed);
 
     // 獲得アタッチメントの表示情報
   let dropHtml = '';
