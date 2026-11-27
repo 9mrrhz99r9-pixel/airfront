@@ -1,5 +1,20 @@
 'use strict'; 
 
+// 敵画像
+const enemyImages = {
+  shooter: new Image(),
+  charger: new Image(),
+  guard: new Image(),
+  bomber: new Image(),
+  splitter: new Image()
+};
+
+enemyImages.shooter.src = './assets/enemy/shooter.PNG';
+enemyImages.charger.src = './assets/enemy/charger.PNG';
+enemyImages.guard.src = './assets/enemy/guard.PNG';
+enemyImages.bomber.src = './assets/enemy/bomber.PNG';
+enemyImages.splitter.src = './assets/enemy/splitter.PNG';
+
 // ボス画像
 const bossImage = new Image();
 bossImage.src = './assets/boss/boss1.PNG';
@@ -30,4 +45,3 @@ tentacleImageA.src = './assets/boss/tentacle_a.png';
 
 const tentacleImageB = new Image();
 tentacleImageB.src = './assets/boss/tentacle_b.png';
-
