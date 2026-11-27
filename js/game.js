@@ -4199,7 +4199,6 @@ if (
   localStorage.setItem('sky_defender_stealth_unlocked', 'true');
 }
   firing = false;
-  fireButton.classList.add('hidden');
   hint.classList.add('hidden');
   
   resultTitle.textContent =
