@@ -3355,6 +3355,51 @@ function updatePrismCrossingMovement(dt) {
   );
 }
 
+// PRISM 交差移動弾幕の更新
+function updatePrismCrossingAttack(dt) {
+  const config =
+    PRISM_DIFFICULTY[selectedBossDifficulty] ||
+    PRISM_DIFFICULTY.EASY;
+
+  updatePrismCrossingMovement(dt);
+
+  prismFireTimer -= dt;
+
+  while (prismFireTimer <= 0) {
+    for (const unit of prismUnits) {
+      spawnPrismBullet(
+        unit.x,
+        unit.y,
+        0,
+        PRISM_CONFIG.crossingBulletSpeed
+      );
+    }
+
+    prismFireTimer += PRISM_CONFIG.crossingInterval;
+  }
+
+  if (prismCrossingCount >= config.crossingCount) {
+    finishPrismAttack();
+  }
+}
+
+// PRISM 攻撃更新
+function updatePrismAttack(dt) {
+  switch (prismAttack) {
+    case 'fan':
+      updatePrismFanAttack(dt);
+      break;
+
+    case 'sweep':
+      updatePrismSweepAttack(dt);
+      break;
+
+    case 'crossing':
+      updatePrismCrossingAttack(dt);
+      break;
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
