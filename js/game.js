@@ -579,7 +579,6 @@ const resultEl = document.getElementById('result');
 const startButton = document.getElementById('startButton');
 const retryButton = document.getElementById('retryButton');
 const titleButton = document.getElementById('titleButton');
-const hint = document.getElementById('hint');
 
 // ボスデータ
 const BOSS_DATA = [
