@@ -3188,6 +3188,51 @@ function firePrismFan() {
   }
 }
 
+// PRISM 扇状弾幕中の移動
+function updatePrismFanMovement(dt) {
+  const unit = prismUnits[0];
+
+  const minX = W * PRISM_CONFIG.minX;
+  const maxX = W * PRISM_CONFIG.maxX;
+  const speed = W * PRISM_CONFIG.fanMoveSpeed;
+
+  let x = unit.x +
+    prismMoveDirection * speed * dt;
+
+  if (x <= minX) {
+    x = minX;
+    prismMoveDirection = 1;
+  } else if (x >= maxX) {
+    x = maxX;
+    prismMoveDirection = -1;
+  }
+
+  setPrismPosition(
+    x,
+    H * PRISM_CONFIG.attackY,
+    unit.angle
+  );
+}
+
+// PRISM 扇状弾幕の角度更新
+function updatePrismFanAngle(progress) {
+  const swing = PRISM_CONFIG.fanSwing;
+
+  progress = Math.max(0, Math.min(1, progress));
+
+  const wave =
+    2 * Math.abs(progress * 2 - 1) - 1;
+
+  const angle =
+    -prismFanStartSide * swing * wave;
+
+  setPrismPosition(
+    prismUnits[0].x,
+    prismUnits[0].y,
+    angle
+  );
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
