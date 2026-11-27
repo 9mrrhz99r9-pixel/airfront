@@ -2999,6 +2999,29 @@ function updatePrism(dt) {
       0,
       prismAttackCooldown - dt
     );
+
+    if (prismAttackCooldown <= 0) {
+      preparePrismAttack();
+    }
+
+    return;
+  }
+
+  // 攻撃開始位置への移動
+  if (prismState === 'positioning') {
+    updatePrismPositioning(dt);
+    return;
+  }
+
+  // 攻撃中
+  if (prismState === 'attack') {
+    updatePrismAttack(dt);
+    return;
+  }
+
+  // 楕円軌道への復帰
+  if (prismState === 'return') {
+    updatePrismReturn(dt);
   }
 }
 
