@@ -3012,6 +3012,29 @@ function spawnPrismBullet(x, y, angle, speed) {
   });
 }
 
+// PRISM 弾幕更新
+function updatePrismBullets(dt) {
+  for (const b of prismBullets) {
+    if (b.dead) continue;
+
+    b.x += b.vx * dt;
+    b.y += b.vy * dt;
+
+    if (
+      b.x < -b.r ||
+      b.x > W + b.r ||
+      b.y < -b.r ||
+      b.y > H + b.r
+    ) {
+      b.dead = true;
+    }
+  }
+
+  prismBullets = prismBullets.filter(
+    b => !b.dead
+  );
+}
+
 // PRISM 被弾パーティクル生成
 function spawnPrismHitParticles(x, y) {
   for (let i = 0; i < 12; i++) {
