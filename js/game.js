@@ -4446,14 +4446,6 @@ function stopPointer(e) {
 canvas.addEventListener('pointerup', stopPointer);
 canvas.addEventListener('pointercancel', stopPointer);
 
-fireButton.addEventListener('pointerdown', e => {
-  e.preventDefault();
-  if (state === 'playing') firing = true;
-});
-['pointerup', 'pointercancel', 'pointerleave'].forEach(type =>
-  fireButton.addEventListener(type, () => firing = false)
-);
-
 // ボス触手の生成
 function spawnBossTentacles(side) {
   // プレイヤーを狙う触手
