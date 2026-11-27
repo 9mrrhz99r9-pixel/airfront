@@ -3129,6 +3129,32 @@ function finishPrismAttack() {
   prismState = 'return';
 }
 
+// PRISM 軌道復帰処理
+function updatePrismReturn(dt) {
+  prismAttackCooldown = Math.max(
+    0,
+    prismAttackCooldown - dt
+  );
+
+  // 次の攻撃を優先
+  if (prismAttackCooldown <= 0) {
+    preparePrismAttack();
+    return;
+  }
+
+  const arrived = movePrismTo(
+    prismTransition.x,
+    prismTransition.y,
+    dt
+  );
+
+  // 軌道への復帰完了
+  if (arrived) {
+    prismTransition = null;
+    prismState = 'orbit';
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
