@@ -3000,6 +3000,18 @@ function updatePrism(dt) {
   }
 }
 
+// PRISM 弾幕生成
+function spawnPrismBullet(x, y, angle, speed) {
+  prismBullets.push({
+    x: x,
+    y: y,
+    vx: -Math.sin(angle) * speed,
+    vy: Math.cos(angle) * speed,
+    r: PRISM_CONFIG.bulletRadius,
+    dead: false
+  });
+}
+
 // PRISM 被弾パーティクル生成
 function spawnPrismHitParticles(x, y) {
   for (let i = 0; i < 12; i++) {
