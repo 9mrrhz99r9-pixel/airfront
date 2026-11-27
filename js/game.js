@@ -2975,6 +2975,7 @@ function updatePrismIntro(dt) {
 // PRISM 更新処理
 function updatePrism(dt) {
   updatePrismParticles(dt);
+  updatePrismBullets(dt);
 
   for (const unit of prismUnits) {
     unit.hitTimer = Math.max(
