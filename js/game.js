@@ -3007,6 +3007,19 @@ function spawnPrismHitParticles(x, y) {
   }
 }
 
+// PRISM パーティクル更新
+function updatePrismParticles(dt) {
+  for (const p of prismParticles) {
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.life -= dt;
+  }
+
+  prismParticles = prismParticles.filter(
+    p => p.life > 0
+  );
+}
+
 // PRISM 機体描画
 function drawPrism() {
   if (
