@@ -3239,6 +3239,44 @@ function updatePrismFanAngle(progress) {
   );
 }
 
+// PRISM 扇状弾幕の更新
+function updatePrismFanAttack(dt) {
+  const config =
+    PRISM_DIFFICULTY[selectedBossDifficulty] ||
+    PRISM_DIFFICULTY.EASY;
+
+  const interval = PRISM_CONFIG.fanInterval;
+  const duration =
+    (config.fanVolleys - 1) * interval;
+
+  prismAttackTimer += dt;
+  prismFireTimer -= dt;
+
+  updatePrismFanMovement(dt);
+
+  updatePrismFanAngle(
+    prismAttackTimer / duration
+  );
+
+  while (
+    prismFireTimer <= 0 &&
+    prismVolleyCount < config.fanVolleys
+  ) {
+    updatePrismFanAngle(
+      prismVolleyCount / (config.fanVolleys - 1)
+    );
+
+    firePrismFan();
+
+    prismVolleyCount++;
+    prismFireTimer += interval;
+  }
+
+  if (prismVolleyCount >= config.fanVolleys) {
+    finishPrismAttack();
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
