@@ -3001,6 +3001,23 @@ function updatePrism(dt) {
   }
 }
 
+// PRISM 攻撃パターン抽選
+function selectPrismAttack() {
+  const attacks = [
+    'fan',
+    'sweep',
+    'crossing'
+  ];
+
+  const candidates = attacks.filter(
+    attack => attack !== prismLastAttack
+  );
+
+  return candidates[
+    Math.floor(Math.random() * candidates.length)
+  ];
+}
+
 // PRISM 弾幕生成
 function spawnPrismBullet(x, y, angle, speed) {
   prismBullets.push({
