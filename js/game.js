@@ -3022,6 +3022,31 @@ function updatePrismParticles(dt) {
   );
 }
 
+// PRISM パーティクル描画
+function drawPrismParticles() {
+  ctx.save();
+
+  ctx.fillStyle = '#ccf5ff';
+  ctx.shadowColor = '#66ccff';
+  ctx.shadowBlur = 6;
+
+  for (const p of prismParticles) {
+    ctx.globalAlpha = p.life / p.maxLife;
+
+    ctx.beginPath();
+    ctx.arc(
+      p.x,
+      p.y,
+      p.size,
+      0,
+      Math.PI * 2
+    );
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // PRISM 機体描画
 function drawPrism() {
   if (
