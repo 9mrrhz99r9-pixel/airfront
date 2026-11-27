@@ -20,3 +20,24 @@ function loadBossRecords(recordKey) {
     return [];
   }
 }
+
+// ボス記録の保存
+function saveBossRecords(recordKey, elapsed) {
+  const records = loadBossRecords(recordKey);
+
+  records.push(elapsed);
+  records.sort((a, b) => a - b);
+
+  const topRecords = records.slice(0, 3);
+
+  try {
+    localStorage.setItem(
+      recordKey,
+      JSON.stringify(topRecords)
+    );
+  } catch (error) {
+    console.warn('ボス記録の保存に失敗', error);
+  }
+
+  return topRecords;
+}
