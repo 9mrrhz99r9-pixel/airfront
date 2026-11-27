@@ -1201,9 +1201,6 @@ photonClusterImage.src = 'assets/boss/photon_cluster.PNG';
 const photonRoughImage = new Image();
 photonRoughImage.src = 'assets/boss/photon_rough.PNG';
 
-const photonRoughImage = new Image();
-photonRoughImage.src = 'assets/boss/photon_rough.PNG';
-
 // PRISM 機体画像
 const prismImage = new Image();
 prismImage.src = 'assets/boss/prism.PNG';
