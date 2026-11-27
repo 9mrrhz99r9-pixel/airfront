@@ -3035,6 +3035,23 @@ function updatePrismBullets(dt) {
   );
 }
 
+// PRISM 弾幕描画
+function drawPrismBullets() {
+  ctx.save();
+
+  ctx.fillStyle = PRISM_CONFIG.bulletColor;
+
+  for (const b of prismBullets) {
+    if (b.dead) continue;
+
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  ctx.restore();
+}
+
 // PRISM 被弾パーティクル生成
 function spawnPrismHitParticles(x, y) {
   for (let i = 0; i < 12; i++) {
