@@ -3277,6 +3277,57 @@ function updatePrismFanAttack(dt) {
   }
 }
 
+// PRISM 回転連射弾幕の更新
+function updatePrismSweepAttack(dt) {
+  const duration = PRISM_CONFIG.sweepDuration;
+  const interval = PRISM_CONFIG.sweepInterval;
+  const sweep = PRISM_CONFIG.sweepAngle;
+
+  prismAttackTimer += dt;
+
+  const progress = Math.min(
+    1,
+    prismAttackTimer / duration
+  );
+
+  const angle = -sweep / 2 + sweep * progress;
+
+  setPrismPosition(
+    prismUnits[0].x,
+    prismUnits[0].y,
+    angle
+  );
+
+  prismFireTimer -= dt;
+
+  while (
+    prismFireTimer <= 0 &&
+    prismVolleyCount < Math.round(duration / interval)
+  ) {
+    const shotAngle =
+      -sweep / 2 +
+      sweep * prismVolleyCount * interval / duration;
+
+    for (let i = 0; i < prismUnits.length; i++) {
+      const unit = prismUnits[i];
+
+      spawnPrismBullet(
+        unit.x,
+        unit.y,
+        i === 0 ? shotAngle : -shotAngle,
+        PRISM_CONFIG.sweepBulletSpeed
+      );
+    }
+
+    prismVolleyCount++;
+    prismFireTimer += interval;
+  }
+
+  if (prismAttackTimer >= duration) {
+    finishPrismAttack();
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
