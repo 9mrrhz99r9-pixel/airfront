@@ -3328,6 +3328,33 @@ function updatePrismSweepAttack(dt) {
   }
 }
 
+// PRISM 交差移動弾幕中の移動
+function updatePrismCrossingMovement(dt) {
+  const minX = W * PRISM_CONFIG.minX;
+  const maxX = W * PRISM_CONFIG.maxX;
+  const speed = W * PRISM_CONFIG.crossingMoveSpeed;
+
+  let x = prismUnits[0].x +
+    prismMoveDirection * speed * dt;
+
+  if (x >= maxX && prismMoveDirection === 1) {
+    x = maxX;
+    prismMoveDirection = -1;
+    prismCrossingCount++;
+
+  } else if (x <= minX && prismMoveDirection === -1) {
+    x = minX;
+    prismMoveDirection = 1;
+    prismCrossingCount++;
+  }
+
+  setPrismPosition(
+    x,
+    H * PRISM_CONFIG.attackY,
+    0
+  );
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
