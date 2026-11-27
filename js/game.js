@@ -4415,14 +4415,14 @@ let moveDeltaX = 0;
 
 canvas.addEventListener('pointerdown', e => {
   if (state !== 'playing') return;
-  if (e.clientY > H - 100) return;
 
-  // 移動担当の指がすでにある場合は無視
   if (movePointerId !== null) return;
 
   movePointerId = e.pointerId;
   lastPointerX = e.clientX;
   moveDeltaX = 0;
+
+  firing = true;
 
   canvas.setPointerCapture(e.pointerId);
 });
