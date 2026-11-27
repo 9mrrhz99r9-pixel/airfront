@@ -6138,11 +6138,13 @@ if (hpRatio <= 0.25) {
   }
   
   // HUD
-  ctx.fillStyle = '#fff';
-  ctx.font = 'bold 18px system-ui';
-  ctx.textAlign = 'left';
-  ctx.fillText('♥ '.repeat(player.hp), 14, 30);
-  ctx.textAlign = 'right';
+ctx.fillStyle = '#ff3333';
+ctx.font = 'bold 18px system-ui';
+ctx.textAlign = 'left';
+ctx.fillText('♥ '.repeat(player.hp), 14, 30);
+
+ctx.fillStyle = '#fff';
+ctx.textAlign = 'right';
     ctx.fillText(`TIME ${formatTime(elapsed)}`, W - 14, 28);
   if (gameMode === 'score') {
     ctx.fillText(`SCORE ${score}`, W - 14, 52);
