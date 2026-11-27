@@ -4183,7 +4183,9 @@ if (e.y < stopY) {
   // プレイヤー弾と敵の衝突
     // ボスの登場
   if (gameMode === 'boss' && boss) {
-    if (boss.id === 'photon') {
+    if (boss.id === 'prism') {
+      updatePrism(dt);
+    } else if (boss.id === 'photon') {
       updatePhoton(dt);
 
     } else if (boss.id === 'bastion') {
