@@ -723,7 +723,7 @@ const PRISM_CONFIG = {
   sweepDuration: 3,
   sweepAngle: Math.PI * 5 / 6,
   sweepBulletSpeed: 300,
-  sweepInterval: 0.1,
+  sweepInterval: 0.2,
   sweepPositionX: 0.25,
 
   // 交差移動弾幕
