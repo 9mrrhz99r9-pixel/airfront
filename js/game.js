@@ -579,7 +579,6 @@ const resultEl = document.getElementById('result');
 const startButton = document.getElementById('startButton');
 const retryButton = document.getElementById('retryButton');
 const titleButton = document.getElementById('titleButton');
-const fireButton = document.getElementById('fireButton');
 const hint = document.getElementById('hint');
 
 // ボスデータ
@@ -4124,7 +4123,6 @@ function startGame() {
   state = 'playing';
   titleScreen.classList.add('hidden');
   gameOverScreen.classList.add('hidden');
-  fireButton.classList.remove('hidden');
   hint.classList.remove('hidden');
   lastTime = performance.now();
   requestAnimationFrame(loop);
