@@ -3001,6 +3001,30 @@ function updatePrism(dt) {
   }
 }
 
+// PRISM 指定座標への移動
+function movePrismTo(targetX, targetY, dt) {
+  const unit = prismUnits[0];
+
+  const dx = targetX - unit.x;
+  const dy = targetY - unit.y;
+  const distance = Math.hypot(dx, dy);
+
+  const speed = W * PRISM_CONFIG.transitionSpeed;
+  const step = speed * dt;
+
+  if (distance <= step) {
+    setPrismPosition(targetX, targetY);
+    return true;
+  }
+
+  setPrismPosition(
+    unit.x + dx / distance * step,
+    unit.y + dy / distance * step
+  );
+
+  return false;
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
