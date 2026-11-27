@@ -729,7 +729,7 @@ const PRISM_CONFIG = {
   // 交差移動弾幕
   crossingMoveSpeed: 0.8,
   crossingBulletSpeed: 250,
-  crossingInterval: 0.1,
+  crossingInterval: 0.25,
 
   // 攻撃時の移動範囲
   attackY: 0.2,
