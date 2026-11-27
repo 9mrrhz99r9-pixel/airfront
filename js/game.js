@@ -2988,6 +2988,25 @@ function updatePrism(dt) {
   }
 }
 
+// PRISM 被弾パーティクル生成
+function spawnPrismHitParticles(x, y) {
+  for (let i = 0; i < 12; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = 40 + Math.random() * 100;
+    const life = 0.3 + Math.random() * 0.3;
+
+    prismParticles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      size: 1 + Math.random() * 2,
+      life: life,
+      maxLife: life
+    });
+  }
+}
+
 // PRISM 機体描画
 function drawPrism() {
   if (
