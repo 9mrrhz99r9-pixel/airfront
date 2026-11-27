@@ -29,40 +29,45 @@ SKY DEFENDER 開発引き継ぎメモ
 構成案（依存関係調査後に確定）:
 
     airfront/
-      index.html
-      css/
-        style.css
-        ui.css
-      js/
-        game.js
-        player.js
-        enemy.js
-        boss/
-          taint.js
-          dreadnought.js
-          bastion.js
-          photon.js
-          prism.js
-          nova.js
-          void.js
-          singularity.js
-        ui/
-          screens.js
-          skin.js
-          attachment.js
-          ranking.js
-          settings.js
-        data/
-          storage.js
-          supabase.js
-          account.js
-      assets/
-        player/
-        enemy/
-        boss/
-        attachment/
-        ui/
-        se/
+├── index.html
+├── development.txt
+├── css/
+│   ├── style.css
+│   └── ui.css
+├── js/
+│   ├── game.js
+│   ├── config.js
+│   ├── images.js
+│   ├── player.js
+│   ├── enemy.js
+│   ├── boss/
+│   │   ├── taint.js
+│   │   ├── dreadnought.js
+│   │   ├── bastion.js
+│   │   ├── photon.js
+│   │   ├── prism.js
+│   │   ├── nova.js
+│   │   ├── void.js
+│   │   └── singularity.js
+│   ├── ui/
+│   │   ├── screens.js
+│   │   ├── skin.js
+│   │   ├── attachment.js
+│   │   ├── ranking.js
+│   │   └── settings.js
+│   ├── data/
+│   │   ├── storage.js
+│   │   ├── supabase.js
+│   │   └── account.js
+│   ├── audio.js
+│   └── effects.js
+└── assets/
+    ├── player/
+    ├── enemy/
+    ├── boss/
+    ├── attachments/
+    ├── ui/
+    └── se/
 
 未実装機能のファイルは必要になった時点で作成。共有変数・初期化・読み込み順・イベント登録・保存キーを調査してから分割する。ES Modules採用の有無は未確定。既存の画像パスや保存データを不用意に変更しない。
 
