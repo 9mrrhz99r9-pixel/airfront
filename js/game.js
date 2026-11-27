@@ -3652,6 +3652,7 @@ function loadBossRecords(recordKey) {
 // 難易度別クリアタイム上位3件
 function renderBossRecords(difficulty) {
   const bossRecordId =
+  selectedBoss.id === 'prism' ? 'boss5' :
   selectedBoss.id === 'photon' ? 'boss4' :
   selectedBoss.id === 'bastion' ? 'boss3' :
   selectedBoss.id === 'dreadnought' ? 'boss2' :
