@@ -3025,6 +3025,34 @@ function movePrismTo(targetX, targetY, dt) {
   return false;
 }
 
+// PRISM 攻撃開始準備
+function preparePrismAttack() {
+  prismAttack = selectPrismAttack();
+
+  let targetX = prismUnits[0].x;
+  const targetY = H * PRISM_CONFIG.attackY;
+
+  if (prismAttack === 'fan') {
+    targetX = Math.max(
+      W * PRISM_CONFIG.minX,
+      Math.min(W * PRISM_CONFIG.maxX, targetX)
+    );
+
+  } else if (prismAttack === 'sweep') {
+    targetX = W * PRISM_CONFIG.sweepPositionX;
+
+  } else if (prismAttack === 'crossing') {
+    targetX = W * PRISM_CONFIG.minX;
+  }
+
+  prismTransition = {
+    x: targetX,
+    y: targetY
+  };
+
+  prismState = 'positioning';
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
