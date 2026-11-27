@@ -2962,6 +2962,32 @@ function updatePrismIntro(dt) {
   }
 }
 
+// PRISM 更新処理
+function updatePrism(dt) {
+  for (const unit of prismUnits) {
+    unit.hitTimer = Math.max(
+      0,
+      unit.hitTimer - dt
+    );
+  }
+
+  // 登場演出
+  if (prismState === 'intro') {
+    updatePrismIntro(dt);
+    return;
+  }
+
+  // 通常移動
+  if (prismState === 'orbit') {
+    updatePrismOrbit(dt);
+
+    prismAttackCooldown = Math.max(
+      0,
+      prismAttackCooldown - dt
+    );
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
