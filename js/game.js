@@ -714,7 +714,7 @@ const PRISM_CONFIG = {
   // 扇状弾幕
   fanBulletCount: 5,
   fanBulletSpeed: 600,
-  fanInterval: 0.4,
+  fanInterval: 0.5,
   fanSpread: Math.PI / 2,
   fanSwing: Math.PI / 6,
   fanMoveSpeed: 0.4,
