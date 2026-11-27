@@ -2859,6 +2859,45 @@ let prismFireTimer = 0;
 let prismBullets = [];
 let prismParticles = [];
 
+// PRISM 初期化
+function resetPrism() {
+  prismUnits = [
+    {
+      x: W / 2,
+      y: -30,
+      angle: 0,
+      hitTimer: 0,
+      mirrored: false
+    },
+    {
+      x: W / 2,
+      y: -30,
+      angle: 0,
+      hitTimer: 0,
+      mirrored: true
+    }
+  ];
+
+  prismState = 'intro';
+  prismIntroTimer = PRISM_CONFIG.introDuration;
+  prismOrbitAngle = 0;
+
+  prismAttack = null;
+  prismLastAttack = null;
+  prismAttackTimer = 0;
+  prismAttackCooldown = 0;
+
+  prismMoveDirection = 1;
+  prismTransition = null;
+
+  prismVolleyCount = 0;
+  prismCrossingCount = 0;
+  prismFireTimer = 0;
+
+  prismBullets = [];
+  prismParticles = [];
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
