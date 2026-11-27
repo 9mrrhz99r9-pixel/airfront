@@ -2988,6 +2988,43 @@ function updatePrism(dt) {
   }
 }
 
+// PRISM 機体描画
+function drawPrism() {
+  if (
+    !prismImage.complete ||
+    prismImage.naturalWidth === 0
+  ) return;
+
+  const scale = Math.min(
+    42 / prismImage.naturalWidth,
+    52 / prismImage.naturalHeight
+  );
+
+  const width = prismImage.naturalWidth * scale;
+  const height = prismImage.naturalHeight * scale;
+
+  for (const unit of prismUnits) {
+    ctx.save();
+
+    ctx.translate(unit.x, unit.y);
+    ctx.rotate(unit.angle);
+
+    if (unit.mirrored) {
+      ctx.scale(-1, 1);
+    }
+
+    ctx.drawImage(
+      prismImage,
+      -width / 2,
+      -height / 2,
+      width,
+      height
+    );
+
+    ctx.restore();
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
