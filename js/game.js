@@ -1095,20 +1095,6 @@ const PHOTON_DIFFICULTY = {
   }
 };
 
-// PHOTON 結晶核画像
-const photonSingleImage = new Image();
-photonSingleImage.src = 'assets/boss/photon_single.PNG';
-
-const photonClusterImage = new Image();
-photonClusterImage.src = 'assets/boss/photon_cluster.PNG';
-
-const photonRoughImage = new Image();
-photonRoughImage.src = 'assets/boss/photon_rough.PNG';
-
-// PRISM 機体画像
-const prismImage = new Image();
-prismImage.src = 'assets/boss/prism.PNG';
-
 // PHOTON 状態管理
 let photonForm = null;
 let photonState = 'intro';
