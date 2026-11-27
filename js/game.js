@@ -3105,6 +3105,30 @@ function findPrismNearestOrbitAngle() {
   return nearestAngle;
 }
 
+// PRISM 攻撃終了
+function finishPrismAttack() {
+  const config =
+    PRISM_DIFFICULTY[selectedBossDifficulty] ||
+    PRISM_DIFFICULTY.EASY;
+
+  prismLastAttack = prismAttack;
+  prismAttack = null;
+  prismAttackTimer = 0;
+  prismAttackCooldown = config.attackCooldown;
+
+  prismOrbitAngle = findPrismNearestOrbitAngle();
+
+  const target =
+    getPrismOrbitPosition(prismOrbitAngle);
+
+  prismTransition = {
+    x: target.x,
+    y: target.y
+  };
+
+  prismState = 'return';
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
