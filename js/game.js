@@ -3168,6 +3168,26 @@ function updatePrismPositioning(dt) {
   }
 }
 
+// PRISM 扇状弾幕の発射
+function firePrismFan() {
+  const count = PRISM_CONFIG.fanBulletCount;
+  const spread = PRISM_CONFIG.fanSpread;
+
+  for (const unit of prismUnits) {
+    for (let i = 0; i < count; i++) {
+      const offset =
+        -spread / 2 + spread * i / (count - 1);
+
+      spawnPrismBullet(
+        unit.x,
+        unit.y,
+        unit.angle + offset,
+        PRISM_CONFIG.fanBulletSpeed
+      );
+    }
+  }
+}
+
 // PRISM 攻撃パターン抽選
 function selectPrismAttack() {
   const attacks = [
