@@ -2905,6 +2905,19 @@ function resetPrism() {
   prismParticles = [];
 }
 
+// PRISM 左右対称の座標・角度設定
+function setPrismPosition(x, y, angle = 0) {
+  if (prismUnits.length !== 2) return;
+
+  prismUnits[0].x = x;
+  prismUnits[0].y = y;
+  prismUnits[0].angle = angle;
+
+  prismUnits[1].x = W - x;
+  prismUnits[1].y = y;
+  prismUnits[1].angle = -angle;
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
