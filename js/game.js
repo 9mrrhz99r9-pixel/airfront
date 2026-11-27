@@ -2929,6 +2929,39 @@ function getPrismOrbitPosition(angle) {
   };
 }
 
+// PRISM 登場演出
+function updatePrismIntro(dt) {
+  prismIntroTimer = Math.max(
+    0,
+    prismIntroTimer - dt
+  );
+
+  const progress =
+    1 - prismIntroTimer / PRISM_CONFIG.introDuration;
+
+  const eased =
+    progress * progress * (3 - 2 * progress);
+
+  const target = getPrismOrbitPosition(0);
+
+  const x = W / 2 + (target.x - W / 2) * eased;
+  const y = -30 + (target.y + 30) * eased;
+
+  setPrismPosition(x, y);
+
+  if (prismIntroTimer <= 0) {
+    prismOrbitAngle = 0;
+    prismState = 'orbit';
+    boss.active = true;
+
+    const config =
+      PRISM_DIFFICULTY[selectedBossDifficulty] ||
+      PRISM_DIFFICULTY.EASY;
+
+    prismAttackCooldown = config.attackCooldown;
+  }
+}
+
 // ボス一覧生成
 function renderBossList() {
   bossList.querySelectorAll('button, .bossDifficultyControl')
