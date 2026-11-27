@@ -4122,7 +4122,6 @@ function startGame() {
   state = 'playing';
   titleScreen.classList.add('hidden');
   gameOverScreen.classList.add('hidden');
-  hint.classList.remove('hidden');
   lastTime = performance.now();
   requestAnimationFrame(loop);
 }
@@ -4198,7 +4197,6 @@ if (
   localStorage.setItem('sky_defender_stealth_unlocked', 'true');
 }
   firing = false;
-  hint.classList.add('hidden');
   
   resultTitle.textContent =
   gameMode === 'boss' && isClear
