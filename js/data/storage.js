@@ -41,3 +41,18 @@ function saveBossRecords(recordKey, elapsed) {
 
   return topRecords;
 }
+
+// 自己ベストの読み込み
+function loadLocalBestScore() {
+  return Number(
+    localStorage.getItem('sky_defender_best') || 0
+  );
+}
+
+// 自己ベストの保存
+function saveLocalBestScore(newScore) {
+  localStorage.setItem(
+    'sky_defender_best',
+    String(newScore)
+  );
+}
