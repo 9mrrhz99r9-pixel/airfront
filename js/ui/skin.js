@@ -79,3 +79,141 @@ function changePlayerSkin(skinId) {
 }
 
 const skinList = document.getElementById('skinList');
+function renderSkinList() {
+  skinList.innerHTML = '';
+
+  const previewImage = document.getElementById('skinPreviewImage');
+  const previewName = document.getElementById('skinPreviewName');
+  const previewHint = document.getElementById('skinPreviewHint');
+
+  // プレビュー中の機体を上部に表示
+const skin = PLAYER_SKINS[previewSkinId];
+
+previewImage.innerHTML = '';
+
+if (previewSkinId === 'stealth') {
+  const canvas = document.createElement('canvas');
+  canvas.width = 238;
+  canvas.height = 290;
+
+  const ctxPreview = canvas.getContext('2d');
+
+  if (stealthImage.complete && stealthImage.naturalWidth > 0) {
+    ctxPreview.save();
+ctxPreview.translate(238, 290);
+ctxPreview.rotate(Math.PI);
+
+ctxPreview.drawImage(
+  stealthImage,
+  48, 26, 238, 290,
+  0, 0, 238, 290
+);
+
+ctxPreview.restore();
+  }
+
+  if (!skin.unlocked) {
+    canvas.style.filter = 'brightness(0)';
+    previewName.textContent = '？？？';
+    previewHint.textContent = skin.hint || '入手条件不明';
+  } else {
+    previewName.textContent = skin.name;
+    previewHint.textContent = '';
+  }
+
+  canvas.style.width = 'auto';
+  canvas.style.height = '100%';
+  canvas.style.maxWidth = '100%';
+  canvas.style.objectFit = 'contain';
+
+  previewImage.appendChild(canvas);
+
+} else {
+  const img = document.createElement('img');
+  img.src = skin.image;
+  img.alt = skin.name;
+
+  previewName.textContent = skin.name;
+  previewHint.textContent = '';
+
+  previewImage.appendChild(img);
+}
+
+  // 機体一覧を生成
+  for (const [id, skin] of Object.entries(PLAYER_SKINS)) {
+    const button = document.createElement('button');
+    button.type = 'button';
+
+ const visual = document.createElement('div');
+
+if (skin.unlocked) {
+  if (id === 'stealth') {
+    const canvas = document.createElement('canvas');
+    canvas.width = 238;
+    canvas.height = 290;
+
+    const ctxIcon = canvas.getContext('2d');
+
+    if (stealthImage.complete && stealthImage.naturalWidth > 0) {
+      ctxIcon.save();
+      ctxIcon.translate(238, 290);
+      ctxIcon.rotate(Math.PI);
+
+      ctxIcon.drawImage(
+        stealthImage,
+        48, 26, 238, 290,
+        0, 0, 238, 290
+      );
+
+      ctxIcon.restore();
+    }
+
+    canvas.style.width = '84px';
+    canvas.style.height = '84px';
+    canvas.style.objectFit = 'contain';
+
+    visual.appendChild(canvas);
+  } else {
+    const img = document.createElement('img');
+    img.src = skin.image;
+    img.alt = skin.name;
+    img.width = 84;
+    visual.appendChild(img);
+  }
+} else {
+  visual.textContent = '？';
+  visual.style.width = '84px';
+  visual.style.height = '84px';
+  visual.style.display = 'flex';
+  visual.style.alignItems = 'center';
+  visual.style.justifyContent = 'center';
+  visual.style.fontSize = '36px';
+  visual.style.fontWeight = 'bold';
+}
+
+const name = document.createElement('div');
+name.textContent = skin.unlocked ? skin.name : '？？？';
+
+const status = document.createElement('div');
+
+if (!skin.unlocked) {
+  status.textContent = '未入手';
+} else {
+  status.textContent = id === selectedSkin ? '使用中' : '選択する';
+}
+
+button.append(visual, name, status);
+
+    button.addEventListener('click', () => {
+  previewSkinId = id;
+
+  if (skin.unlocked) {
+    changePlayerSkin(id);
+  }
+
+  renderSkinList();
+});
+
+    skinList.appendChild(button);
+  }
+}
