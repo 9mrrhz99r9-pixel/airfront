@@ -4136,11 +4136,11 @@ const recordKey = `sky_defender_${bossRecordId}_records_${selectedBossDifficulty
 } else {
   const isNewBest = score > bestScore;
 
-  if (isNewBest) {
+ if (isNewBest) {
     bestScore = score;
-    localStorage.setItem('sky_defender_best', String(bestScore));
+    saveLocalBestScore(bestScore);
     saveBestScore(score);
-  }
+}
 
   resultEl.innerHTML = `今回のスコア：<strong>${score}</strong><br>自己ベスト：<strong>${bestScore}</strong>${isNewBest ? '<br>NEW RECORD!' : ''}`;
 }
