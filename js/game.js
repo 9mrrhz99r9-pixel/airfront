@@ -4065,7 +4065,7 @@ if (
   !PLAYER_SKINS.stealth.unlocked
 ) {
   PLAYER_SKINS.stealth.unlocked = true;
-  localStorage.setItem('sky_defender_stealth_unlocked', 'true');
+  saveStealthUnlocked();
 }
   firing = false;
   
