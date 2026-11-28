@@ -77,3 +77,5 @@ function changePlayerSkin(skinId) {
   selectedSkin = skinId;
   playerImage.src = PLAYER_SKINS[skinId].image;
 }
+
+const skinList = document.getElementById('skinList');
