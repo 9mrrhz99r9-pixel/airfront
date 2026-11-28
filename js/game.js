@@ -3693,7 +3693,7 @@ let leftThirdTentacleTimer = 6.5;
 let rightThirdTentacleTimer = 6.5;
 let invincibleTimer = 0, lastTime = 0;
 let pointerActive = false, firing = false;
-let bestScore = Number(localStorage.getItem('sky_defender_best') || 0);
+let bestScore = loadLocalBestScore();
 
 // =========================
 // 電磁防壁発生器
