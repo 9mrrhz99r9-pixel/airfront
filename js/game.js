@@ -22,7 +22,6 @@ const bossStartButton = document.getElementById('bossStartButton');
 const scoreButton = document.getElementById('scoreButton');
 const skinScreen = document.getElementById('skinScreen');
 const skinButton = document.getElementById('skinButton');
-const skinList = document.getElementById('skinList');
 const skinBackButton = document.getElementById('skinBackButton');
 
 // アタッチメント選択画面
