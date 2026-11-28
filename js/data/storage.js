@@ -56,3 +56,18 @@ function saveLocalBestScore(newScore) {
     String(newScore)
   );
 }
+
+// ステルス機の解放状態を読み込む
+function loadStealthUnlocked() {
+  return localStorage.getItem(
+    'sky_defender_stealth_unlocked'
+  ) === 'true';
+}
+
+// ステルス機の解放状態を保存する
+function saveStealthUnlocked() {
+  localStorage.setItem(
+    'sky_defender_stealth_unlocked',
+    'true'
+  );
+}
