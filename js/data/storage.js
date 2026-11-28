@@ -71,3 +71,46 @@ function saveStealthUnlocked() {
     'true'
   );
 }
+
+// =========================
+// アタッチメント所持・装備データ
+// =========================
+const ATTACHMENT_SAVE_KEY = 'sky_defender_attachments_v1';
+
+// 所持数：アタッチメントID → レアリティ → 個数
+let attachmentInventory = {};
+
+// 装備中：未装備ならnull
+let equippedAttachment = null;
+
+// 保存データの読み込み
+function loadAttachmentData() {
+  try {
+    const saved = JSON.parse(
+      localStorage.getItem(ATTACHMENT_SAVE_KEY)
+    );
+
+    attachmentInventory =
+      saved?.inventory &&
+      typeof saved.inventory === 'object' &&
+      !Array.isArray(saved.inventory)
+        ? saved.inventory
+        : {};
+
+    equippedAttachment = saved?.equipped ?? null;
+  } catch (error) {
+    attachmentInventory = {};
+    equippedAttachment = null;
+  }
+}
+
+// 保存データの書き込み
+function saveAttachmentData() {
+  localStorage.setItem(
+    ATTACHMENT_SAVE_KEY,
+    JSON.stringify({
+      inventory: attachmentInventory,
+      equipped: equippedAttachment
+    })
+  );
+}
