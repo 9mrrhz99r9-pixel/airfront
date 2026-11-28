@@ -28,7 +28,7 @@ SKY DEFENDER 開発引き継ぎメモ
 
 構成案（依存関係調査後に確定）:
 
-    airfront/
+airfront/
 ├── index.html
 ├── development.txt
 ├── css/
